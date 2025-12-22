@@ -1,0 +1,42 @@
+@use "../../styles/variables" as *;
+
+.wrapper {
+  position: sticky;
+  top: 96px;
+  align-self: flex-start;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-accent;
+  margin: 0 0 16px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button {
+  padding: 8px 16px;
+  border-radius: $radius-pill;
+  border: 1px solid $color-border;
+  background-color: #ffffff;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+}
+
+.buttonActive {
+  border-color: $color-accent;
+  background-color: rgba(108, 92, 231, 0.08);
+  color: $color-accent;
+}

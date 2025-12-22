@@ -1,0 +1,188 @@
+@use "../../styles/variables" as *;
+
+.page {
+  padding: 40px 0 0;
+
+  @media (max-width: 768px) {
+    padding-top: 24px;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 40px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.sidebar {
+  @media (max-width: 900px) {
+    order: -1;
+  }
+}
+
+/* селектор мови в сайдбарі:
+   — на десктопі показуємо
+   — на мобілці ховаємо, бо селектор є в хедері */
+.sidebarLang {
+  margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.description {
+  max-width: 520px;
+  font-size: 14px;
+  color: $color-muted;
+  line-height: 1.5;
+  margin: 0 0 4px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.featured {
+  margin-bottom: 12px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 8px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+
+  @media (max-width: 900px) {
+    gap: 16px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loadMore {
+  align-self: flex-start;
+  border-radius: $radius-pill;
+  border: none;
+  background-color: transparent;
+  color: $color-accent;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+/* Модалка тарифів — як була */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+
+  z-index: 300;
+}
+
+.modal {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px 18px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.modalClose {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modalTariff {
+  width: 100%;
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid $color-border;
+  padding: 10px 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    border-color: $color-accent;
+    background-color: rgba(108, 92, 231, 0.04);
+  }
+}
+
+.modalTariffInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.modalTariffTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modalTariffPrice {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modalTariffHint {
+  font-size: 12px;
+  color: $color-muted;
+}

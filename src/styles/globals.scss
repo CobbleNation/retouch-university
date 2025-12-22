@@ -1,0 +1,68 @@
+// src/styles/globals.scss
+@use "./variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* висота плаваючої панелі покупки */
+  --purchase-bar-height: 80px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding-top: 72px;
+  font-family: $font-main;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+
+  /* прибираємо горизонтальний скрол по всьому сайту */
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* корінь React-додатку */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ДОДАЛИ: запас під плаваючу панель ТІЛЬКИ на сторінці курсу */
+.app-root--with-bar {
+  padding-bottom: var(--purchase-bar-height);
+}
+
+/* щоб контент тягнув сайт вниз, а футер притискався */
+main {
+  flex: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}

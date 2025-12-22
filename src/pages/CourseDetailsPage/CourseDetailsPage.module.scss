@@ -1,0 +1,511 @@
+// src/pages/CourseDetailsPage/CourseDetailsPage.module.scss
+@use "../../styles/variables" as *;
+
+.page {
+  padding: 40px 0 0;
+  padding-bottom: 24px; // просто невеличкий внутрішній відступ
+
+  @media (max-width: 768px) {
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+}
+
+.backLink {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: $color-accent;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+  }
+}
+
+/* HERO */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px;
+  padding-top: 60px;
+  min-height: 320px;
+  margin-bottom: 56px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding-top: 32px;
+    min-height: auto;
+    gap: 24px;
+  }
+}
+
+.heroLeft,
+.heroRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+.heroRight {
+  font-size: 16px;
+  color: $color-muted;
+  line-height: 1.7;
+  max-width: 520px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.heroRight p {
+  margin: 0;
+  padding: 0;
+}
+
+/* SLIDER */
+
+.sliderSection {
+  margin: 40px 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  @media (max-width: 768px) {
+    margin: 24px 0 32px;
+  }
+}
+
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.emblaContainer {
+  display: flex;
+}
+
+.emblaSlide {
+  flex: 0 0 calc(100% / 6);
+  min-width: 0;
+
+  @media (max-width: 1024px) {
+    flex: 0 0 calc(100% / 4);
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 0 calc(100% / 3);
+  }
+
+  @media (max-width: 520px) {
+    flex: 0 0 50%;
+  }
+}
+
+.slidePlaceholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: $color-placeholder;
+}
+
+/* INFO */
+
+.infoSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 40px;
+  padding: 24px 0;
+  margin-bottom: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.infoList {
+  margin: 0;
+}
+
+.infoRow {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  margin-bottom: 8px;
+
+  dt {
+    min-width: 120px;
+    color: $color-muted;
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.infoRight {
+  font-size: 14px;
+  color: $color-muted;
+  line-height: 1.6;
+}
+
+/* DIVIDER */
+
+.divider {
+  border: none;
+  border-top: 1px solid $color-border;
+  margin: 24px 0;
+}
+
+/* TARIFFS */
+
+.tariffsSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  margin-bottom: 32px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.sectionTitle {
+  font-size: 20px;
+  margin: 0 0 12px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.tariffsText {
+  font-size: 14px;
+  color: $color-muted;
+  max-width: 320px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.tariffsRight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tariffRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+  }
+}
+
+.tariffInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tariffTitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tariffList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.tariffHint {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: $color-muted;
+}
+
+.tariffPrice {
+  font-size: 16px;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+/* UX для features */
+
+.featureAvailable {
+  color: $color-text;
+}
+
+.featureUnavailable {
+  color: $color-muted;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* FAQ */
+
+.faqSection {
+  margin-bottom: 40px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.faqItemWrapper {
+  border-bottom: 1px solid $color-border;
+}
+
+.faqItem {
+  border: none;
+  background-color: transparent;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faqItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faqQuestion {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.faqIcon,
+.faqIconOpen {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.faqIconOpen {
+  transform: rotate(45deg);
+}
+
+.faqAnswer {
+  padding: 6px 0 10px;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: $color-muted;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+}
+
+/* PURCHASE BAR */
+
+.purchaseBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  border-top: 1px solid $color-border;
+  background-color: #ffffff;
+  padding: 12px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    padding: 10px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+}
+
+.purchaseInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.purchaseTitle {
+  font-size: 14px;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.purchasePrice {
+  font-size: 13px;
+  color: $color-muted;
+}
+
+.purchaseButton {
+  border-radius: $radius-pill;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: $color-accent;
+  color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+/* MODAL */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+
+  z-index: 300;
+}
+
+.modal {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 16px 20px 18px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+.modalClose {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modalTariff {
+  width: 100%;
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid $color-border;
+  padding: 10px 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    border-color: $color-accent;
+    background-color: rgba(108, 92, 231, 0.04);
+  }
+}
+
+.modalTariffInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.modalTariffTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modalTariffPrice {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modalTariffHint {
+  font-size: 12px;
+  color: $color-muted;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.heroImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.06);
+}

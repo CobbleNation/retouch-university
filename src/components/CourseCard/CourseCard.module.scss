@@ -1,0 +1,124 @@
+@use "../../styles/variables" as *;
+
+.card,
+.cardLarge {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Ларж-банер — тільки картинка 16:9 */
+.cardLarge {
+  .imagePlaceholderLarge {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: $color-placeholder;
+    border-radius: 16px;
+    cursor: pointer;
+  }
+}
+
+.card {
+  .title {
+    padding-left: 8px;
+    border-left: 2px solid $color-text;
+    font-size: 20px;
+  }
+}
+
+/* Прев’ю 3:4 */
+.imagePlaceholder {
+  border-radius: 12px;
+  background-color: $color-placeholder;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-end;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.linkButton,
+.primaryButton {
+  border-radius: $radius-pill;
+  padding: 6px 14px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
+}
+
+.linkButton {
+  border-color: transparent;
+  text-decoration: none;
+  padding-left: 0;
+  padding-right: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.linkIcon {
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.linkButton:hover .linkIcon {
+  transform: translateX(2px);
+}
+
+.primaryButton {
+  border-color: $color-border;
+  background-color: #ffffff;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+}
+
+.imagePlaceholder,
+.imagePlaceholderLarge {
+  position: relative;
+  overflow: hidden; // ✅ щоб картинка не вилізла за радиус
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // ✅ нормальне кадрування
+  display: block;
+}
