@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useEmblaCarousel from "embla-carousel-react";
+// import useEmblaCarousel from "embla-carousel-react"; // <- більше не треба
 
 import styles from "./CourseDetailsPage.module.scss";
 import { coursesMap } from "../../data/courses";
@@ -12,11 +12,6 @@ export const CourseDetailsPage = () => {
   const course = slug ? coursesMap[slug] : undefined;
 
   const { t, locale } = useI18n();
-
-  const [emblaRef] = useEmblaCarousel({
-    slidesToScroll: 1,
-    containScroll: "trimSnaps",
-  });
 
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [isTariffModalOpen, setIsTariffModalOpen] = useState(false);
@@ -54,6 +49,7 @@ export const CourseDetailsPage = () => {
     );
   }
 
+  // Загальний список фіч (для курсів з кількома тарифами)
   const featureList = [
     t("courseDetails.features.cabinet"),
     t("courseDetails.features.lifetimeAccess"),
@@ -64,14 +60,12 @@ export const CourseDetailsPage = () => {
     t("courseDetails.features.postSupport"),
   ];
 
-  const slides = Array.from({ length: course.galleryImagesCount }).map(
-    (_, idx) => idx
-  );
-
   const prices = course.tariffs
     .map((tarf) => parseInt(tarf.price.replace(/\D/g, ""), 10))
     .filter((n) => Number.isFinite(n));
   const minPrice = prices.length ? Math.min(...prices) : null;
+
+  const isSingleTariff = course.tariffs.length === 1;
 
   const handleBuyClick = () => {
     if (course.tariffs.length === 1) {
@@ -89,6 +83,40 @@ export const CourseDetailsPage = () => {
 
   const courseImageAlt =
     course.title?.[locale] || t("courseDetails.courseImageAlt");
+
+  // ✅ фото для full-width секції: якщо захочеш інше — додаси в data як fullWidthImageSrc,
+  // і воно автоматично підхопиться. Якщо ні — використає imageSrc.
+  const fullWidthImageSrc = course.fullWidthImageSrc || course.imageSrc || "";
+
+  // helpers: підтягуємо значення з infoRows, щоб "актуалізувати інформацію"
+  const getInfoValue = (labelKey: string) =>
+    course.infoRows.find((r) => r.labelKey === labelKey)?.value?.[locale] ?? "";
+
+  // ✅ "Що входить" для одного тарифу — без закреслювань (і тільки актуальні штуки)
+  const singleTariffList = useMemo(() => {
+    const lessons = getInfoValue("course.info.lessonsCount");
+    const access = getInfoValue("course.info.access");
+    const duration = getInfoValue("course.info.lessonDuration");
+    const software = getInfoValue("course.info.software");
+    const devices = getInfoValue("course.info.devices");
+    const watchAnytime = getInfoValue("course.info.watchAnytime");
+
+    // збираємо тільки те, що реально є в цьому курсі (без кураторів/созвонів)
+    const out: string[] = [];
+
+    out.push(t("courseDetails.features.cabinet"));
+
+    if (lessons) out.push(`${t("courseDetails.singleFeatures.lessons")}: ${lessons}`);
+    if (access) out.push(`${t("courseDetails.singleFeatures.access")}: ${access}`);
+    if (duration) out.push(`${t("courseDetails.singleFeatures.lessonDuration")}: ${duration}`);
+    if (software) out.push(`${t("courseDetails.singleFeatures.software")}: ${software}`);
+    if (devices) out.push(`${t("courseDetails.singleFeatures.devices")}: ${devices}`);
+    if (watchAnytime) out.push(`${t("courseDetails.singleFeatures.watchAnytime")}: ${watchAnytime}`);
+
+    return out;
+  }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const program = course.program ?? [];
 
   return (
     <main className={styles.page}>
@@ -132,17 +160,25 @@ export const CourseDetailsPage = () => {
         </section>
       </div>
 
-      {/* Слайдер на всю ширину */}
+      {/* Було: Слайдер на всю ширину */}
+      {/*
       <section className={styles.sliderSection}>
-        <div className={styles.embla} ref={emblaRef}>
-          <div className={styles.emblaContainer}>
-            {slides.map((n) => (
-              <div key={n} className={styles.emblaSlide}>
-                <div className={styles.slidePlaceholder} />
-              </div>
-            ))}
-          </div>
-        </div>
+        ...
+      </section>
+      */}
+
+      {/* ✅ Замість слайдера — одна фото на всю ширину (з data) */}
+      <section className={styles.fullWidthImageSection}>
+        {fullWidthImageSrc ? (
+          <img
+            src={fullWidthImageSrc}
+            alt={courseImageAlt}
+            className={styles.fullWidthImage}
+            loading="lazy"
+          />
+        ) : (
+          <div className={styles.fullWidthImagePlaceholder} />
+        )}
       </section>
 
       {/* Основний контент */}
@@ -182,29 +218,43 @@ export const CourseDetailsPage = () => {
                 <div className={styles.tariffInfo}>
                   <h3 className={styles.tariffTitle}>{tariff.title[locale]}</h3>
 
-                  <ul className={styles.tariffList}>
-                    {featureList.map((item, itemIdx) => {
-                      const id = itemIdx + 1;
-                      const available = tariff.include.includes(id);
-
-                      return (
-                        <li
-                          key={id}
-                          className={
-                            available
-                              ? styles.featureAvailable
-                              : styles.featureUnavailable
-                          }
-                        >
-                          {item}
+                  {/* ✅ Якщо тариф один — показуємо тільки актуальне і без закреслювань */}
+                  {isSingleTariff ? (
+                    <ul className={styles.singleTariffList}>
+                      {singleTariffList.map((text, i) => (
+                        <li key={i} className={styles.singleTariffItem}>
+                          {text}
                         </li>
-                      );
-                    })}
-                  </ul>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className={styles.tariffList}>
+                      {featureList.map((item, itemIdx) => {
+                        const id = itemIdx + 1;
+                        const available = tariff.include.includes(id);
 
+                        return (
+                          <li
+                            key={id}
+                            className={
+                              available
+                                ? styles.featureAvailable
+                                : styles.featureUnavailable
+                            }
+                          >
+                            {item}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+
+                  {/* Прибираємо цей хінт зі сторінки, але залишаємо в коді */}
+                  {/*
                   <p className={styles.tariffHint}>
                     {t("courseDetails.tariffHint")}
                   </p>
+                  */}
                 </div>
 
                 <div className={styles.tariffPrice}>{tariff.price}</div>
@@ -214,6 +264,34 @@ export const CourseDetailsPage = () => {
         </section>
 
         <hr className={styles.divider} />
+
+        {/* ✅ Program */}
+        {program.length > 0 && (
+          <>
+            <section className={styles.programSection}>
+              <div className={styles.programLeft}>
+                <h2 className={styles.sectionTitle}>
+                  {t("courseDetails.programTitle")}
+                </h2>
+                <p className={styles.programText}>
+                  {t("courseDetails.programSubtitle")}
+                </p>
+              </div>
+
+              <div className={styles.programRight}>
+                <ol className={styles.programList}>
+                  {program.map((step, idx) => (
+                    <li key={idx} className={styles.programItem}>
+                      {step[locale]}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </section>
+
+            <hr className={styles.divider} />
+          </>
+        )}
 
         {/* FAQ */}
         <section className={styles.faqSection}>

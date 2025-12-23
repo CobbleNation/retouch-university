@@ -31,6 +31,8 @@ export type Course = {
   tariffs: CourseTariff[];
   faq: CourseFaqItem[];
   imageSrc?: string;
+  fullWidthImageSrc?: string; // ✅
+  program?: LocalizedString[]; // ✅ Программа курса
 };
 
 const l = (ru: string, ua: string, en: string): LocalizedString => ({
@@ -41,150 +43,9 @@ const l = (ru: string, ua: string, en: string): LocalizedString => ({
 
 export const courses: Course[] = [
   {
-    slug: "retouch-architecture",
-    title: l(
-      "Архитектура ретуши",
-      "Архітектура ретуші",
-      "Retouch Architecture"
-    ),
-    subtitle: l(
-      "Самостоятельное обучение",
-      "Самостійне навчання",
-      "Self-paced learning"
-    ),
-    shortDescription: l(
-      "Базовый и продвинутый курс по архитектуре ретуши для фотографов и ретушеров.",
-      "Базовий і просунутий курс з архітектури ретуші для фотографів і ретушерів.",
-      "A complete course in retouching architecture for photographers and retouchers, from basics to advanced."
-    ),
-    heroText: l(
-      "На этом курсе вы разберетесь в логике ретуши, научитесь выстраивать чёткий пайплайн обработки и работать с цветом и светом осознанно, а не на уровне «потыкать ползунки».",
-      "На цьому курсі ви розберетеся в логіці ретуші, навчитеся будувати чіткий пайплайн обробки та працювати з кольором і світлом усвідомлено, а не на рівні «потикати повзунки».",
-      "In this course you’ll understand the logic of retouching, build a clear processing pipeline and work with light and color consciously, not by randomly moving sliders."
-    ),
-    galleryImagesCount: 6,
-    infoRows: [
-      {
-        labelKey: "course.info.learningStatus",
-        value: l("Доступно", "Доступно", "Available"),
-      },
-      {
-        labelKey: "course.info.startDate",
-        value: l("01.10.2025", "01.10.2025", "01.10.2025"),
-      },
-      {
-        labelKey: "course.info.recorded",
-        value: l("Нет", "Ні", "No"),
-      },
-      {
-        labelKey: "course.info.curatorAvailable",
-        value: l("Да", "Так", "Yes"),
-      },
-    ],
-    tariffsIntro: l(
-      "Можно оплатить курс сразу или оформить рассрочку. Подберите тариф под свою задачу и уровень вовлеченности.",
-      "Можна оплатити курс одразу або оформити розстрочку. Оберіть тариф під свою задачу та рівень залученості.",
-      "You can pay in full or in installments. Choose a plan that matches your goals and level of involvement."
-    ),
-    tariffs: [
-      {
-        title: l(
-          "Самостоятельное обучение",
-          "Самостійне навчання",
-          "Self-study"
-        ),
-        price: "199$",
-        include: [1, 2, 3],
-        paymentUrl: "https://pay.example.com/retouch-architecture/self-study",
-      },
-      {
-        title: l(
-          "Поддержка кураторов",
-          "Підтримка кураторів",
-          "Curator support"
-        ),
-        price: "299$",
-        include: [1, 2, 3, 4, 5],
-        paymentUrl:
-          "https://pay.example.com/retouch-architecture/curator-support",
-      },
-      {
-        title: l(
-          "Поддержка кураторов после курса",
-          "Підтримка кураторів після курсу",
-          "Extended curator support"
-        ),
-        price: "399$",
-        include: [1, 2, 3, 4, 5, 6],
-        paymentUrl:
-          "https://pay.example.com/retouch-architecture/extended-support",
-      },
-      {
-        title: l(
-          "Персональное наставничество",
-          "Персональне наставництво",
-          "1-on-1 mentorship"
-        ),
-        price: "499$",
-        include: [1, 2, 3, 4, 5, 6, 7],
-        paymentUrl: "https://pay.example.com/retouch-architecture/mentorship",
-      },
-    ],
-    faq: [
-      {
-        question: l(
-          "Что необходимо для прохождения курса?",
-          "Що необхідно для проходження курсу?",
-          "What do I need to take the course?"
-        ),
-        answer: l(
-          "Компьютер или ноутбук, стабильный интернет и установленный софт, о котором мы расскажем в первом модуле.",
-          "Комп’ютер або ноутбук, стабільний інтернет і встановлений софт, про який ми розповімо в першому модулі.",
-          "A computer or laptop, stable internet connection and the required software, which we’ll cover in the first module."
-        ),
-      },
-      {
-        question: l(
-          "Сколько времени потребуется на обучение?",
-          "Скільки часу потрібно на навчання?",
-          "How much time will I need?"
-        ),
-        answer: l(
-          "В среднем 5–8 часов в неделю: просмотр уроков, выполнение практики и разбор домашних заданий.",
-          "У середньому 5–8 годин на тиждень: перегляд уроків, практика та розбір домашніх завдань.",
-          "On average 5–8 hours per week: watching lessons, practicing and reviewing homework."
-        ),
-      },
-      {
-        question: l(
-          "Можно ли проходить курс в своем темпе?",
-          "Чи можна проходити курс у своєму темпі?",
-          "Can I study at my own pace?"
-        ),
-        answer: l(
-          "Да, вы можете смотреть уроки в удобное время. Ограничения по срокам зависят от выбранного тарифа.",
-          "Так, ви можете дивитися уроки у зручний час. Обмеження за строками залежать від обраного тарифу.",
-          "Yes, you can watch lessons at any time. Time limits depend on the plan you choose."
-        ),
-      },
-      {
-        question: l(
-          "Что делать, если я не успеваю?",
-          "Що робити, якщо я не встигаю?",
-          "What if I don’t keep up?"
-        ),
-        answer: l(
-          "Вы сможете написать в поддержку или куратору и подобрать комфортный формат прохождения курса.",
-          "Ви зможете написати в підтримку або куратору й підібрати комфортний формат проходження курсу.",
-          "You can contact support or a curator and adjust the pace or format to something more comfortable."
-        ),
-      },
-    ],
-  },
-
-  {
     slug: "retouch-nails",
     imageSrc: "/images/IMG_9105.jpg",
+    fullWidthImageSrc: "/images/IMG_9102.jpg",
     title: l("Архитектура ногтей", "Архітектура нігтів", "Nail Retouching"),
     subtitle: l("", "", ""),
 
@@ -275,6 +136,54 @@ You will learn to:
 • make content to grow and promote your income`
     ),
 
+    // ✅ Программа курса (для кожного курсу може бути своя)
+    program: [
+      l(
+        "Вступление и установка программы Photoshop",
+        "Вступ та встановлення Photoshop",
+        "Introduction & Photoshop installation"
+      ),
+      l(
+        "Открытие и сохранение фотографий",
+        "Відкриття та збереження фотографій",
+        "Opening & saving photos"
+      ),
+      l(
+        "Изучение инструментов для работы",
+        "Огляд інструментів для роботи",
+        "Tools overview"
+      ),
+      l(
+        "Чёткость и резкость фотографий",
+        "Чіткість та різкість фотографій",
+        "Sharpness & clarity"
+      ),
+      l("Цвет фотографий", "Колір фотографій", "Color correction"),
+      l("Работа с дефектами", "Робота з дефектами", "Fixing imperfections"),
+      l(
+        "Изменение цвета ногтей",
+        "Зміна кольору нігтів",
+        "Changing nail color"
+      ),
+      l("Убирание покраснения", "Прибирання почервоніння", "Removing redness"),
+      l(
+        "Изменение формы ногтя",
+        "Зміна форми нігтя",
+        "Changing nail shape"
+      ),
+      l(
+        "Редактирование кожи рук",
+        "Ретуш шкіри рук",
+        "Hand skin retouch"
+      ),
+      l(
+        "Правильный алгоритм ретуши",
+        "Правильний алгоритм ретуші",
+        "Correct retouch workflow"
+      ),
+      l("Финал", "Фінал", "Final"),
+    ],
+
     galleryImagesCount: 6,
 
     infoRows: [
@@ -294,7 +203,7 @@ You will learn to:
         labelKey: "course.info.recorded",
         value: l("Да", "Так", "Yes"),
       },
-      // у твоєму тексті нема куратора — не вигадую
+
       {
         labelKey: "course.info.lessonsCount",
         value: l("12 уроков", "12 уроків", "12 lessons"),

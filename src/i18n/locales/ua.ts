@@ -68,6 +68,17 @@ export const ua = {
     buyButton: "Придбати курс",
     chooseTariff: "Оберіть тариф",
     modalTariffHint: "Перейти до оплати на зовнішньому сайті",
+    programTitle: "Програма курсу",
+    programSubtitle: "12 уроків — від встановлення до фінального алгоритму.",
+
+    singleFeatures: {
+      lessons: "Уроки",
+      access: "Доступ",
+      lessonDuration: "Тривалість",
+      software: "Програма",
+      devices: "Пристрої",
+      watchAnytime: "Перегляд",
+    },
 
     features: {
       cabinet: "Доступ до особистого кабінету",

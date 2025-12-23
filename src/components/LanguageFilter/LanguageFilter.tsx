@@ -1,41 +1,48 @@
+import { useMemo } from "react";
 import { useI18n } from "../../i18n";
 import styles from "./LanguageFilter.module.scss";
+import type { Course } from "../../data/courses";
 
 type LanguageFilterProps = {
   active: string;
   onChange: (value: string) => void;
+  courses: Course[];
 };
 
 type FilterOption = {
-  value: string;
-  labelKey: string;
+  value: string; // "all" або slug
+  label: string; // текст кнопки
 };
 
-const OPTIONS: FilterOption[] = [
-  { value: "all", labelKey: "coursesPage.filters.all" },
-  {
-    value: "retouch-architecture",
-    labelKey: "coursesPage.filters.retouchArchitecture",
-  },
-  {
-    value: "shoot-architecture",
-    labelKey: "coursesPage.filters.shootArchitecture",
-  },
-  {
-    value: "color-architecture",
-    labelKey: "coursesPage.filters.colorArchitecture",
-  },
-];
+export const LanguageFilter = ({
+  active,
+  onChange,
+  courses,
+}: LanguageFilterProps) => {
+  const { t, locale } = useI18n();
 
-export const LanguageFilter = ({ active, onChange }: LanguageFilterProps) => {
-  const { t } = useI18n();
+  const options: FilterOption[] = useMemo(() => {
+    // Унікальні курси по slug, стабільний порядок як в масиві courses
+    const uniq = new Map<string, Course>();
+    courses.forEach((c) => {
+      if (!uniq.has(c.slug)) uniq.set(c.slug, c);
+    });
+
+    return [
+      { value: "all", label: t("coursesPage.filters.all") },
+      ...Array.from(uniq.values()).map((c) => ({
+        value: c.slug,
+        label: c.title[locale],
+      })),
+    ];
+  }, [courses, locale, t]);
 
   return (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>{t("coursesPage.availableCourses")}</h2>
 
       <div className={styles.buttons}>
-        {OPTIONS.map((opt) => (
+        {options.map((opt) => (
           <button
             key={opt.value}
             type="button"
@@ -46,7 +53,7 @@ export const LanguageFilter = ({ active, onChange }: LanguageFilterProps) => {
             }
             onClick={() => onChange(opt.value)}
           >
-            {t(opt.labelKey)}
+            {opt.label}
           </button>
         ))}
       </div>

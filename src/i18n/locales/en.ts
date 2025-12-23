@@ -69,6 +69,17 @@ export const en = {
     buyButton: "Buy course",
     chooseTariff: "Choose a plan",
     modalTariffHint: "Go to payment on an external website",
+    programTitle: "Course program",
+    programSubtitle: "12 lessons — from installation to the final workflow.",
+
+    singleFeatures: {
+      lessons: "Lessons",
+      access: "Access",
+      lessonDuration: "Lesson duration",
+      software: "Software",
+      devices: "Devices",
+      watchAnytime: "Watch",
+    },
 
     features: {
       cabinet: "Access to personal account",

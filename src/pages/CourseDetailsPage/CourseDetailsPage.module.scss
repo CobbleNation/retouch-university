@@ -266,6 +266,22 @@
   }
 }
 
+/* ✅ Single tariff list (без закреслювань) */
+
+.singleTariffList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.singleTariffItem {
+  color: $color-text;
+}
+
 /* UX для features */
 
 .featureAvailable {
@@ -276,6 +292,61 @@
   color: $color-muted;
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+/* ✅ PROGRAM */
+
+.programSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  margin-bottom: 32px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.programLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.programText {
+  font-size: 14px;
+  color: $color-muted;
+  max-width: 360px;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.programRight {
+  display: block;
+}
+
+.programList {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  font-size: 14px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.programItem {
+  line-height: 1.5;
 }
 
 /* FAQ */
@@ -507,5 +578,27 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 16px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.fullWidthImageSection {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fullWidthImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+
+  /* якщо хочеш, щоб було як банер */
+  max-height: 720px;
+}
+
+.fullWidthImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 6;
   background: rgba(0, 0, 0, 0.06);
 }

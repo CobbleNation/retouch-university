@@ -68,6 +68,17 @@ export const ru = {
     buyButton: "Купить курс",
     chooseTariff: "Выберите тариф",
     modalTariffHint: "Перейти к оплате на внешнем сайте",
+    programTitle: "Программа курса",
+    programSubtitle: "12 уроков — от установки до финального алгоритма.",
+
+    singleFeatures: {
+      lessons: "Уроки",
+      access: "Доступ",
+      lessonDuration: "Длительность",
+      software: "Программа",
+      devices: "Устройства",
+      watchAnytime: "Просмотр",
+    },
 
     features: {
       cabinet: "Доступ в личный кабинет",

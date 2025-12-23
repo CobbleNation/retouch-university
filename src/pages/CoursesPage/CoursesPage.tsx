@@ -16,18 +16,29 @@ export const CoursesPage = () => {
     null
   );
 
-  // Тут потім додаси реальну логіку фільтрації по languageFilter
+  // 🔧 Поки що featured-блок вимкнений (коли захочеш повернути — постав true і розкоментуй JSX нижче)
+  const SHOW_FEATURED = false;
+
+  // Реальна логіка фільтрації:
+  // all -> всі
+  // slug -> тільки цей курс
   const filteredCourses = useMemo(() => {
-    return courses;
+    if (languageFilter === "all") return courses;
+    return courses.filter((c) => c.slug === languageFilter);
   }, [languageFilter]);
 
+  // featured курс (тимчасово не показуємо на сторінці)
   const featured = filteredCourses[0] ?? null;
 
-  // щоб featured не дублювався у гріді
+  // Курси для гріда (featured виключаємо, якщо він буде повернений)
   const gridCourses = useMemo(() => {
+    // якщо featured не показуємо — просто рендеримо всі курси в сітці
+    if (!SHOW_FEATURED) return filteredCourses;
+
+    // якщо featured показуємо — виключаємо його, щоб не дублювався у гріді
     if (!featured) return filteredCourses;
     return filteredCourses.filter((c) => c.slug !== featured.slug);
-  }, [filteredCourses, featured]);
+  }, [filteredCourses, featured, SHOW_FEATURED]);
 
   const selectedCourse = useMemo(() => {
     if (!selectedCourseSlug) return null;
@@ -43,11 +54,7 @@ export const CoursesPage = () => {
     if (!course) return;
 
     if (course.tariffs.length === 1) {
-      window.open(
-        course.tariffs[0].paymentUrl,
-        "_blank",
-        "noopener,noreferrer"
-      );
+      window.open(course.tariffs[0].paymentUrl, "_blank", "noopener,noreferrer");
       return;
     }
 
@@ -68,14 +75,15 @@ export const CoursesPage = () => {
       <div className="container">
         <section className={styles.layout}>
           <aside className={styles.sidebar}>
-            {/* на десктопі тут селектор, на мобілці сховаємо через CSS */}
             <div className={styles.sidebarLang}>
               <LanguageSelector />
             </div>
 
+            {/* ✅ Фільтри генеряться автоматично з courses */}
             <LanguageFilter
               active={languageFilter}
               onChange={setLanguageFilter}
+              courses={courses}
             />
           </aside>
 
@@ -84,7 +92,9 @@ export const CoursesPage = () => {
               {t("coursesPage.description")}
             </p>
 
-            {featured && (
+            {/* 🔕 Тимчасово вимкнули головний горизонтальний featured-блок */}
+            {/*
+            {SHOW_FEATURED && featured && (
               <div className={styles.featured}>
                 <CourseCard
                   title={featured.title[locale]}
@@ -95,7 +105,9 @@ export const CoursesPage = () => {
                 />
               </div>
             )}
+            */}
 
+            {/* Сітка курсів */}
             <div className={styles.grid}>
               {gridCourses.map((course) => (
                 <CourseCard
@@ -115,6 +127,7 @@ export const CoursesPage = () => {
         </section>
       </div>
 
+      {/* Модалка тарифів */}
       {selectedCourse && (
         <div className={styles.modalOverlay} onClick={handleCloseTariffs}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
