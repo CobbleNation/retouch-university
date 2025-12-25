@@ -166,16 +166,8 @@ You will learn to:
         "Changing nail color"
       ),
       l("Убирание покраснения", "Прибирання почервоніння", "Removing redness"),
-      l(
-        "Изменение формы ногтя",
-        "Зміна форми нігтя",
-        "Changing nail shape"
-      ),
-      l(
-        "Редактирование кожи рук",
-        "Ретуш шкіри рук",
-        "Hand skin retouch"
-      ),
+      l("Изменение формы ногтя", "Зміна форми нігтя", "Changing nail shape"),
+      l("Редактирование кожи рук", "Ретуш шкіри рук", "Hand skin retouch"),
       l(
         "Правильный алгоритм ретуши",
         "Правильний алгоритм ретуші",
@@ -257,69 +249,237 @@ You will learn to:
         title: l("Курс", "Курс", "Course"),
         price: "49$",
         include: [1, 2, 3],
-        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=9802", // заміни на реальний лінк
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=9802", // реальна оплата (заміни за потреби)
       },
     ],
 
     faq: [
       {
         question: l(
-          "Для кого этот курс?",
-          "Для кого цей курс?",
-          "Who is this course for?"
+          "Я делаю красивый маникюр, но на фото он выглядит хуже, чем в жизни — почему?",
+          "Я роблю гарний манікюр, але на фото він виглядає гірше, ніж у житті — чому?",
+          "My manicure looks great in real life, but worse in photos — why?"
         ),
         answer: l(
-          "Этот курс создан исключительно для Nail Stylists.",
-          "Цей курс створений виключно для Nail Stylists.",
-          "This course is created exclusively for Nail Stylists."
+          "Камера усиливает покраснения, тени и мелкие дефекты, а также подчёркивает пыль и неровности. На курсе вы научитесь приводить фото к тому виду, как работа выглядит в реальности: чистый цвет, аккуратная кожа, правильная резкость и сохранение качества.",
+          "Камера підсилює почервоніння, тіні та дрібні дефекти, а також підкреслює пил і нерівності. На курсі ви навчитеся приводити фото до того вигляду, як робота виглядає в реальності: чистий колір, акуратна шкіра, правильна різкість і збереження якості.",
+          "A camera can amplify redness, shadows, tiny imperfections, and even dust. In the course you’ll learn how to make your photos look like real life: clean color, neat skin, the right sharpness, and high-quality export for social media."
         ),
       },
       {
         question: l(
-          "Нужны ли специальные знания?",
-          "Чи потрібні спеціальні знання?",
-          "Do I need any prior experience?"
+          "Что вы получите от этого курса?",
+          "Що ви отримаєте від цього курсу?",
+          "What will I get from this course?"
         ),
         answer: l(
-          "Нет. Курс подходит даже для тех, кто никогда не занимался редактированием фотографий.",
-          "Ні. Курс підходить навіть для тих, хто ніколи не редагував фотографії.",
-          "No. The course is suitable even if you’ve never edited photos before."
+          "Фотографии, которые привлекают клиентов и выделяют вас среди конкурентов.\n\nВы научитесь:\n• делать правильный свет и убирать пересвет\n• получать чистый цвет (без жёлтого/синего оттенка)\n• аккуратно убирать дефекты: покраснения, пыль, мелкие несовершенства\n• корректировать форму ногтей, сохраняя натуральность\n• правильно сохранять фото, чтобы не терять качество в соцсетях",
+          "Фотографії, які приваблюють клієнтів і виділяють вас серед конкурентів.\n\nВи навчитеся:\n• робити правильне світло та прибирати пересвіт\n• отримувати чистий колір (без жовтого/синього відтінку)\n• акуратно прибирати дефекти: почервоніння, пил, дрібні недоліки\n• коригувати форму нігтів, зберігаючи натуральність\n• правильно зберігати фото, щоб не втрачати якість у соцмережах",
+          "Photos that attract clients and make you stand out.\n\nYou’ll learn to:\n• set the right light and remove overexposure\n• get clean color (no yellow/blue tint)\n• remove imperfections: redness, dust, tiny flaws\n• refine nail shape while keeping it natural\n• export correctly so your photos don’t lose quality on social media"
         ),
       },
       {
         question: l(
-          "Что понадобится для прохождения курса?",
-          "Що знадобиться для проходження курсу?",
-          "What do I need to take the course?"
+          "Почему клиенты пролистывают мои фото, хотя работы хорошие?",
+          "Чому клієнти пролистують мої фото, хоча роботи хороші?",
+          "Why do clients scroll past my photos even if my work is good?"
         ),
         answer: l(
-          "Компьютер или ноутбук, мышь, программа Photoshop (первый урок посвящён установке), блокнот для заметок.",
-          "Комп’ютер або ноутбук, миша, Photoshop (перший урок — встановлення), блокнот для нотаток.",
-          "A computer/laptop, a mouse, Photoshop (installation is covered in the first lesson), and a notebook."
+          "Потому что фото выглядят «сырыми»: неровный тон кожи, лишние оттенки, потеря качества. Чистый визуал останавливает взгляд и повышает продажи — зритель всегда смотрит на фото целиком, а не только на ногти.",
+          "Тому що фото виглядають «сирими»: нерівний тон шкіри, зайві відтінки, втрата якості. Чистий візуал зупиняє погляд і підвищує продажі — глядач завжди дивиться на фото повністю, а не лише на нігті.",
+          "Because the photo can look ‘raw’: uneven skin tone, unwanted color casts, and quality loss. Clean visuals stop the scroll and sell better — viewers judge the whole image, not just the nails."
         ),
       },
       {
         question: l(
-          "Сколько уроков и какая длительность?",
-          "Скільки уроків і яка тривалість?",
-          "How many lessons and how long are they?"
+          "А если я куплю курс и пойму, что мне это не нужно?",
+          "А якщо я куплю курс і зрозумію, що мені це не потрібно?",
+          "What if I buy the course and realize I don’t need it?"
         ),
         answer: l(
-          "Курс состоит из 12 уроков. Длительность уроков — 15–25 минут.",
-          "Курс складається з 12 уроків. Тривалість уроків — 15–25 хвилин.",
-          "The course has 12 lessons. Each lesson is 15–25 minutes long."
+          "Вы сразу работаете со своими фото. Результат появляется на первых уроках — сомнения уходят сами, потому что вы видите улучшение «до/после» уже в процессе.",
+          "Ви одразу працюєте зі своїми фото. Результат з’являється на перших уроках — сумніви зникають самі, бо ви бачите покращення «до/після» вже в процесі.",
+          "You start working with your own photos right away. You’ll see results in the first lessons — the before/after makes everything clear."
         ),
       },
       {
         question: l(
-          "Какой доступ к курсу?",
-          "Який доступ до курсу?",
-          "How long do I have access?"
+          "Я боюсь потратить деньги впустую",
+          "Я боюся витратити гроші даремно",
+          "I’m afraid of wasting money"
         ),
         answer: l(
-          "Доступ к курсу на 6 месяцев. Все уроки в записи. Просмотр в любое удобное время. Доступ с любого устройства.",
-          "Доступ до курсу на 6 місяців. Усі уроки в записі. Перегляд у будь-який зручний час. Доступ з будь-якого пристрою.",
-          "You get 6 months access. All lessons are recorded. Watch anytime from any device."
+          "Курс короткий, прикладной и без лишней теории. Вы платите за конкретный навык, который остаётся с вами надолго и помогает выглядеть дороже в глазах клиентов.",
+          "Курс короткий, прикладний і без зайвої теорії. Ви платите за конкретну навичку, яка залишається з вами надовго та допомагає виглядати дорожче в очах клієнтів.",
+          "The course is short, practical, and without unnecessary theory. You pay for a specific skill that stays with you and makes your work look more premium."
+        ),
+      },
+      {
+        question: l(
+          "А если у меня не получится?",
+          "А якщо в мене не вийде?",
+          "What if I can’t do it?"
+        ),
+        answer: l(
+          "Не получается, когда нет системы. Здесь есть чёткий алгоритм — вы просто повторяете шаги. Также есть возможность проходить курс с индивидуальным куратором.",
+          "Не виходить, коли немає системи. Тут є чіткий алгоритм — ви просто повторюєте кроки. Також є можливість проходити курс з індивідуальним куратором.",
+          "It usually doesn’t work when there’s no system. Here you get a clear step-by-step workflow — you just repeat the steps. You can also take the course with personal curator support."
+        ),
+      },
+      {
+        question: l(
+          "Я боюсь, что это сложно и я брошу",
+          "Я боюся, що це складно і я кину",
+          "I’m afraid it will be too hard and I’ll quit"
+        ),
+        answer: l(
+          "Поэтому здесь:\n• короткие уроки\n• понятная последовательность\n• минимум инструментов\n\nБез перегруза и без «страшного Photoshop».",
+          "Тому тут:\n• короткі уроки\n• зрозуміла послідовність\n• мінімум інструментів\n\nБез перевантаження і без «страшного Photoshop».",
+          "That’s why the course is built as:\n• short lessons\n• clear sequence\n• minimal tools\n\nNo overload and no ‘scary Photoshop’."
+        ),
+      },
+      {
+        question: l(
+          "Подойдёт ли курс, если я никогда не открывала Photoshop?",
+          "Чи підійде курс, якщо я ніколи не відкривала Photoshop?",
+          "Is it suitable if I’ve never used Photoshop before?"
+        ),
+        answer: l(
+          "Да. Курс создан для новичков. Мы не изучаем Photoshop «в целом», а только те инструменты, которые нужны для ретуши nail-фото.",
+          "Так. Курс створений для новачків. Ми не вивчаємо Photoshop «в цілому», а лише ті інструменти, які потрібні для ретуші nail-фото.",
+          "Yes. It’s beginner-friendly. We don’t study Photoshop ‘in general’ — only the tools you need for nail photo retouching."
+        ),
+      },
+      {
+        question: l(
+          "Я снимаю на телефон, а не на камеру — это проблема?",
+          "Я знімаю на телефон, а не на камеру — це проблема?",
+          "I shoot on a phone, not a camera — is that a problem?"
+        ),
+        answer: l(
+          "Нет. В курсе мы работаем с фото, снятыми на телефон. Вам не нужен профессиональный фотоаппарат, чтобы получить аккуратный коммерческий результат.",
+          "Ні. У курсі ми працюємо з фото, знятими на телефон. Вам не потрібен професійний фотоапарат, щоб отримати акуратний комерційний результат.",
+          "No. We work with phone photos in the course. You don’t need a professional camera to get a clean commercial look."
+        ),
+      },
+      {
+        question: l(
+          "У меня совсем плохие фото — курс поможет?",
+          "У мене зовсім погані фото — курс допоможе?",
+          "My photos are really bad — will it help?"
+        ),
+        answer: l(
+          "Да. Курс рассчитан именно на обычные, неидеальные фото. Чем хуже исходник — тем заметнее результат после правильной обработки.",
+          "Так. Курс розрахований саме на звичайні, неідеальні фото. Чим гірший вихідник — тим помітніший результат після правильної обробки.",
+          "Yes. The course is designed for normal, imperfect photos. The worse the original, the more noticeable the improvement."
+        ),
+      },
+      {
+        question: l(
+          "Не будут ли фото выглядеть неестественно, «перефотошоплено»?",
+          "Чи не будуть фото виглядати неприродно, «перефотошоплено»?",
+          "Will my photos look unnatural or over-Photoshopped?"
+        ),
+        answer: l(
+          "Нет. Мы убираем дефекты (пыль, царапинки, покраснения) и делаем фото коммерческим по цвету. Без ошибок, из-за которых фото выглядят ненастоящими.",
+          "Ні. Ми прибираємо дефекти (пил, подряпинки, почервоніння) і робимо фото комерційним по кольору. Без помилок, через які фото виглядають «несправжніми».",
+          "No. We remove defects (dust, tiny scratches, redness) and make the color commercial and clean — without the typical mistakes that make photos look fake."
+        ),
+      },
+      {
+        question: l(
+          "Это точно курс для nail-мастеров, а не для ретушёров?",
+          "Це точно курс для nail-майстрів, а не для ретушерів?",
+          "Is this really for nail artists, not retouchers?"
+        ),
+        answer: l(
+          "Да. Только ногти, цвет и кожа рук. Без портретов, пейзажей и лишней информации — всё под ваши задачи.",
+          "Так. Лише нігті, колір і шкіра рук. Без портретів, пейзажів і зайвої інформації — все під ваші задачі.",
+          "Yes. Only nails, color, and hand skin. No portraits, landscapes, or extra topics — everything is tailored to nail photos."
+        ),
+      },
+      {
+        question: l(
+          "Я уже пробовала фильтры — фото всё равно не выглядят дорого",
+          "Я вже пробувала фільтри — фото все одно не виглядають дорого",
+          "I tried filters, but my photos still don’t look premium"
+        ),
+        answer: l(
+          "Фильтры не работают с деталями: покраснениями, дефектами, пылью, оттенками кожи. На курсе вы понимаете, что и зачем корректируется, а не просто накладываете эффект.",
+          "Фільтри не працюють з деталями: почервонінням, дефектами, пилом, відтінками шкіри. На курсі ви розумієте, що і навіщо коригується, а не просто накладаєте ефект.",
+          "Filters don’t fix details: redness, dust, imperfections, skin tone shifts. In the course you learn what to adjust and why — not just apply an effect."
+        ),
+      },
+      {
+        question: l(
+          "Сколько времени занимает обработка одного фото после курса?",
+          "Скільки часу займає обробка одного фото після курсу?",
+          "How long does it take to edit one photo after the course?"
+        ),
+        answer: l(
+          "5–10 минут, а не часы. Вы работаете быстро и уверенно по понятной схеме.",
+          "5–10 хвилин, а не години. Ви працюєте швидко й упевнено за зрозумілою схемою.",
+          "About 5–10 minutes, not hours. You’ll work fast and confidently with a clear workflow."
+        ),
+      },
+      {
+        question: l(
+          "Реально ли ретушь помогает привлекать клиентов?",
+          "Чи реально ретуш допомагає залучати клієнтів?",
+          "Does retouching really help attract clients?"
+        ),
+        answer: l(
+          "Да. Красивое фото = доверие = записи. Фото начинают продавать без слов — клиенту легче выбрать вас.",
+          "Так. Гарне фото = довіра = записи. Фото починають продавати без слів — клієнту легше обрати саме вас.",
+          "Yes. Great photos = trust = bookings. Your photos start selling without words — it becomes easier for clients to choose you."
+        ),
+      },
+      {
+        question: l(
+          "Подойдёт ли курс, если я только начинаю карьеру?",
+          "Чи підійде курс, якщо я тільки починаю кар’єру?",
+          "Is it good if I’m just starting my career?"
+        ),
+        answer: l(
+          "Да. Это сильный старт: вы сразу выделитесь среди конкурентов и сможете показывать работы на уровне, который вызывает доверие.",
+          "Так. Це сильний старт: ви одразу виділитесь серед конкурентів і зможете показувати роботи на рівні, який викликає довіру.",
+          "Yes. It’s a strong start: you’ll stand out right away and present your work in a way that builds trust."
+        ),
+      },
+      {
+        question: l(
+          "А если я уже опытный мастер?",
+          "А якщо я вже досвідчений майстер?",
+          "What if I’m already an experienced nail artist?"
+        ),
+        answer: l(
+          "Опыт ≠ сильный визуал. Курс помогает убрать типичные ошибки даже у мастеров с опытом: цвет, кожа, качество, детали.",
+          "Досвід ≠ сильний візуал. Курс допомагає прибрати типові помилки навіть у майстрів з досвідом: колір, шкіра, якість, деталі.",
+          "Experience ≠ strong visuals. The course helps remove common mistakes even for experienced artists: color, skin, quality, and details."
+        ),
+      },
+      {
+        question: l(
+          "Я хочу брать дороже, но боюсь",
+          "Я хочу брати дорожче, але боюся",
+          "I want to charge more, but I’m afraid"
+        ),
+        answer: l(
+          "Клиенты легче принимают цену, когда фото выглядят уверенно и профессионально. Сильный визуал делает вашу работу «дороже» в восприятии.",
+          "Клієнти легше приймають ціну, коли фото виглядають впевнено й професійно. Сильний візуал робить вашу роботу «дорожчою» у сприйнятті.",
+          "Clients accept higher prices more easily when your photos look confident and professional. Strong visuals increase perceived value."
+        ),
+      },
+      {
+        question: l(
+          "Что будет, если я ничего не изменю?",
+          "Що буде, якщо я нічого не зміню?",
+          "What happens if I don’t change anything?"
+        ),
+        answer: l(
+          "Фото останутся слабым звеном, даже если маникюр отличный. Клиенты продолжают выбирать глазами — и вы теряете заявки просто из-за визуала.",
+          "Фото залишаться слабкою ланкою, навіть якщо манікюр чудовий. Клієнти продовжують обирати очима — і ви втрачаєте заявки просто через візуал.",
+          "Your photos will remain the weak link even if your manicure is perfect. Clients choose with their eyes — and you may lose bookings just because of the visuals."
         ),
       },
     ],

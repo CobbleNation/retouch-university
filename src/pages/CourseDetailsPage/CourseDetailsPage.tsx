@@ -92,28 +92,19 @@ export const CourseDetailsPage = () => {
   const getInfoValue = (labelKey: string) =>
     course.infoRows.find((r) => r.labelKey === labelKey)?.value?.[locale] ?? "";
 
-  // ✅ "Що входить" для одного тарифу — без закреслювань (і тільки актуальні штуки)
-  const singleTariffList = useMemo(() => {
+  // ✅ "Що входить" для одного тарифу — актуально з infoRows (але тепер показуємо НЕ тут, а як "короткі бейджі")
+  const singleTariffMeta = useMemo(() => {
     const lessons = getInfoValue("course.info.lessonsCount");
     const access = getInfoValue("course.info.access");
     const duration = getInfoValue("course.info.lessonDuration");
-    const software = getInfoValue("course.info.software");
-    const devices = getInfoValue("course.info.devices");
-    const watchAnytime = getInfoValue("course.info.watchAnytime");
 
-    // збираємо тільки те, що реально є в цьому курсі (без кураторів/созвонів)
-    const out: string[] = [];
+    // короткі мета-рядки під ціну (можна легко змінювати)
+    const items: string[] = [];
+    if (lessons) items.push(lessons);
+    if (access) items.push(access);
+    if (duration) items.push(duration);
 
-    out.push(t("courseDetails.features.cabinet"));
-
-    if (lessons) out.push(`${t("courseDetails.singleFeatures.lessons")}: ${lessons}`);
-    if (access) out.push(`${t("courseDetails.singleFeatures.access")}: ${access}`);
-    if (duration) out.push(`${t("courseDetails.singleFeatures.lessonDuration")}: ${duration}`);
-    if (software) out.push(`${t("courseDetails.singleFeatures.software")}: ${software}`);
-    if (devices) out.push(`${t("courseDetails.singleFeatures.devices")}: ${devices}`);
-    if (watchAnytime) out.push(`${t("courseDetails.singleFeatures.watchAnytime")}: ${watchAnytime}`);
-
-    return out;
+    return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const program = course.program ?? [];
@@ -213,53 +204,83 @@ export const CourseDetailsPage = () => {
           </div>
 
           <div className={styles.tariffsRight}>
-            {course.tariffs.map((tariff, idx) => (
-              <div key={idx} className={styles.tariffRow}>
-                <div className={styles.tariffInfo}>
-                  <h3 className={styles.tariffTitle}>{tariff.title[locale]}</h3>
-
-                  {/* ✅ Якщо тариф один — показуємо тільки актуальне і без закреслювань */}
-                  {isSingleTariff ? (
-                    <ul className={styles.singleTariffList}>
-                      {singleTariffList.map((text, i) => (
-                        <li key={i} className={styles.singleTariffItem}>
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <ul className={styles.tariffList}>
-                      {featureList.map((item, itemIdx) => {
-                        const id = itemIdx + 1;
-                        const available = tariff.include.includes(id);
-
-                        return (
-                          <li
-                            key={id}
-                            className={
-                              available
-                                ? styles.featureAvailable
-                                : styles.featureUnavailable
-                            }
-                          >
-                            {item}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-
-                  {/* Прибираємо цей хінт зі сторінки, але залишаємо в коді */}
-                  {/*
-                  <p className={styles.tariffHint}>
-                    {t("courseDetails.tariffHint")}
-                  </p>
-                  */}
+            {/* ✅ Якщо тариф один — не показуємо "Курс" і список, тільки красиву ціну */}
+            {isSingleTariff ? (
+              <div className={styles.singlePriceCard}>
+                <div className={styles.singlePriceTop}>
+                  <div className={styles.singlePriceLabel}>
+                    {t("courseDetails.singlePriceLabel")}
+                  </div>
+                  <div className={styles.singlePriceValue}>
+                    {course.tariffs[0].price}
+                  </div>
                 </div>
 
-                <div className={styles.tariffPrice}>{tariff.price}</div>
+                {singleTariffMeta.length > 0 && (
+                  <div className={styles.singlePriceMeta}>
+                    {singleTariffMeta.map((text, idx) => (
+                      <span key={idx} className={styles.singlePriceChip}>
+                        {text}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Кнопку покупки залишаємо в purchaseBar знизу.
+                    Але при бажанні можна дублювати кнопку і тут. */}
+                {/*
+                <button
+                  type="button"
+                  className={styles.singlePriceButton}
+                  onClick={handleBuyClick}
+                >
+                  {t("courseDetails.buyButton")}
+                </button>
+                */}
               </div>
-            ))}
+            ) : (
+              <>
+                {/* ✅ Якщо тарифів кілька — залишаємо як зараз */}
+                {course.tariffs.map((tariff, idx) => (
+                  <div key={idx} className={styles.tariffRow}>
+                    <div className={styles.tariffInfo}>
+                      <h3 className={styles.tariffTitle}>
+                        {tariff.title[locale]}
+                      </h3>
+
+                      <ul className={styles.tariffList}>
+                        {featureList.map((item, itemIdx) => {
+                          const id = itemIdx + 1;
+                          const available = tariff.include.includes(id);
+
+                          return (
+                            <li
+                              key={id}
+                              className={
+                                available
+                                  ? styles.featureAvailable
+                                  : styles.featureUnavailable
+                              }
+                            >
+                              {item}
+                            </li>
+                          );
+                        })}
+                      </ul>
+
+                      {/* Прибираємо цей хінт зі сторінки, але залишаємо в коді */}
+                      {/*
+                      <p className={styles.tariffHint}>
+                        {t("courseDetails.tariffHint")}
+                      </p>
+                      */}
+                    </div>
+
+                    <div className={styles.tariffPrice}>{tariff.price}</div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </section>
 

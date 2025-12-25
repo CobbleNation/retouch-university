@@ -71,6 +71,8 @@ export const en = {
     modalTariffHint: "Go to payment on an external website",
     programTitle: "Course program",
     programSubtitle: "12 lessons — from installation to the final workflow.",
+    singlePriceLabel: "Course price",
+
 
     singleFeatures: {
       lessons: "Lessons",

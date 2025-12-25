@@ -70,6 +70,8 @@ export const ru = {
     modalTariffHint: "Перейти к оплате на внешнем сайте",
     programTitle: "Программа курса",
     programSubtitle: "12 уроков — от установки до финального алгоритма.",
+    singlePriceLabel: "Стоимость курса",
+
 
     singleFeatures: {
       lessons: "Уроки",

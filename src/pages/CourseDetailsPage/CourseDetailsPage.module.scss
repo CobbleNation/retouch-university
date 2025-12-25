@@ -213,6 +213,75 @@
   gap: 12px;
 }
 
+/* ✅ Single tariff: price card */
+
+.singlePriceCard {
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  padding: 16px 16px 14px;
+  background: #ffffff;
+}
+
+.singlePriceTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+
+  @media (max-width: 520px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+.singlePriceLabel {
+  font-size: 13px;
+  color: $color-muted;
+}
+
+.singlePriceValue {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+  }
+}
+
+.singlePriceMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.singlePriceChip {
+  font-size: 12px;
+  color: $color-text;
+  border: 1px solid $color-border;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Якщо захочеш кнопку прямо тут — стилі готові */
+.singlePriceButton {
+  margin-top: 12px;
+  border-radius: $radius-pill;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: $color-accent;
+  color: #ffffff;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ✅ Multi tariffs (як було) */
+
 .tariffRow {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -264,22 +333,6 @@
   @media (max-width: 768px) {
     font-size: 15px;
   }
-}
-
-/* ✅ Single tariff list (без закреслювань) */
-
-.singleTariffList {
-  margin: 0;
-  padding-left: 16px;
-  font-size: 14px;
-
-  @media (max-width: 768px) {
-    font-size: 13px;
-  }
-}
-
-.singleTariffItem {
-  color: $color-text;
 }
 
 /* UX для features */
