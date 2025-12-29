@@ -1,6 +1,6 @@
+// src/pages/CourseDetailsPage/CourseDetailsPage.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-// import useEmblaCarousel from "embla-carousel-react"; // <- більше не треба
 
 import styles from "./CourseDetailsPage.module.scss";
 import { coursesMap } from "../../data/courses";
@@ -49,6 +49,18 @@ export const CourseDetailsPage = () => {
     );
   }
 
+  // ✅ price renderer (NEW)
+  const Price = ({ price, oldPrice }: { price: string; oldPrice?: string }) => {
+    if (!oldPrice) return <span className={styles.priceNew}>{price}</span>;
+
+    return (
+      <span className={styles.priceWithDiscount}>
+        <span className={styles.priceOld}>{oldPrice}</span>
+        <span className={styles.priceNew}>{price}</span>
+      </span>
+    );
+  };
+
   // Загальний список фіч (для курсів з кількома тарифами)
   const featureList = [
     t("courseDetails.features.cabinet"),
@@ -60,10 +72,19 @@ export const CourseDetailsPage = () => {
     t("courseDetails.features.postSupport"),
   ];
 
-  const prices = course.tariffs
-    .map((tarf) => parseInt(tarf.price.replace(/\D/g, ""), 10))
-    .filter((n) => Number.isFinite(n));
-  const minPrice = prices.length ? Math.min(...prices) : null;
+  // ✅ мінімальний тариф по АКТУАЛЬНІЙ ціні (NEW)
+  const minTariff = useMemo(() => {
+    if (!course.tariffs.length) return null;
+
+    const parsed = (p: string) => {
+      const n = parseInt(p.replace(/\D/g, ""), 10);
+      return Number.isFinite(n) ? n : Infinity;
+    };
+
+    return course.tariffs.reduce((best, cur) => {
+      return parsed(cur.price) < parsed(best.price) ? cur : best;
+    }, course.tariffs[0]);
+  }, [course.tariffs]);
 
   const isSingleTariff = course.tariffs.length === 1;
 
@@ -84,21 +105,19 @@ export const CourseDetailsPage = () => {
   const courseImageAlt =
     course.title?.[locale] || t("courseDetails.courseImageAlt");
 
-  // ✅ фото для full-width секції: якщо захочеш інше — додаси в data як fullWidthImageSrc,
-  // і воно автоматично підхопиться. Якщо ні — використає imageSrc.
-  const fullWidthImageSrc = course.fullWidthImageSrc || course.imageSrc || "";
+  // ✅ фото для full-width секції
+  const fullWidthImageSrc = course.fullWidthImageSrc || "";
 
   // helpers: підтягуємо значення з infoRows, щоб "актуалізувати інформацію"
   const getInfoValue = (labelKey: string) =>
     course.infoRows.find((r) => r.labelKey === labelKey)?.value?.[locale] ?? "";
 
-  // ✅ "Що входить" для одного тарифу — актуально з infoRows (але тепер показуємо НЕ тут, а як "короткі бейджі")
+  // ✅ "Що входить" для одного тарифу — актуально з infoRows (короткі бейджі)
   const singleTariffMeta = useMemo(() => {
     const lessons = getInfoValue("course.info.lessonsCount");
     const access = getInfoValue("course.info.access");
     const duration = getInfoValue("course.info.lessonDuration");
 
-    // короткі мета-рядки під ціну (можна легко змінювати)
     const items: string[] = [];
     if (lessons) items.push(lessons);
     if (access) items.push(access);
@@ -107,7 +126,10 @@ export const CourseDetailsPage = () => {
     return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ✅ Program: підтримка двох форматів
   const program = course.program ?? [];
+  const programSections = course.programSections ?? [];
+  const hasProgram = programSections.length > 0 || program.length > 0;
 
   return (
     <main className={styles.page}>
@@ -142,35 +164,21 @@ export const CourseDetailsPage = () => {
             ) : (
               <div className={styles.heroImagePlaceholder} />
             )}
-
-            {/* heroText НЕ видаляю — просто закоментував */}
-            {/*
-              <p>{course.heroText[locale]}</p>
-            */}
           </div>
         </section>
       </div>
 
-      {/* Було: Слайдер на всю ширину */}
-      {/*
-      <section className={styles.sliderSection}>
-        ...
-      </section>
-      */}
-
-      {/* ✅ Замість слайдера — одна фото на всю ширину (з data) */}
-      <section className={styles.fullWidthImageSection}>
-        {fullWidthImageSrc ? (
+      {/* ✅ Замість слайдера — одна фото на всю ширину */}
+      {!!fullWidthImageSrc && (
+        <section className={styles.fullWidthImageSection}>
           <img
             src={fullWidthImageSrc}
             alt={courseImageAlt}
             className={styles.fullWidthImage}
             loading="lazy"
           />
-        ) : (
-          <div className={styles.fullWidthImagePlaceholder} />
-        )}
-      </section>
+        </section>
+      )}
 
       {/* Основний контент */}
       <div className="container">
@@ -204,15 +212,19 @@ export const CourseDetailsPage = () => {
           </div>
 
           <div className={styles.tariffsRight}>
-            {/* ✅ Якщо тариф один — не показуємо "Курс" і список, тільки красиву ціну */}
+            {/* ✅ Якщо тариф один — тільки красива ціна */}
             {isSingleTariff ? (
               <div className={styles.singlePriceCard}>
                 <div className={styles.singlePriceTop}>
                   <div className={styles.singlePriceLabel}>
                     {t("courseDetails.singlePriceLabel")}
                   </div>
+
                   <div className={styles.singlePriceValue}>
-                    {course.tariffs[0].price}
+                    <Price
+                      price={course.tariffs[0].price}
+                      oldPrice={course.tariffs[0].oldPrice}
+                    />
                   </div>
                 </div>
 
@@ -225,22 +237,10 @@ export const CourseDetailsPage = () => {
                     ))}
                   </div>
                 )}
-
-                {/* Кнопку покупки залишаємо в purchaseBar знизу.
-                    Але при бажанні можна дублювати кнопку і тут. */}
-                {/*
-                <button
-                  type="button"
-                  className={styles.singlePriceButton}
-                  onClick={handleBuyClick}
-                >
-                  {t("courseDetails.buyButton")}
-                </button>
-                */}
               </div>
             ) : (
               <>
-                {/* ✅ Якщо тарифів кілька — залишаємо як зараз */}
+                {/* ✅ Якщо тарифів кілька — як було */}
                 {course.tariffs.map((tariff, idx) => (
                   <div key={idx} className={styles.tariffRow}>
                     <div className={styles.tariffInfo}>
@@ -267,16 +267,11 @@ export const CourseDetailsPage = () => {
                           );
                         })}
                       </ul>
-
-                      {/* Прибираємо цей хінт зі сторінки, але залишаємо в коді */}
-                      {/*
-                      <p className={styles.tariffHint}>
-                        {t("courseDetails.tariffHint")}
-                      </p>
-                      */}
                     </div>
 
-                    <div className={styles.tariffPrice}>{tariff.price}</div>
+                    <div className={styles.tariffPrice}>
+                      <Price price={tariff.price} oldPrice={tariff.oldPrice} />
+                    </div>
                   </div>
                 ))}
               </>
@@ -286,8 +281,8 @@ export const CourseDetailsPage = () => {
 
         <hr className={styles.divider} />
 
-        {/* ✅ Program */}
-        {program.length > 0 && (
+        {/* ✅ Program (оновлено: модулі як блоки, без нумерації) */}
+        {hasProgram && (
           <>
             <section className={styles.programSection}>
               <div className={styles.programLeft}>
@@ -300,13 +295,33 @@ export const CourseDetailsPage = () => {
               </div>
 
               <div className={styles.programRight}>
-                <ol className={styles.programList}>
-                  {program.map((step, idx) => (
-                    <li key={idx} className={styles.programItem}>
-                      {step[locale]}
-                    </li>
-                  ))}
-                </ol>
+                {programSections.length > 0 ? (
+                  <div className={styles.programModules}>
+                    {programSections.map((section, sIdx) => (
+                      <div key={sIdx} className={styles.programModule}>
+                        <div className={styles.programModuleTitle}>
+                          {section.title[locale]}
+                        </div>
+
+                        <ul className={styles.programLessons}>
+                          {section.lessons.map((lesson, lIdx) => (
+                            <li key={lIdx} className={styles.programLesson}>
+                              {lesson[locale]}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <ul className={styles.programLessons}>
+                    {program.map((step, idx) => (
+                      <li key={idx} className={styles.programLesson}>
+                        {step[locale]}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </section>
 
@@ -357,9 +372,11 @@ export const CourseDetailsPage = () => {
       <div className={styles.purchaseBar}>
         <div className={styles.purchaseInfo}>
           <span className={styles.purchaseTitle}>{course.title[locale]}</span>
-          {minPrice !== null && (
+
+          {minTariff && (
             <span className={styles.purchasePrice}>
-              {t("courseDetails.from")} {minPrice}$
+              {t("courseDetails.from")}{" "}
+              <Price price={minTariff.price} oldPrice={minTariff.oldPrice} />
             </span>
           )}
         </div>
@@ -403,10 +420,12 @@ export const CourseDetailsPage = () => {
                     <span className={styles.modalTariffTitle}>
                       {tariff.title[locale]}
                     </span>
+
                     <span className={styles.modalTariffPrice}>
-                      {tariff.price}
+                      <Price price={tariff.price} oldPrice={tariff.oldPrice} />
                     </span>
                   </div>
+
                   <span className={styles.modalTariffHint}>
                     {t("courseDetails.modalTariffHint")}
                   </span>

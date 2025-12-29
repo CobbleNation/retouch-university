@@ -64,11 +64,11 @@ export const en = {
     tariffsTitle: "Tariffs and prices",
     faqTitle: "FAQ",
     tariffHint:
-      "Payment is processed on an external website. Choose a plan at the bottom of the page.",
+      "Choose a plan at the bottom of the page.",
     from: "from",
     buyButton: "Buy course",
     chooseTariff: "Choose a plan",
-    modalTariffHint: "Go to payment on an external website",
+    modalTariffHint: "Go to payment on an website",
     programTitle: "Course program",
     programSubtitle: "12 lessons — from installation to the final workflow.",
     singlePriceLabel: "Course price",

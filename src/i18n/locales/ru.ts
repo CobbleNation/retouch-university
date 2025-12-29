@@ -63,11 +63,11 @@ export const ru = {
     tariffsTitle: "Тарифы и цены",
     faqTitle: "Вопрос — ответ",
     tariffHint:
-      "Оплата производится на внешнем сайте. Выберите тариф внизу страницы.",
+      "Выберите тариф внизу страницы.",
     from: "от",
     buyButton: "Купить курс",
     chooseTariff: "Выберите тариф",
-    modalTariffHint: "Перейти к оплате на внешнем сайте",
+    modalTariffHint: "Перейти к оплате на сайте",
     programTitle: "Программа курса",
     programSubtitle: "12 уроков — от установки до финального алгоритма.",
     singlePriceLabel: "Стоимость курса",
