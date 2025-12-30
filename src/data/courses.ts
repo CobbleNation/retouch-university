@@ -10,10 +10,14 @@ export type CourseInfoRow = {
 
 export type CourseTariff = {
   title: LocalizedString;
-  price: string; // актуальна ціна (зі знижкою, якщо є)
-  oldPrice?: string; // повна ціна (опціонально)
+  price: string;
+  oldPrice?: string;
   include: number[];
   paymentUrl: string;
+
+  // ✅ NEW (optional)
+  detailsTitle?: LocalizedString; // заголовок акордеона
+  details?: LocalizedString; // текст інструкції
 };
 
 export type CourseFaqItem = {
@@ -272,6 +276,72 @@ You will learn to:
         price: "149$",
         include: [1, 2, 3, 4, 5],
         paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=9809",
+
+        // ✅ NEW
+        detailsTitle: l(
+          "Как проходит сопровождение куратора?",
+          "Як проходить супровід куратора?",
+          "How does curator support work?"
+        ),
+        details: l(
+          `В данном тарифе обучения включена индивидуальная работа с куратором курса.
+
+Длительность сопровождения — 1 месяц.
+
+После оплаты на вашу электронную почту придёт письмо с подробной инструкцией.
+
+Что нужно сделать дальше:
+Вам необходимо связаться со службой поддержки курса в Telegram и отправить следующую информацию:
+• Имя и фамилию
+• Ник в Instagram (в формате @username)
+• Подтверждение оплаты (скриншот чека)
+• Точную дату старта работы с куратором (например: старт 02.02.2026)
+
+После этого с вами свяжется ваш куратор.
+
+Как проходит обучение:
+• После каждого урока вы выполняете домашнее задание и отправляете его на проверку.
+• Вы можете обращаться к своему куратору по любым вопросам и сложностям в процессе обучения.
+• По завершении всех уроков куратор поможет вам разобрать и доработать ваши собственные фотографии.`,
+          `У цьому тарифі навчання включена індивідуальна робота з куратором курсу.
+
+Тривалість супроводу — 1 місяць.
+
+Після оплати на вашу електронну пошту прийде лист з детальною інструкцією.
+
+Що потрібно зробити далі:
+Вам необхідно зв’язатися зі службою підтримки курсу в Telegram і надіслати таку інформацію:
+• Ім’я та прізвище
+• Нік в Instagram (у форматі @username)
+• Підтвердження оплати (скріншот чека)
+• Точну дату старту роботи з куратором (наприклад: старт 02.02.2026)
+
+Після цього з вами зв’яжеться ваш куратор.
+
+Як проходить навчання:
+• Після кожного уроку ви виконуєте домашнє завдання і надсилаєте його на перевірку.
+• Ви можете звертатися до куратора з будь-якими питаннями та складнощами під час навчання.
+• Після завершення всіх уроків куратор допоможе розібрати та допрацювати ваші власні фотографії.`,
+          `This plan includes 1-on-1 work with a course curator.
+
+Support duration — 1 month.
+
+After payment, you’ll receive an email with detailed instructions.
+
+What to do next:
+Contact the course support team in Telegram and send:
+• Your first & last name
+• Your Instagram username (format: @username)
+• Proof of payment (receipt screenshot)
+• Your exact curator start date (example: start 02.02.2026)
+
+After that, your curator will contact you.
+
+How the learning works:
+• After each lesson you complete homework and submit it for review.
+• You can ask your curator any questions during the learning process.
+• After finishing the lessons, the curator will help you review and refine your own photos.`
+        ),
       },
     ],
 

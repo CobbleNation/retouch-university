@@ -780,3 +780,26 @@
   aspect-ratio: 16 / 6;
   background: rgba(0, 0, 0, 0.06);
 }
+
+/* ✅ Tariff extra info (static block, always visible) */
+
+.tariffExtra {
+  margin-top: 12px;
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  border: 1px solid $color-border;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.tariffExtraTitle {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tariffExtraBody {
+  font-size: 13px;
+  color: $color-muted;
+  line-height: 1.65;
+  white-space: pre-line; // важливо — зберігає форматування з courses.ts
+}

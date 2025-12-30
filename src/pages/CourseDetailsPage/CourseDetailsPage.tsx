@@ -272,6 +272,17 @@ export const CourseDetailsPage = () => {
                     <div className={styles.tariffPrice}>
                       <Price price={tariff.price} oldPrice={tariff.oldPrice} />
                     </div>
+
+                    {!!tariff.details && (
+                      <div className={styles.tariffExtra}>
+                        <div className={styles.tariffExtraTitle}>
+                          {tariff.detailsTitle?.[locale]}
+                        </div>
+                        <div className={styles.tariffExtraBody}>
+                          {tariff.details[locale]}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
               </>
