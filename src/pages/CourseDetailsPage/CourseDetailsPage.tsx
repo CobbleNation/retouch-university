@@ -49,7 +49,7 @@ export const CourseDetailsPage = () => {
     );
   }
 
-  // ✅ price renderer (NEW)
+  // ✅ price renderer
   const Price = ({ price, oldPrice }: { price: string; oldPrice?: string }) => {
     if (!oldPrice) return <span className={styles.priceNew}>{price}</span>;
 
@@ -72,7 +72,7 @@ export const CourseDetailsPage = () => {
     // t("courseDetails.features.postSupport"),
   ];
 
-  // ✅ мінімальний тариф по АКТУАЛЬНІЙ ціні (NEW)
+  // ✅ мінімальний тариф по АКТУАЛЬНІЙ ціні
   const minTariff = useMemo(() => {
     if (!course.tariffs.length) return null;
 
@@ -126,7 +126,7 @@ export const CourseDetailsPage = () => {
     return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ✅ How it works (NEW)
+  // ✅ How it works
   const howItWorks = course.howItWorks;
   const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
 
@@ -134,6 +134,53 @@ export const CourseDetailsPage = () => {
   const program = course.program ?? [];
   const programSections = course.programSections ?? [];
   const hasProgram = programSections.length > 0 || program.length > 0;
+
+  // ✅ Author block (localized lightweight, без правок локал-файлів)
+  const author = useMemo(() => {
+    const byLocale = {
+      ru: {
+        name: "Виктор Кислый",
+        role: "Фотограф, ретушёр и преподаватель, чьи знания используют сотни фотографов и ретушеров в мире",
+        bullets: [
+          "16 лет в фотографии и ретуши",
+          "9 лет преподавания",
+          "Более 2 500 студентов из 130 стран, многие из которых сегодня работают с ведущими брендами и журналами",
+          "Лучший фотограф 35AWARDS 2019 в номинации beauty Photographer и член жюри от Украины на 35AWARDS 2020",
+          "Создатель авторской техники ретуши «Акцент на кожу» и автор курсов, по которым учатся сотни профессионалов по всему миру",
+          "Работал с брендами DIOR, MAC Cosmetics, Jacob & Co, Givenchy, Shiseido, NARS, Danessa Myricks, PAESE, INGLOT и другими",
+          "Работы публиковались в Harper’s BAZAAR, L’Officiel и ведущих международных beauty-изданиях",
+        ],
+      },
+      ua: {
+        name: "Віктор Кислий",
+        role: "Фотограф, ретушер і викладач, чиї знання використовують сотні фотографів та ретушерів у світі",
+        bullets: [
+          "16 років у фотографії та ретуші",
+          "9 років викладання",
+          "Понад 2 500 студентів зі 130 країн, багато з яких сьогодні працюють із провідними брендами та журналами",
+          "Найкращий фотограф 35AWARDS 2019 у номінації beauty Photographer та член журі від України на 35AWARDS 2020",
+          "Автор техніки ретуші «Акцент на шкіру» та автор курсів, за якими навчаються сотні професіоналів у світі",
+          "Працював із брендами DIOR, MAC Cosmetics, Jacob & Co, Givenchy, Shiseido, NARS, Danessa Myricks, PAESE, INGLOT та іншими",
+          "Роботи публікувалися в Harper’s BAZAAR, L’Officiel та провідних міжнародних beauty-виданнях",
+        ],
+      },
+      en: {
+        name: "Viktor Kyslyi",
+        role: "Photographer, retoucher and educator whose knowledge is used by hundreds of photographers and retouchers worldwide",
+        bullets: [
+          "16 years in photography and retouching",
+          "9 years of teaching experience",
+          "2,500+ students from 130 countries, many now working with leading brands and magazines",
+          "35AWARDS 2019 winner (beauty Photographer) and Ukraine jury member at 35AWARDS 2020",
+          "Creator of the “Skin Accent” retouching technique and author of courses used by professionals worldwide",
+          "Worked with DIOR, MAC Cosmetics, Jacob & Co, Givenchy, Shiseido, NARS, Danessa Myricks, PAESE, INGLOT and more",
+          "Published in Harper’s BAZAAR, L’Officiel and leading international beauty media",
+        ],
+      },
+    } as const;
+
+    return byLocale[locale] ?? byLocale.ru;
+  }, [locale]);
 
   return (
     <main className={styles.page}>
@@ -201,6 +248,36 @@ export const CourseDetailsPage = () => {
 
           <div className={styles.infoRight}>
             <p>{course.shortDescription[locale]}</p>
+          </div>
+        </section>
+
+        <hr className={styles.divider} />
+
+        {/* ✅ AUTHOR — перед тарифами */}
+        <section className={styles.authorSection}>
+          <div className={styles.authorLeft}>
+            <h2 className={styles.sectionTitle}>
+              {locale === "en"
+                ? "About the author"
+                : locale === "ua"
+                ? "Про автора"
+                : "Об авторе"}
+            </h2>
+
+            <div className={styles.authorCard}>
+              <div className={styles.authorName}>{author.name}</div>
+              <div className={styles.authorRole}>{author.role}</div>
+            </div>
+          </div>
+
+          <div className={styles.authorRight}>
+            <ul className={styles.authorList}>
+              {author.bullets.map((b, idx) => (
+                <li key={idx} className={styles.authorItem}>
+                  {b}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
