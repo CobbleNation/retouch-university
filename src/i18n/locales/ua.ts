@@ -71,6 +71,8 @@ export const ua = {
     programTitle: "Програма курсу",
     programSubtitle: "12 уроків — від встановлення до фінального алгоритму.",
     singlePriceLabel: "Вартість курсу",
+    howItWorksTitle: "Як проходить курс",
+    howItWorksSubtitle: "Коротко про доступ, порядок навчання та матеріали.",
 
     singleFeatures: {
       lessons: "Уроки",
@@ -86,8 +88,8 @@ export const ua = {
       lifetimeAccess: "Доступ до уроків назавжди",
       updates: "Оновлення курсу",
       homework: "Домашні завдання",
-      curatorCheck: "Перевірка куратором",
-      calls: "Особисті дзвінки",
+      curatorCheck: "Підтримка куратора з будь-яких питань",
+      calls: "Сертифікат про проходження курсу",
       postSupport: "Підтримка після курсу",
     },
   },

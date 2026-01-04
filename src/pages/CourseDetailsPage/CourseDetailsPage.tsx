@@ -69,7 +69,7 @@ export const CourseDetailsPage = () => {
     t("courseDetails.features.homework"),
     t("courseDetails.features.curatorCheck"),
     t("courseDetails.features.calls"),
-    t("courseDetails.features.postSupport"),
+    // t("courseDetails.features.postSupport"),
   ];
 
   // ✅ мінімальний тариф по АКТУАЛЬНІЙ ціні (NEW)
@@ -125,6 +125,10 @@ export const CourseDetailsPage = () => {
 
     return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ✅ How it works (NEW)
+  const howItWorks = course.howItWorks;
+  const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
 
   // ✅ Program: підтримка двох форматів
   const program = course.program ?? [];
@@ -291,6 +295,52 @@ export const CourseDetailsPage = () => {
         </section>
 
         <hr className={styles.divider} />
+
+        {/* ✅ How it works — НАД программой */}
+        {hasHowItWorks && (
+          <>
+            <section className={styles.howItWorksSection}>
+              <div className={styles.howItWorksLeft}>
+                <h2 className={styles.sectionTitle}>
+                  {t("courseDetails.howItWorksTitle")}
+                </h2>
+                <p className={styles.howItWorksText}>
+                  {t("courseDetails.howItWorksSubtitle")}
+                </p>
+              </div>
+
+              <div className={styles.howItWorksRight}>
+                {!!howItWorks?.intro?.[locale] && (
+                  <p className={styles.howItWorksParagraph}>
+                    {howItWorks.intro[locale]}
+                  </p>
+                )}
+
+                <ol className={styles.howItWorksList}>
+                  {howItWorks!.steps.map((step, idx) => (
+                    <li key={idx} className={styles.howItWorksItem}>
+                      {step[locale]}
+                    </li>
+                  ))}
+                </ol>
+
+                {!!howItWorks?.outro?.[locale] && (
+                  <p className={styles.howItWorksParagraph}>
+                    {howItWorks.outro[locale]}
+                  </p>
+                )}
+
+                {!!howItWorks?.files?.[locale] && (
+                  <p className={styles.howItWorksParagraph}>
+                    {howItWorks.files[locale]}
+                  </p>
+                )}
+              </div>
+            </section>
+
+            <hr className={styles.divider} />
+          </>
+        )}
 
         {/* ✅ Program (оновлено: модулі як блоки, без нумерації) */}
         {hasProgram && (

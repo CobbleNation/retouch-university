@@ -803,3 +803,33 @@
   line-height: 1.65;
   white-space: pre-line; // важливо — зберігає форматування з courses.ts
 }
+
+.howItWorksSection {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.howItWorksText {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.howItWorksParagraph {
+  margin: 0 0 14px 0;
+  line-height: 1.6;
+}
+
+.howItWorksList {
+  margin: 0 0 14px 18px;
+  padding: 0;
+}
+
+.howItWorksItem {
+  margin: 8px 0;
+  line-height: 1.6;
+}

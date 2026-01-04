@@ -72,6 +72,8 @@ export const en = {
     programTitle: "Course program",
     programSubtitle: "12 lessons — from installation to the final workflow.",
     singlePriceLabel: "Course price",
+    howItWorksTitle: "How the course works",
+    howItWorksSubtitle: "Quick overview of access, learning flow, and materials.",
 
 
     singleFeatures: {
@@ -88,8 +90,8 @@ export const en = {
       lifetimeAccess: "Lifetime access to lessons",
       updates: "Course updates",
       homework: "Homework assignments",
-      curatorCheck: "Curator review",
-      calls: "1-on-1 calls",
+      curatorCheck: "Support from a curator on any questions",
+      calls: "Certificate of completion of the course",
       postSupport: "Support after the course",
     },
   },

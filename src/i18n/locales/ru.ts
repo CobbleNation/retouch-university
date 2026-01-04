@@ -71,6 +71,8 @@ export const ru = {
     programTitle: "Программа курса",
     programSubtitle: "12 уроков — от установки до финального алгоритма.",
     singlePriceLabel: "Стоимость курса",
+    howItWorksTitle: "Как проходит курс",
+    howItWorksSubtitle: "Коротко о доступе, порядке обучения и материалах.",
 
 
     singleFeatures: {
@@ -87,8 +89,8 @@ export const ru = {
       lifetimeAccess: "Доступ к урокам навсегда",
       updates: "Обновления курса",
       homework: "Домашние задания",
-      curatorCheck: "Проверка куратором",
-      calls: "Личные созвоны",
+      curatorCheck: "Поддержка куратора по любым вопросам",
+      calls: "Сертификат о прохождении курса",
       postSupport: "Поддержка после курса",
     },
   },

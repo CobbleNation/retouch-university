@@ -30,6 +30,13 @@ export type CourseProgramSection = {
   lessons: LocalizedString[]; // уроки модуля
 };
 
+export type CourseHowItWorks = {
+  intro?: LocalizedString;
+  steps: LocalizedString[];
+  outro?: LocalizedString;
+  files?: LocalizedString;
+};
+
 export type Course = {
   slug: string;
   title: LocalizedString;
@@ -44,8 +51,10 @@ export type Course = {
   imageSrc?: string;
   fullWidthImageSrc?: string;
 
-  program?: LocalizedString[]; // ✅ старий формат (для інших курсів)
-  programSections?: CourseProgramSection[]; // ✅ новий формат (для “кольору”)
+  program?: LocalizedString[];
+  programSections?: CourseProgramSection[];
+
+  howItWorks?: CourseHowItWorks;
 };
 
 const l = (ru: string, ua: string, en: string): LocalizedString => ({
@@ -186,8 +195,43 @@ You will learn to:
         "Правильний алгоритм ретуші",
         "Correct retouch workflow"
       ),
-      l("Финал", "Фінал", "Final"),
+      l("Финал. Удаление пыли", "Фінал. Видалення пилу", "Final. Dust removal"),
     ],
+
+    howItWorks: {
+      intro: l(
+        "После оплаты на сайте www.viktorkyslyi.com вам сразу открывается доступ к курсу.",
+        "Після оплати на сайті www.viktorkyslyi.com вам одразу відкривається доступ до курсу.",
+        "After payment on www.viktorkyslyi.com you get instant access to the course."
+      ),
+      steps: [
+        l(
+          "Зайдите в раздел «Курсы»",
+          "Зайдіть у розділ «Курси»",
+          "Go to the “Courses” section"
+        ),
+        l(
+          "Выберите курс «Ретушь ногтей»",
+          "Оберіть курс «Ретуш нігтів»",
+          "Select the “Nail Retouching” course"
+        ),
+        l(
+          "Приступайте к обучению в удобное для вас время",
+          "Починайте навчання у зручний для вас час",
+          "Start learning whenever it’s convenient for you"
+        ),
+      ],
+      outro: l(
+        "После каждого урока вас ждут домашние задания, которые помогут закрепить материал на практике.",
+        "Після кожного уроку на вас чекають домашні завдання, які допоможуть закріпити матеріал на практиці.",
+        "After each lesson you’ll get homework to закрепити the material in practice."
+      ),
+      files: l(
+        "Все необходимые файлы для работы вы найдёте в разделе «Файлы» — их можно скачать и использовать во время обучения.",
+        "Усі необхідні файли для роботи ви знайдете в розділі «Файли» — їх можна завантажити та використовувати під час навчання.",
+        "All files you need are in the “Files” section — download and use them while learning."
+      ),
+    },
 
     galleryImagesCount: 6,
 
@@ -263,7 +307,7 @@ You will learn to:
         title: l("Курс", "Курс", "Course"),
         oldPrice: "150$",
         price: "49$",
-        include: [1, 2, 3],
+        include: [1, 2, 3, 4],
         paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=9802",
       },
       {
@@ -290,14 +334,7 @@ You will learn to:
 
 После оплаты на вашу электронную почту придёт письмо с подробной инструкцией.
 
-Что нужно сделать дальше:
-Вам необходимо связаться со службой поддержки курса в Telegram и отправить следующую информацию:
-• Имя и фамилию
-• Ник в Instagram (в формате @username)
-• Подтверждение оплаты (скриншот чека)
-• Точную дату старта работы с куратором (например: старт 02.02.2026)
-
-После этого с вами свяжется ваш куратор.
+Вам будет необходимо связаться с поддержкой курса и вашим куратором.
 
 Как проходит обучение:
 • После каждого урока вы выполняете домашнее задание и отправляете его на проверку.
