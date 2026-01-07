@@ -3,7 +3,7 @@
 
 .page {
   padding: 40px 0 0;
-  padding-bottom: 24px; // просто невеличкий внутрішній відступ
+  padding-bottom: 24px;
 
   @media (max-width: 768px) {
     padding-top: 24px;
@@ -76,52 +76,41 @@
   padding: 0;
 }
 
-/* SLIDER */
-
-.sliderSection {
-  margin: 40px 0;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
-  @media (max-width: 768px) {
-    margin: 24px 0 32px;
-  }
-}
-
-.embla {
-  overflow: hidden;
+.heroImage {
   width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  object-fit: cover;
 }
 
-.emblaContainer {
-  display: flex;
-}
-
-.emblaSlide {
-  flex: 0 0 calc(100% / 6);
-  min-width: 0;
-
-  @media (max-width: 1024px) {
-    flex: 0 0 calc(100% / 4);
-  }
-
-  @media (max-width: 768px) {
-    flex: 0 0 calc(100% / 3);
-  }
-
-  @media (max-width: 520px) {
-    flex: 0 0 50%;
-  }
-}
-
-.slidePlaceholder {
+.heroImagePlaceholder {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  background-color: $color-placeholder;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* FULL WIDTH IMAGE */
+
+.fullWidthImageSection {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fullWidthImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 720px;
+}
+
+.fullWidthImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  background: rgba(0, 0, 0, 0.06);
 }
 
 /* INFO */
@@ -133,37 +122,72 @@
   padding: 24px 0;
   margin-bottom: 24px;
 
+  /* ✅ ключ: не центрувати по висоті, а вирівнювати по верху */
+  align-items: start;
+
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 }
 
+.infoLeft {
+  align-self: start;
+}
+
+.infoRight {
+  align-self: start;
+  font-size: 14px;
+  color: $color-muted;
+  line-height: 1.6;
+
+  p {
+    margin: 0; /* ✅ щоб не було дефолтного верхнього марджину */
+  }
+}
+
+/* ✅ головна правка: стабільні колонки через grid */
 .infoList {
   margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .infoRow {
-  display: flex;
-  gap: 12px;
-  font-size: 14px;
-  margin-bottom: 8px;
+  display: grid;
 
+  /* ✅ фіксуємо колонку під лейбли */
+  grid-template-columns: 160px 1fr;
+
+  column-gap: 12px;
+  align-items: baseline;
+
+  font-size: 14px;
+
+  /* ✅ щоб dt/dd не давали сюрпризів */
   dt {
-    min-width: 120px;
+    margin: 0;
     color: $color-muted;
+    line-height: 1.4;
   }
 
   dd {
     margin: 0;
     font-weight: 500;
+    line-height: 1.4;
   }
-}
 
-.infoRight {
-  font-size: 14px;
-  color: $color-muted;
-  line-height: 1.6;
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+    row-gap: 4px;
+
+    dd {
+      padding-left: 0;
+    }
+  }
 }
 
 /* DIVIDER */
@@ -213,7 +237,7 @@
   gap: 12px;
 }
 
-/* ✅ Discount price styles (NEW) */
+/* ✅ Discount price styles */
 
 .priceWithDiscount {
   display: inline-flex;
@@ -270,7 +294,6 @@
     font-size: 22px;
   }
 
-  /* робимо discounted price більшим саме тут */
   .priceOld {
     font-size: 14px;
   }
@@ -301,7 +324,6 @@
   background: rgba(0, 0, 0, 0.02);
 }
 
-/* Якщо захочеш кнопку прямо тут — стилі готові */
 .singlePriceButton {
   margin-top: 12px;
   border-radius: $radius-pill;
@@ -315,7 +337,7 @@
   width: 100%;
 }
 
-/* ✅ Multi tariffs (як було) */
+/* ✅ Multi tariffs */
 
 .tariffRow {
   display: grid;
@@ -379,8 +401,6 @@
   }
 }
 
-/* UX для features */
-
 .featureAvailable {
   color: $color-text;
 }
@@ -391,7 +411,7 @@
   opacity: 0.6;
 }
 
-/* ✅ PROGRAM (оновлено: модулі НЕ в списку) */
+/* ✅ PROGRAM */
 
 .programSection {
   display: grid;
@@ -424,14 +444,12 @@
   display: block;
 }
 
-/* ✅ NEW: контейнер модулів */
 .programModules {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* ✅ NEW: модуль як окремий блок */
 .programModule {
   border: 1px solid $color-border;
   border-radius: 16px;
@@ -439,14 +457,12 @@
   background: #ffffff;
 }
 
-/* ✅ NEW: заголовок модуля (не елемент списку) */
 .programModuleTitle {
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-/* ✅ NEW: уроки без маркерів/нумерації */
 .programLessons {
   margin: 0;
   padding: 0;
@@ -484,29 +500,6 @@
   @media (max-width: 768px) {
     font-size: 13px;
   }
-}
-
-/* ✅ Legacy (якщо десь залишиться старий <ol>) */
-.programList {
-  margin: 0;
-  padding-left: 18px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 24px;
-  font-size: 14px;
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 13px;
-  }
-}
-
-.programItem {
-  line-height: 1.5;
 }
 
 /* FAQ */
@@ -744,43 +737,6 @@
   color: $color-muted;
 }
 
-.heroImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  object-fit: cover;
-}
-
-.heroImagePlaceholder {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.06);
-}
-
-.fullWidthImageSection {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.fullWidthImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-
-  /* якщо хочеш, щоб було як банер */
-  max-height: 720px;
-}
-
-.fullWidthImagePlaceholder {
-  width: 100%;
-  aspect-ratio: 16 / 6;
-  background: rgba(0, 0, 0, 0.06);
-}
-
 /* ✅ Tariff extra info (static block, always visible) */
 
 .tariffExtra {
@@ -801,8 +757,10 @@
   font-size: 13px;
   color: $color-muted;
   line-height: 1.65;
-  white-space: pre-line; // важливо — зберігає форматування з courses.ts
+  white-space: pre-line;
 }
+
+/* HOW IT WORKS */
 
 .howItWorksSection {
   display: grid;
@@ -833,6 +791,8 @@
   margin: 8px 0;
   line-height: 1.6;
 }
+
+/* AUTHOR */
 
 .authorSection {
   display: grid;

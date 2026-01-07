@@ -20,7 +20,7 @@ export const ua = {
 
   courseCard: {
     more: "Дізнатись більше",
-    goToCourse: "Перейти на курс",
+    goToCourse: "Купити курс",
   },
 
   coursesPage: {
@@ -32,7 +32,7 @@ export const ua = {
     loadMore: "Завантажити більше",
     courseTitle: "Архітектура зйомки. Самостійне навчання",
     learnMore: "Дізнатись більше",
-    goToCourse: "Перейти на курс",
+    goToCourse: "Купити курс",
 
     filters: {
       all: "Всі",

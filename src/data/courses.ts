@@ -1507,6 +1507,563 @@ Real examples. Real color. Real inspiration.`
       },
     ],
   },
+
+  {
+    slug: "architecture-of-retouching",
+    imageSrc: "/images/architecture-of-retouching/hero.jpg",
+    fullWidthImageSrc: "/images/architecture-of-retouching/full.jpg",
+
+    title: l(
+      "Архитектура Ретуши (EN)",
+      "Архітектура Ретуші (EN)",
+      "The Architecture of Retouching (EN)"
+    ),
+    subtitle: l(
+      "Курс на английском",
+      "Курс англійською",
+      "The course is in ENGLISH"
+    ),
+
+    shortDescription: l(
+      "Профессиональный курс ретуши в 3 модулях: базовые знания, продвинутые техники и практика на разных жанрах + маркетинг. Доступен с озвучкой на нескольких языках.",
+      "Професійний курс ретуші у 3 модулях: базові знання, просунуті техніки та практика в різних жанрах + маркетинг. Доступний з озвучкою кількома мовами.",
+      "A professional retouching course in 3 modules: basics, pro techniques, and multi-genre practice + marketing. Available with voice-over in multiple languages."
+    ),
+
+    heroText: l(
+      `The Architecture of Retouching
+
+Курс на английском языке.
+Озвучка доступна на:
+• Español 🇪🇸
+• Italiano 🇮🇹
+• Français 🇫🇷
+• Deutsch 🇩🇪
+• Português 🇵🇹
+• Polski 🇵🇱
+• Український 🇺🇦
+• हिन्दी 🇮🇳
+• 日本語 🇯🇵
+
+Профессиональный курс ретуши в 3 модулях:
+• Basic Module
+• Professional Techniques
+• Working with different genres
+
+Этот курс создан для вас, если:
+• хотите стать профессиональным ретушёром
+• хотите уверенно ретушировать кожу, макияж, одежду, ногти и понимать цвет как профессионал
+• хотите изучить авторскую технику “Focus on Skin”
+• хотите современную онлайн-профессию и международный рынок
+• хотите работать без офиса и менеджера
+• устали искать ретушёров, которые не делают “как вы видите” — сделайте сами
+
+Ретушь — профессия, которая даёт свободу:
+🔥 онлайн-работа — нужен только ноутбук
+🔥 гибкий график
+🔥 путешествия во время работы
+🔥 творческая профессия
+🔥 клиенты по всему миру
+🔥 коллаборации с брендами и инфлюенсерами`,
+      `The Architecture of Retouching
+
+Курс англійською мовою.
+Озвучка доступна:
+• Español 🇪🇸
+• Italiano 🇮🇹
+• Français 🇫🇷
+• Deutsch 🇩🇪
+• Português 🇵🇹
+• Polski 🇵🇱
+• Український 🇺🇦
+• हिन्दी 🇮🇳
+• 日本語 🇯🇵
+
+Професійний курс ретуші у 3 модулях:
+• Basic Module
+• Professional Techniques
+• Working with different genres
+
+Цей курс для вас, якщо:
+• хочете стати професійним ретушером
+• хочете впевнено ретушувати шкіру, макіяж, одяг, нігті та розуміти колір як профі
+• хочете вивчити авторську техніку “Focus on Skin”
+• хочете сучасну онлайн-професію та міжнародний ринок
+• хочете працювати без офісу та менеджера
+• втомилися шукати ретушерів, які не роблять “як ви бачите” — зробіть самі
+
+Ретуш — професія, що дає свободу:
+🔥 онлайн-робота — потрібен лише ноутбук
+🔥 гнучкий графік
+🔥 подорожі під час роботи
+🔥 творча професія
+🔥 клієнти з усього світу
+🔥 колаборації з брендами та інфлюенсерами`,
+      `The Architecture of Retouching
+
+The course is in ENGLISH.
+Voice-over is available in:
+• Español 🇪🇸 • Italiano 🇮🇹 • Français 🇫🇷 • Deutsch 🇩🇪
+• Português 🇵🇹 • Polski 🇵🇱 • Український 🇺🇦 • हिन्दी 🇮🇳 • 日本語 🇯🇵
+
+Professional retouching course in 3 modules:
+• Basic Module
+• Professional Techniques
+• Working with different genres
+
+This course was made for you if:
+• You want to become a professional retoucher
+• You want to master skin, makeup, clothing, nails — and understand color like a pro
+• You want to learn the signature “Focus on Skin” technique
+• You want a modern online profession and international market
+• You want freedom: no office, no manager
+• You’re tired of retouchers who can’t deliver what you envision — do it yourself
+
+Retouching is a profession that gives you freedom:
+🔥 Online work — all you need is a laptop
+🔥 Flexible schedule
+🔥 Travel while working
+🔥 Creative & fulfilling profession
+🔥 Clients worldwide
+🔥 Collaborations with brands, celebrities, and influencers`
+    ),
+
+    // ✅ Програма — модулями
+    programSections: [
+      {
+        title: l(
+          "Basic Module (10 lessons)",
+          "Basic Module (10 lessons)",
+          "Basic Module (10 lessons)"
+        ),
+        lessons: [
+          l(
+            "Installing Photoshop",
+            "Installing Photoshop",
+            "Installing Photoshop"
+          ),
+          l(
+            "Customizing the program interface",
+            "Customizing the program interface",
+            "Customizing the program interface"
+          ),
+          l(
+            "Tools panel overview",
+            "Tools panel overview",
+            "Tools panel overview"
+          ),
+          l(
+            "Layers panel overview",
+            "Layers panel overview",
+            "Layers panel overview"
+          ),
+          l(
+            "Filters panel overview",
+            "Filters panel overview",
+            "Filters panel overview"
+          ),
+          l("Adjustment layers", "Adjustment layers", "Adjustment layers"),
+          l("Working with masks", "Working with masks", "Working with masks"),
+          l("Masking practice", "Masking practice", "Masking practice"),
+          l("Camera Raw", "Camera Raw", "Camera Raw"),
+          l("Basic retouching", "Basic retouching", "Basic retouching"),
+        ],
+      },
+      {
+        title: l(
+          "Professional Techniques Module (11 lessons)",
+          "Professional Techniques Module (11 lessons)",
+          "Professional Techniques Module (11 lessons)"
+        ),
+        lessons: [
+          l("Healing Brush tool", "Healing Brush tool", "Healing Brush tool"),
+          l(
+            "Dodge and Burn technique",
+            "Dodge and Burn technique",
+            "Dodge and Burn technique"
+          ),
+          l(
+            "Key nuances of professional retouching",
+            "Key nuances of professional retouching",
+            "Key nuances of professional retouching"
+          ),
+          l(
+            "Frequency Separation — “Glossy Finish” technique",
+            "Frequency Separation — “Glossy Finish” technique",
+            "Frequency Separation — “Glossy Finish” technique"
+          ),
+          l(
+            "Light & Shadow Structure technique",
+            "Light & Shadow Structure technique",
+            "Light & Shadow Structure technique"
+          ),
+          l("Color theory", "Color theory", "Color theory"),
+          l(
+            "Color correction techniques — Part 1",
+            "Color correction techniques — Part 1",
+            "Color correction techniques — Part 1"
+          ),
+          l(
+            "Color correction techniques — Part 2",
+            "Color correction techniques — Part 2",
+            "Color correction techniques — Part 2"
+          ),
+          l(
+            "Frequency Separation — “Challenging Areas” technique",
+            "Frequency Separation — “Challenging Areas” technique",
+            "Frequency Separation — “Challenging Areas” technique"
+          ),
+          l(
+            "Clothing retouching",
+            "Clothing retouching",
+            "Clothing retouching"
+          ),
+          l(
+            "Complete retouching workflow",
+            "Complete retouching workflow",
+            "Complete retouching workflow"
+          ),
+        ],
+      },
+      {
+        // ⚠️ У тебе в описі написано “12 lessons”, але списком їх 13 — я лишив як є
+        title: l(
+          "Marketing & Multi-Genre Retouching Module (13 lessons)",
+          "Marketing & Multi-Genre Retouching Module (13 lessons)",
+          "Marketing & Multi-Genre Retouching Module (13 lessons)"
+        ),
+        lessons: [
+          l("Retouching makeup", "Retouching makeup", "Retouching makeup"),
+          l(
+            "Working with low-quality photos",
+            "Working with low-quality photos",
+            "Working with low-quality photos"
+          ),
+          l(
+            "Full-body retouching / background work",
+            "Full-body retouching / background work",
+            "Full-body retouching / background work"
+          ),
+          l(
+            "Marketing fundamentals",
+            "Marketing fundamentals",
+            "Marketing fundamentals"
+          ),
+          l(
+            "Social media & personal brand promotion",
+            "Social media & personal brand promotion",
+            "Social media & personal brand promotion"
+          ),
+          l(
+            "Pricing & working with clients",
+            "Pricing & working with clients",
+            "Pricing & working with clients"
+          ),
+          l("Product retouching", "Product retouching", "Product retouching"),
+          l(
+            "Creating actions & presets",
+            "Creating actions & presets",
+            "Creating actions & presets"
+          ),
+          l(
+            "AI-assisted retouching",
+            "AI-assisted retouching",
+            "AI-assisted retouching"
+          ),
+          l(
+            "Mature skin retouching",
+            "Mature skin retouching",
+            "Mature skin retouching"
+          ),
+          l(
+            "Male portrait retouching",
+            "Male portrait retouching",
+            "Male portrait retouching"
+          ),
+          l(
+            "Wedding photography",
+            "Wedding photography",
+            "Wedding photography"
+          ),
+          l(
+            "Final project & graduation work",
+            "Final project & graduation work",
+            "Final project & graduation work"
+          ),
+        ],
+      },
+    ],
+
+    howItWorks: {
+      intro: l(
+        "Курс включает 34 видео-урока, практические материалы и задания для портфолио. Уроки в записи — учитесь в своём темпе.",
+        "Курс включає 34 відео-уроки, практичні матеріали та завдання для портфоліо. Уроки у записі — навчайся у своєму темпі.",
+        "The course includes 34 video lessons, practice materials, and portfolio-building tasks. All lessons are pre-recorded — learn at your own pace."
+      ),
+      steps: [
+        l(
+          "Курс разделён на 3 модуля: Basic / Pro Techniques / Multi-Genre + Marketing",
+          "Курс поділено на 3 модулі: Basic / Pro Techniques / Multi-Genre + Marketing",
+          "The course is divided into 3 modules: Basic / Pro Techniques / Multi-Genre + Marketing"
+        ),
+        l(
+          "Можно купить каждый модуль отдельно или взять полный пакет со скидкой",
+          "Можна купити кожен модуль окремо або взяти повний пакет зі знижкою",
+          "You can purchase modules separately or get the discounted full package"
+        ),
+        l(
+          "Все уроки доступны в записи — график свободный",
+          "Усі уроки доступні у записі — вільний графік",
+          "All lessons are pre-recorded — flexible schedule"
+        ),
+        l(
+          "Для обучения нужен компьютер/ноутбук с Adobe Photoshop + мышь или графический планшет",
+          "Для навчання потрібен комп’ютер/ноутбук з Adobe Photoshop + миша або графічний планшет",
+          "You need a computer/laptop with Adobe Photoshop + a mouse or a graphic tablet"
+        ),
+        l(
+          "После покупки зайдите в раздел “Courses” на сайте и откройте выбранный план",
+          "Після покупки зайдіть у розділ “Courses” на сайті та відкрийте обраний план",
+          "After purchase, go to the “Courses” section and open your plan"
+        ),
+        l(
+          "У каждого урока есть домашнее задание для закрепления",
+          "У кожного уроку є домашнє завдання для закріплення",
+          "Each lesson includes homework to reinforce skills"
+        ),
+        l(
+          "По вопросам можно обратиться в Care Team внизу сайта",
+          "З питаннями можна звернутися до Care Team внизу сайту",
+          "If you have questions, contact the Care Team at the bottom of the website"
+        ),
+        l(
+          "Сертификат доступен только в планах с Mentor Support",
+          "Сертифікат доступний лише в планах з Mentor Support",
+          "A Certificate of Completion is available only for plans that include Mentor Support"
+        ),
+        l(
+          "Доступ к материалам — бессрочный (lifetime)",
+          "Доступ до матеріалів — безстроковий (lifetime)",
+          "Lifetime access to all course materials"
+        ),
+      ],
+    },
+
+    galleryImagesCount: 6,
+
+    infoRows: [
+      {
+        labelKey: "course.info.learningStatus",
+        value: l("Доступно", "Доступно", "Available"),
+      },
+      {
+        labelKey: "course.info.startDate",
+        value: l(
+          "Сразу после оплаты",
+          "Одразу після оплати",
+          "Immediately after purchase"
+        ),
+      },
+      { labelKey: "course.info.recorded", value: l("Да", "Так", "Yes") },
+      {
+        labelKey: "course.info.lessonsCount",
+        value: l("34 урока", "34 уроки", "34 lessons"),
+      },
+      {
+        labelKey: "course.info.access",
+        value: l("Lifetime access", "Lifetime access", "Lifetime access"),
+      },
+      {
+        labelKey: "course.info.software",
+        value: l("Adobe Photoshop", "Adobe Photoshop", "Adobe Photoshop"),
+      },
+      {
+        labelKey: "course.info.devices",
+        value: l("Компьютер/ноутбук", "Комп’ютер/ноутбук", "Computer / laptop"),
+      },
+      {
+        labelKey: "course.info.watchAnytime",
+        value: l("Свободный график", "Вільний графік", "Self-paced learning"),
+      },
+    ],
+
+    tariffsIntro: l(
+      "Выберите модуль или возьмите полный пакет со скидкой. Mentor Support — отдельный тариф (1 месяц поддержки на модуль).",
+      "Оберіть модуль або візьміть повний пакет зі знижкою. Mentor Support — окремий тариф (1 місяць підтримки на модуль).",
+      "Choose a module or get the discounted full package. Mentor Support is a separate plan (1 month of support per module)."
+    ),
+
+    tariffs: [
+      {
+        title: l("Basic Module", "Basic Module", "Basic Module"),
+        price: "150$",
+        include: [1, 2, 3, 4], // cabinet, lifetimeAccess, updates, homework
+        paymentUrl:
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_BASIC",
+      },
+      {
+        title: l(
+          "Professional Techniques",
+          "Professional Techniques",
+          "Professional Techniques"
+        ),
+        price: "150$",
+        include: [1, 2, 3, 4],
+        paymentUrl:
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_PRO",
+      },
+      {
+        title: l(
+          "Genre-Based Practice",
+          "Genre-Based Practice",
+          "Genre-Based Practice"
+        ),
+        price: "150$",
+        include: [1, 2, 3, 4],
+        paymentUrl:
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_GENRE",
+      },
+      {
+        title: l(
+          'The Architecture of Retouching "Package"',
+          'The Architecture of Retouching "Package"',
+          'The Architecture of Retouching "Package"'
+        ),
+        oldPrice: "450$",
+        price: "350$",
+        include: [1, 2, 3, 4],
+        paymentUrl:
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_PACKAGE",
+      },
+      {
+        title: l(
+          "Mentor support / 1 month",
+          "Mentor support / 1 month",
+          "Mentor support / 1 month"
+        ),
+        price: "150$",
+        include: [1, 2, 3, 4, 5], // + curatorCheck
+        paymentUrl:
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_MENTOR",
+
+        detailsTitle: l(
+          "Как работает Mentor Support?",
+          "Як працює Mentor Support?",
+          "How does Mentor Support work?"
+        ),
+        details: l(
+          `Если вы выбираете план с Mentor Support:
+• 1 месяц поддержки на каждый модуль
+• личное общение 1-на-1 с ментором (WhatsApp или Telegram)
+• проверка домашки и ответы на вопросы
+
+После покупки, пожалуйста, напишите ментору и отправьте:
+– ваше имя и фамилию (как в сертификате, на английском)
+– какие модули куплены
+– дату старта поддержки
+– скрин/копию чека оплаты
+
+Важно:
+• можно писать в любое время, ответ будет при первой возможности (не мгновенно)
+• отправляйте на проверку только задания/фото из курса — чтобы идти по программе
+• сертификат доступен только с Mentor Support`,
+          `Якщо ви обираєте план з Mentor Support:
+• 1 місяць підтримки на кожен модуль
+• особисте спілкування 1-на-1 з ментором (WhatsApp або Telegram)
+• перевірка домашки та відповіді на питання
+
+Після покупки напишіть ментору та надішліть:
+– ім’я та прізвище (як у сертифікаті, англійською)
+– які модулі куплені
+– дату старту підтримки
+– скрін/копію чека оплати
+
+Важливо:
+• можна писати будь-коли, відповідь буде при першій можливості (не миттєво)
+• надсилайте на перевірку лише завдання/фото з курсу — щоб йти за програмою
+• сертифікат доступний лише з Mentor Support`,
+          `With Mentor Support you get:
+• 1 month of support per module
+• one-on-one communication with your mentor (WhatsApp or Telegram)
+• homework review + Q&A
+
+After purchase, contact your mentor and provide:
+– your full name (as it should appear on the certificate, in English)
+– the module(s) you purchased
+– your support start date
+– a screenshot/copy of the payment receipt
+
+Notes:
+• You may message anytime — replies aren’t instant but will come as soon as possible
+• Submit only course homework/photos for review to stay on track
+• Certificate is available only with Mentor Support`
+        ),
+      },
+    ],
+
+    faq: [
+      {
+        question: l(
+          "Курс подходит новичкам?",
+          "Курс підходить новачкам?",
+          "Is this course suitable for beginners?"
+        ),
+        answer: l(
+          "Да. Первый модуль закрывает базу и ускоряет работу: Photoshop, слои, маски, Camera Raw и базовая ретушь — всё по шагам.",
+          "Так. Перший модуль закриває базу та прискорює роботу: Photoshop, шари, маски, Camera Raw і базова ретуш — усе покроково.",
+          "Yes. The Basic Module covers essentials (Photoshop fundamentals, layers, masks, Camera Raw, basic retouching) step by step."
+        ),
+      },
+      {
+        question: l(
+          "Нужен ли графический планшет?",
+          "Чи потрібен графічний планшет?",
+          "Do I need a graphic tablet?"
+        ),
+        answer: l(
+          "Нет. Можно работать мышью. Планшет — опционально, по желанию.",
+          "Ні. Можна працювати мишею. Планшет — опційно, за бажанням.",
+          "No. A mouse is enough. A tablet is optional."
+        ),
+      },
+      {
+        question: l(
+          "Сколько длится доступ к курсу?",
+          "Скільки триває доступ до курсу?",
+          "How long is the access?"
+        ),
+        answer: l(
+          "Доступ к материалам — бессрочный (lifetime).",
+          "Доступ до матеріалів — безстроковий (lifetime).",
+          "Lifetime access to all course materials."
+        ),
+      },
+      {
+        question: l(
+          "Будет ли сертификат?",
+          "Чи буде сертифікат?",
+          "Will I get a certificate?"
+        ),
+        answer: l(
+          "Да, но сертификат доступен только в планах с Mentor Support.",
+          "Так, але сертифікат доступний лише в планах з Mentor Support.",
+          "Yes — certificates are available only for plans that include Mentor Support."
+        ),
+      },
+      {
+        question: l(
+          "Можно ли купить модули отдельно?",
+          "Чи можна купити модулі окремо?",
+          "Can I buy modules separately?"
+        ),
+        answer: l(
+          "Да. Каждый модуль можно купить отдельно, или взять полный пакет со скидкой.",
+          "Так. Кожен модуль можна купити окремо або взяти повний пакет зі знижкою.",
+          "Yes. You can purchase each module separately or get the discounted full package."
+        ),
+      },
+    ],
+  },
 ];
 
 export const coursesMap: Record<string, Course> = Object.fromEntries(

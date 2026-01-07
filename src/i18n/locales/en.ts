@@ -20,7 +20,7 @@ export const en = {
 
   courseCard: {
     more: "Learn more",
-    goToCourse: "Go to course",
+    goToCourse: "Buy course",
   },
 
   coursesPage: {
@@ -32,7 +32,7 @@ export const en = {
     loadMore: "Load more",
     courseTitle: "Shooting architecture. Self-paced learning",
     learnMore: "Learn more",
-    goToCourse: "Go to course",
+    goToCourse: "Buy course",
 
     // фільтри по курсам
     filters: {
