@@ -130,6 +130,17 @@ export const CourseDetailsPage = () => {
   const howItWorks = course.howItWorks;
   const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
 
+  const howItWorksExtraText = useMemo(() => {
+    if (!howItWorks) return "";
+
+    const parts: string[] = [];
+    if (howItWorks.intro?.[locale]) parts.push(howItWorks.intro[locale]);
+    if (howItWorks.outro?.[locale]) parts.push(howItWorks.outro[locale]);
+    if (howItWorks.files?.[locale]) parts.push(howItWorks.files[locale]);
+
+    return parts.join("\n\n");
+  }, [howItWorks, locale]);
+
   // ✅ Program: підтримка двох форматів
   const program = course.program ?? [];
   const programSections = course.programSections ?? [];
@@ -181,6 +192,15 @@ export const CourseDetailsPage = () => {
 
     return byLocale[locale] ?? byLocale.ru;
   }, [locale]);
+
+  // ✅ Author photo (public/...)
+  const authorPhotoSrc = "/images/IMG_1021.JPG";
+  const authorPhotoAlt =
+    locale === "en"
+      ? "Author photo"
+      : locale === "ua"
+      ? "Фото автора"
+      : "Фото автора";
 
   return (
     <main className={styles.page}>
@@ -265,8 +285,19 @@ export const CourseDetailsPage = () => {
             </h2>
 
             <div className={styles.authorCard}>
-              <div className={styles.authorName}>{author.name}</div>
-              <div className={styles.authorRole}>{author.role}</div>
+              <div className={styles.authorMetaBlock}>
+                <div className={styles.authorName}>{author.name}</div>
+                <div className={styles.authorRole}>{author.role}</div>
+              </div>
+
+              <div className={styles.authorHero}>
+                <img
+                  src={authorPhotoSrc}
+                  alt={authorPhotoAlt}
+                  className={styles.authorHeroImage}
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
@@ -359,6 +390,7 @@ export const CourseDetailsPage = () => {
                         <div className={styles.tariffExtraTitle}>
                           {tariff.detailsTitle?.[locale]}
                         </div>
+
                         <div className={styles.tariffExtraBody}>
                           {tariff.details[locale]}
                         </div>
@@ -371,53 +403,53 @@ export const CourseDetailsPage = () => {
           </div>
         </section>
 
-        <hr className={styles.divider} />
-
-        {/* ✅ How it works — НАД программой */}
+        {/* ✅ HOW IT WORKS — ОКРЕМИЙ ЕЛЕМЕНТ ПІД ТАРИФАМИ */}
         {hasHowItWorks && (
           <>
-            <section className={styles.howItWorksSection}>
-              <div className={styles.howItWorksLeft}>
-                <h2 className={styles.sectionTitle}>
-                  {t("courseDetails.howItWorksTitle")}
-                </h2>
-                <p className={styles.howItWorksText}>
-                  {t("courseDetails.howItWorksSubtitle")}
-                </p>
-              </div>
+            <hr className={styles.divider} />
 
-              <div className={styles.howItWorksRight}>
-                {!!howItWorks?.intro?.[locale] && (
-                  <p className={styles.howItWorksParagraph}>
-                    {howItWorks.intro[locale]}
-                  </p>
-                )}
+            <section className={styles.howItWorksWrap}>
+              <div className={styles.howItWorksCard}>
+                <div className={styles.howItWorksSection}>
+                  <div>
+                    <h2 className={styles.sectionTitle}>
+                      {locale === "en"
+                        ? "How it works"
+                        : locale === "ua"
+                        ? "Як це працює"
+                        : "Как это работает"}
+                    </h2>
 
-                <ol className={styles.howItWorksList}>
-                  {howItWorks!.steps.map((step, idx) => (
-                    <li key={idx} className={styles.howItWorksItem}>
-                      {step[locale]}
-                    </li>
-                  ))}
-                </ol>
+                    {!!howItWorksExtraText && (
+                      <div className={styles.howItWorksText}>
+                        {howItWorksExtraText
+                          .split("\n\n")
+                          .filter(Boolean)
+                          .map((p, i) => (
+                            <p key={i} className={styles.howItWorksParagraph}>
+                              {p}
+                            </p>
+                          ))}
+                      </div>
+                    )}
+                  </div>
 
-                {!!howItWorks?.outro?.[locale] && (
-                  <p className={styles.howItWorksParagraph}>
-                    {howItWorks.outro[locale]}
-                  </p>
-                )}
-
-                {!!howItWorks?.files?.[locale] && (
-                  <p className={styles.howItWorksParagraph}>
-                    {howItWorks.files[locale]}
-                  </p>
-                )}
+                  <div>
+                    <ol className={styles.howItWorksList}>
+                      {(howItWorks?.steps ?? []).map((s, i) => (
+                        <li key={i} className={styles.howItWorksItem}>
+                          {s?.[locale]}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
               </div>
             </section>
-
-            <hr className={styles.divider} />
           </>
         )}
+
+        <hr className={styles.divider} />
 
         {/* ✅ Program (оновлено: модулі як блоки, без нумерації) */}
         {hasProgram && (
