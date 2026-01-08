@@ -129,17 +129,6 @@ export const CourseDetailsPage = () => {
   const howItWorks = course.howItWorks;
   const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
 
-  const howItWorksExtraText = useMemo(() => {
-    if (!howItWorks) return "";
-
-    const parts: string[] = [];
-    if (howItWorks.intro?.[locale]) parts.push(howItWorks.intro[locale]);
-    if (howItWorks.outro?.[locale]) parts.push(howItWorks.outro[locale]);
-    if (howItWorks.files?.[locale]) parts.push(howItWorks.files[locale]);
-
-    return parts.join("\n\n");
-  }, [howItWorks, locale]);
-
   // ✅ Program: підтримка двох форматів
   const program = course.program ?? [];
   const programSections = course.programSections ?? [];
