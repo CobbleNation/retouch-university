@@ -1511,7 +1511,7 @@ Real examples. Real color. Real inspiration.`
   {
     slug: "architecture-of-retouching",
     imageSrc: "/images/architecture-of-retouching/hero.jpg",
-    fullWidthImageSrc: "/images/architecture-of-retouching/full.jpg",
+    fullWidthImageSrc: "",
 
     title: l(
       "Архитектура Ретуши (EN)",
@@ -1942,7 +1942,7 @@ Retouching is a profession that gives you freedom:
           "Mentor support / 1 month"
         ),
         price: "150$",
-        include: [1, 2, 3, 4, 5], // + curatorCheck
+        include: [1, 2, 3, 4, 5, 6], // + curatorCheck
         paymentUrl:
           "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_MENTOR",
 
@@ -2004,62 +2004,122 @@ Notes:
     faq: [
       {
         question: l(
-          "Курс подходит новичкам?",
-          "Курс підходить новачкам?",
-          "Is this course suitable for beginners?"
+          "Что нужно, чтобы пройти этот курс?",
+          "Що мені потрібно, щоб пройти цей курс?",
+          "What do I need to take this course?"
         ),
         answer: l(
-          "Да. Первый модуль закрывает базу и ускоряет работу: Photoshop, слои, маски, Camera Raw и базовая ретушь — всё по шагам.",
-          "Так. Перший модуль закриває базу та прискорює роботу: Photoshop, шари, маски, Camera Raw і базова ретуш — усе покроково.",
-          "Yes. The Basic Module covers essentials (Photoshop fundamentals, layers, masks, Camera Raw, basic retouching) step by step."
+          "Компьютер или ноутбук. Подойдёт любое устройство, которое стабильно работает в обычных задачах.\nЧем больше экран — тем комфортнее процесс. Чем мощнее компьютер — тем плавнее работа.\n\nИдеальный вариант: MacBook Pro 16”, 16 GB RAM.\nНо это не обязательное требование.\n\nВидеокарта не влияет на работу Photoshop.\n\nТакже понадобится мышка или графический планшет — выбирай то, что удобнее именно тебе.",
+          "Комп’ютер або ноутбук. Підійде будь-який пристрій, який працює стабільно у повсякденному використанні.\nЧим більший екран — тим комфортніше працювати. Чим потужніший комп’ютер — тим плавніший процес.\n\nІдеальний варіант: MacBook Pro 16”, 16 GB RAM.\nАле це не обов’язкова вимога.\n\nВідеокарта не впливає на роботу Photoshop.\n\nТакож знадобиться мишка або графічний планшет — обирай, що зручніше саме тобі.",
+          "A computer or laptop. Any device that runs smoothly during regular use will be suitable for learning.\nThe larger the screen — the more comfortable your workflow. The more powerful the computer — the smoother your experience.\n\nIdeal setup: MacBook Pro 16”, 16 GB RAM.\nBut this is not a requirement.\n\nA graphics card does not affect how Photoshop runs.\n\nYou’ll also need a mouse or a graphic tablet — whichever you prefer."
         ),
       },
       {
         question: l(
-          "Нужен ли графический планшет?",
-          "Чи потрібен графічний планшет?",
-          "Do I need a graphic tablet?"
+          "Я никогда не работал в Photoshop. Мне подойдёт этот курс?",
+          "Я ніколи не користувався Photoshop. Цей курс мені підійде?",
+          "I’ve never used Photoshop before. Is this course right for me?"
         ),
         answer: l(
-          "Нет. Можно работать мышью. Планшет — опционально, по желанию.",
-          "Ні. Можна працювати мишею. Планшет — опційно, за бажанням.",
-          "No. A mouse is enough. A tablet is optional."
+          "Да, конечно!\nМодуль 1 начинается с самого нуля — включая установку Photoshop и объяснение, что это за программа.\nИдеально для тех, кто никогда не работал в Photoshop.",
+          "Так, однозначно!\nМодуль 1 починається з самого нуля — включно з тим, як встановити Photoshop і що це за програма.\nЦе ідеально для тих, хто взагалі ніколи не працював у Photoshop.",
+          "Absolutely!\nModule 1 starts from the very beginning — including how to install Photoshop and what it is.\nIt’s perfect for those who have never worked with the program before."
         ),
       },
       {
         question: l(
-          "Сколько длится доступ к курсу?",
-          "Скільки триває доступ до курсу?",
-          "How long is the access?"
+          "Я уже знаю базу. С какого модуля мне начать?",
+          "Я вже знаю базу. З якого модуля мені почати?",
+          "I already know the basics. Where should I start?"
         ),
         answer: l(
-          "Доступ к материалам — бессрочный (lifetime).",
-          "Доступ до матеріалів — безстроковий (lifetime).",
-          "Lifetime access to all course materials."
+          "Модули 2 и 3 — именно то, что нужно.\nТехники Виктора выходят далеко за рамки типичного “patch и dodge & burn” — он также показывает, как значительно ускорить ретушь.\n\nПри этом Модуль 1 тоже очень рекомендуется.\nОн помогает закрыть пробелы в базе.\nЕсли ты пользуешься Photoshop, но не уверенно — старт с Модуля 1 реально укрепит фундамент.",
+          "Модулі 2 і 3 — саме те, що потрібно.\nТехніки Віктора виходять далеко за межі типового “patch та dodge & burn” — він також показує, як суттєво прискорити ретуш.\n\nАле Модуль 1 теж дуже рекомендується.\nВін допомагає закрити прогалини в базі.\nЯкщо ти користуєшся Photoshop, але не відчуваєш впевненості — старт із Модуля 1 реально підсилить основу.",
+          "Modules 2 and 3 are exactly what you need.\nViktor’s techniques go far beyond the typical “patch and dodge & burn” approach — he also teaches how to significantly speed up your retouching process.\n\nThat said, Module 1 is also highly recommended.\nIt helps fill in the gaps in your foundational knowledge.\nIf you use Photoshop but not confidently, starting with Module 1 can really strengthen your base."
         ),
       },
       {
         question: l(
-          "Будет ли сертификат?",
-          "Чи буде сертифікат?",
-          "Will I get a certificate?"
+          "Я работаю в бьюти-сфере и хочу ретушировать свои работы. Это будет полезно?",
+          "Я працюю у б’юті-сфері й хочу ретушувати свої роботи. Це буде корисно?",
+          "I work in the beauty industry and want to learn how to retouch my own work. Will this course be useful for me?"
         ),
         answer: l(
-          "Да, но сертификат доступен только в планах с Mentor Support.",
-          "Так, але сертифікат доступний лише в планах з Mentor Support.",
-          "Yes — certificates are available only for plans that include Mentor Support."
+          "Да!\nКурс охватывает всё, что нужно для работы с макияжем, деталями волос, ногтями и другим.\nТы научишься улучшать свои работы — от мягкого выравнивания и коррекции цвета губ до работы с тонами и даже аккуратного “переформирования” элементов, когда это нужно.",
+          "Так!\nКурс покриває все, що потрібно для роботи з макіяжем, деталями волосся, нігтями та іншим.\nТи навчишся вдосконалювати свої фото — від м’якого вирівнювання та корекції кольору губ до роботи з тонами і навіть акуратного “переформування” елементів, коли це потрібно.",
+          "Absolutely!\nThe course covers everything you need to know to work with makeup, hair details, nails, and more.\nYou’ll learn how to refine your own work — from adjusting blending and lip color to working with color tones and even reshaping elements when needed."
         ),
       },
       {
         question: l(
-          "Можно ли купить модули отдельно?",
-          "Чи можна купити модулі окремо?",
-          "Can I buy modules separately?"
+          "Можно ли пересматривать уроки?",
+          "Чи можна передивлятися уроки?",
+          "Can I rewatch the lessons?"
         ),
         answer: l(
-          "Да. Каждый модуль можно купить отдельно, или взять полный пакет со скидкой.",
-          "Так. Кожен модуль можна купити окремо або взяти повний пакет зі знижкою.",
-          "Yes. You can purchase each module separately or get the discounted full package."
+          "Да!\nПосле покупки ты получаешь пожизненный доступ — можно пересматривать уроки когда угодно и сколько угодно раз.",
+          "Так!\nПісля покупки ти отримуєш довічний доступ — можеш переглядати уроки будь-коли й необмежену кількість разів.",
+          "Absolutely!\nOnce you purchase the course, you get lifetime access — you can rewatch the lessons anytime, as many times as you like."
+        ),
+      },
+      {
+        question: l(
+          "Можно ли ретушировать фото, снятые на iPhone Pro Max?",
+          "Чи можна ретушувати фото, зняті на iPhone Pro Max?",
+          "Can I retouch photos taken with an iPhone Pro Max?"
+        ),
+        answer: l(
+          "Да.\nНо учти: мобильные фото намного меньше по разрешению, поэтому возможностей ретуши меньше, чем у кадров с камеры в высоком качестве.",
+          "Так.\nАле май на увазі: мобільні фото мають значно меншу роздільну здатність, тому можливостей ретуші буде менше, ніж у знімків з камери у високій якості.",
+          "Absolutely.\nJust keep in mind that mobile photos are much smaller in resolution, which means there are fewer retouching possibilities compared to high-resolution camera images."
+        ),
+      },
+      {
+        question: l(
+          "Сколько времени нужно, чтобы начать зарабатывать на ретуши?",
+          "Скільки часу потрібно, щоб почати заробляти на ретуші?",
+          "How long will it take to start earning money from retouching?"
+        ),
+        answer: l(
+          "Это индивидуально.\nНо уже к середине Модуля 3 у тебя будет достаточно знаний, чтобы начать работать с клиентами — даже до полного завершения курса.\nДальше всё зависит от мотивации и того, насколько активно ты применяешь знания на практике.",
+          "Усе індивідуально.\nАле вже до середини Модуля 3 у тебе буде достатньо знань, щоб починати брати клієнтів — навіть не завершивши курс повністю.\nДалі все залежить від твоєї мотивації та того, як активно ти застосовуєш знання на практиці.",
+          "That depends on the individual, of course.\nBut you’ll already have enough knowledge to start working with clients by the middle of Module 3 — even before completing the full course.\nFrom there, it all depends on your motivation and how actively you apply what you’ve learned."
+        ),
+      },
+      {
+        question: l(
+          "Есть ли в курсе маркетинг, цены и поиск клиентов?",
+          "Чи є в курсі маркетинг, ціни та пошук клієнтів?",
+          "Does the course include marketing, pricing, and finding clients?"
+        ),
+        answer: l(
+          "Да.\nВ Модуле 3 есть отдельные уроки про маркетинг, ценообразование и продвижение в соцсетях, чтобы привлекать клиентов.",
+          "Так.\nУ Модулі 3 є окремі уроки про маркетинг, формування ціни та просування в соцмережах, щоб залучати клієнтів.",
+          "Yes, absolutely.\nModule 3 includes dedicated lessons on marketing, pricing strategies, and how to promote yourself on social media to attract clients."
+        ),
+      },
+      {
+        question: l(
+          "Можно ли делать ретушь на телефоне или планшете?",
+          "Чи можна робити ретуш на телефоні або планшеті?",
+          "Can I do the retouching on a phone or tablet?"
+        ),
+        answer: l(
+          "Нет, профессиональная ретушь возможна только на компьютере.\nНа телефонах и планшетах есть похожие приложения, но это упрощённые версии.\nМожно поменять цвета или сделать базовые правки, но для высокого уровня ретуши нужен полный функционал Photoshop.",
+          "Ні, професійну ретуш можна робити лише на комп’ютері.\nНа телефонах і планшетах є схожі застосунки, але це спрощені версії.\nМожна змінити кольори або зробити базові правки, але для якісної ретуші потрібен повний функціонал Photoshop.",
+          "No, professional retouching can only be done on a computer.\nWhile there are similar apps available for phones and tablets, they are simplified versions.\nYou can change colors or apply basic edits, but they don’t offer the full functionality needed for high-end retouching."
+        ),
+      },
+      {
+        question: l(
+          "Что лучше для ретуши — мышка или графический планшет?",
+          "Що краще для ретуші — мишка чи графічний планшет?",
+          "What’s better for retouching — a mouse or a graphic tablet?"
+        ),
+        answer: l(
+          "Большинство профессиональных ретушёров предпочитают графический планшет,\nно Виктор лично работает исключительно мышкой — и так делают многие.\n\nВ итоге всё зависит от комфорта и личных предпочтений.\nРекомендуем попробовать оба варианта и выбрать то, что удобнее именно тебе.",
+          "Більшість професійних ретушерів віддають перевагу графічному планшету,\nале Віктор особисто працює тільки мишкою — і так роблять багато хто.\n\nУ підсумку головне — твій комфорт.\nРекомендуємо спробувати обидва варіанти й обрати той, який відчувається найзручнішим.",
+          "Most professional retouchers prefer working with a graphic tablet,\nbut Viktor personally works exclusively with a mouse, and many others do too.\n\nIn the end, it’s all about your comfort and personal preference.\nWe recommend trying both and choosing what feels best for you."
         ),
       },
     ],

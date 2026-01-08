@@ -474,22 +474,33 @@
 }
 
 .programLesson {
-  line-height: 1.5;
-  position: relative;
-  padding-left: 14px;
-  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 
-  &::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: $color-muted;
-  }
+  line-height: 1.5;
+  font-size: 14px;
 
   @media (max-width: 768px) {
     font-size: 13px;
   }
+}
+
+.lessonNumber {
+  min-width: 22px;
+  flex: 0 0 22px;
+
+  font-weight: 700;
+  color: $color-muted;
+
+  /* щоб цифри виглядали як “1.” візуально */
+  &::after {
+    content: ".";
+  }
+}
+
+.lessonText {
+  flex: 1;
 }
 
 /* FAQ */
@@ -750,49 +761,30 @@
   white-space: pre-line;
 }
 
-/* ✅ NEW: HOW IT WORKS як окрема карточка під тарифами */
-
-.howItWorksWrap {
-  margin-bottom: 32px;
-}
-
-.howItWorksCard {
-  border: 1px solid $color-border;
-  border-radius: 16px;
-  padding: 14px 14px 12px;
-  background: #ffffff;
-}
-
-//* HOW IT WORKS */
+/* ✅ HOW IT WORKS — тільки справа (під тарифами) */
 
 .howItWorksSection {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 24px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  margin-bottom: 32px;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
-.howItWorksText {
-  margin-top: 10px;
-  opacity: 0.8;
+.howItWorksLeft {
+  @media (max-width: 900px) {
+    display: none;
+  }
 }
 
-.howItWorksParagraph {
-  margin: 0 0 14px 0;
-  line-height: 1.6;
-}
-
-.howItWorksList {
-  margin: 0 0 14px 18px;
-  padding: 0;
-}
-
-.howItWorksItem {
-  margin: 8px 0;
-  line-height: 1.6;
+.howItWorksRight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* AUTHOR */

@@ -1,4 +1,3 @@
-// src/pages/CourseDetailsPage/CourseDetailsPage.tsx
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -146,6 +145,17 @@ export const CourseDetailsPage = () => {
   const programSections = course.programSections ?? [];
   const hasProgram = programSections.length > 0 || program.length > 0;
 
+  // ✅ START INDEXES for global lesson numbering across modules
+  const programSectionStarts = useMemo(() => {
+    const starts: number[] = [];
+    let counter = 1;
+    for (const section of programSections) {
+      starts.push(counter);
+      counter += section.lessons.length;
+    }
+    return starts;
+  }, [programSections]);
+
   // ✅ Author block (localized lightweight, без правок локал-файлів)
   const author = useMemo(() => {
     const byLocale = {
@@ -193,7 +203,7 @@ export const CourseDetailsPage = () => {
     return byLocale[locale] ?? byLocale.ru;
   }, [locale]);
 
-  // ✅ Author photo (public/...)
+  // ✅ Author photo (public/... )
   const authorPhotoSrc = "/images/IMG_1021.JPG";
   const authorPhotoAlt =
     locale === "en"
@@ -403,46 +413,54 @@ export const CourseDetailsPage = () => {
           </div>
         </section>
 
-        {/* ✅ HOW IT WORKS — ОКРЕМИЙ ЕЛЕМЕНТ ПІД ТАРИФАМИ */}
+        {/* ✅ ПІСЛЯ ТАРИФІВ: справа 2 блоки (куратор) + (how it works) */}
         {hasHowItWorks && (
           <>
             <hr className={styles.divider} />
 
-            <section className={styles.howItWorksWrap}>
-              <div className={styles.howItWorksCard}>
-                <div className={styles.howItWorksSection}>
-                  <div>
-                    <h2 className={styles.sectionTitle}>
-                      {locale === "en"
-                        ? "How it works"
-                        : locale === "ua"
-                        ? "Як це працює"
-                        : "Как это работает"}
-                    </h2>
+            <section className={styles.howItWorksSection}>
+              <div className={styles.howItWorksLeft} />
+              <div className={styles.howItWorksRight}>
+                <div className={styles.howItWorksCard}>
+                  <h2 className={styles.sectionTitle}>
+                    {locale === "en"
+                      ? "How does learning work"
+                      : locale === "ua"
+                      ? "Як проходить навчання"
+                      : "Как проходит обучение"}
+                  </h2>
 
-                    {!!howItWorksExtraText && (
-                      <div className={styles.howItWorksText}>
-                        {howItWorksExtraText
-                          .split("\n\n")
-                          .filter(Boolean)
-                          .map((p, i) => (
-                            <p key={i} className={styles.howItWorksParagraph}>
-                              {p}
-                            </p>
-                          ))}
-                      </div>
-                    )}
-                  </div>
+                  {/* intro */}
+                  {!!howItWorks?.intro?.[locale] && (
+                    <p className={styles.howItWorksParagraph}>
+                      {howItWorks.intro[locale]}
+                    </p>
+                  )}
 
-                  <div>
-                    <ol className={styles.howItWorksList}>
+                  {/* steps */}
+                  {(howItWorks?.steps ?? []).length > 0 && (
+                    <ul className={styles.howItWorksBullets}>
                       {(howItWorks?.steps ?? []).map((s, i) => (
-                        <li key={i} className={styles.howItWorksItem}>
+                        <li key={i} className={styles.howItWorksBulletItem}>
                           {s?.[locale]}
                         </li>
                       ))}
-                    </ol>
-                  </div>
+                    </ul>
+                  )}
+
+                  {/* outro */}
+                  {!!howItWorks?.outro?.[locale] && (
+                    <p className={styles.howItWorksParagraph}>
+                      {howItWorks.outro[locale]}
+                    </p>
+                  )}
+
+                  {/* files */}
+                  {!!howItWorks?.files?.[locale] && (
+                    <p className={styles.howItWorksParagraph}>
+                      {howItWorks.files[locale]}
+                    </p>
+                  )}
                 </div>
               </div>
             </section>
@@ -451,7 +469,7 @@ export const CourseDetailsPage = () => {
 
         <hr className={styles.divider} />
 
-        {/* ✅ Program (оновлено: модулі як блоки, без нумерації) */}
+        {/* ✅ Program */}
         {hasProgram && (
           <>
             <section className={styles.programSection}>
@@ -467,27 +485,41 @@ export const CourseDetailsPage = () => {
               <div className={styles.programRight}>
                 {programSections.length > 0 ? (
                   <div className={styles.programModules}>
-                    {programSections.map((section, sIdx) => (
-                      <div key={sIdx} className={styles.programModule}>
-                        <div className={styles.programModuleTitle}>
-                          {section.title[locale]}
-                        </div>
+                    {programSections.map((section, sIdx) => {
+                      const start = programSectionStarts[sIdx] ?? 1;
 
-                        <ul className={styles.programLessons}>
-                          {section.lessons.map((lesson, lIdx) => (
-                            <li key={lIdx} className={styles.programLesson}>
-                              {lesson[locale]}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                      return (
+                        <div key={sIdx} className={styles.programModule}>
+                          <div className={styles.programModuleTitle}>
+                            {section.title[locale]}
+                          </div>
+
+                          <ul className={styles.programLessons}>
+                            {section.lessons.map((lesson, lIdx) => {
+                              const globalNumber = start + lIdx;
+
+                              return (
+                                <li key={lIdx} className={styles.programLesson}>
+                                  <span className={styles.lessonNumber}>
+                                    {globalNumber}
+                                  </span>
+                                  <span className={styles.lessonText}>
+                                    {lesson[locale]}
+                                  </span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <ul className={styles.programLessons}>
                     {program.map((step, idx) => (
                       <li key={idx} className={styles.programLesson}>
-                        {step[locale]}
+                        <span className={styles.lessonNumber}>{idx + 1}</span>
+                        <span className={styles.lessonText}>{step[locale]}</span>
                       </li>
                     ))}
                   </ul>
