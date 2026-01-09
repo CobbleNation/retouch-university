@@ -1,4 +1,3 @@
-// src/data/courses.ts
 import type { Locale } from "../i18n";
 
 export type LocalizedString = Record<Locale, string>;
@@ -15,9 +14,8 @@ export type CourseTariff = {
   include: number[];
   paymentUrl: string;
 
-  // ✅ NEW (optional)
-  detailsTitle?: LocalizedString; // заголовок акордеона
-  details?: LocalizedString; // текст інструкції
+  detailsTitle?: LocalizedString;
+  details?: LocalizedString;
 };
 
 export type CourseFaqItem = {
@@ -26,8 +24,8 @@ export type CourseFaqItem = {
 };
 
 export type CourseProgramSection = {
-  title: LocalizedString; // "Модуль 1 — Теория цвета"
-  lessons: LocalizedString[]; // уроки модуля
+  title: LocalizedString;
+  lessons: LocalizedString[];
 };
 
 export type CourseHowItWorks = {
@@ -37,8 +35,15 @@ export type CourseHowItWorks = {
   files?: LocalizedString;
 };
 
+// ✅ NEW: мова самого курсу (не UI)
+export type CourseLang = "en" | "non-en";
+
 export type Course = {
   slug: string;
+
+  // ✅ NEW
+  courseLang: CourseLang;
+
   title: LocalizedString;
   subtitle?: LocalizedString;
   shortDescription: LocalizedString;
@@ -67,6 +72,7 @@ export const courses: Course[] = [
   {
     slug: "retouch-nails",
     imageSrc: "/images/IMG_9105.jpg",
+    courseLang: "non-en",
     fullWidthImageSrc: "/images/IMG_9102.jpg",
     title: l("Архитектура ногтей", "Архітектура нігтів", "Nail Retouching"),
     subtitle: l("", "", ""),
@@ -618,7 +624,7 @@ How the learning works:
     slug: "color-architecture",
     imageSrc: "/images/color-architecture/arch-color.jpg",
     fullWidthImageSrc: "",
-
+    courseLang: "non-en",
     title: l("Архитектура Цвета", "Архітектура Кольору", "Color Architecture"),
     subtitle: l("На русском", "На російській", "On russian"),
 
@@ -1061,7 +1067,7 @@ Live sessions: color grading your photos.`
     slug: "color-architecture-en",
     imageSrc: "/images/color-architecture/arch-color.jpg",
     fullWidthImageSrc: "",
-
+    courseLang: "en",
     title: l(
       "Архитектура Цвета (EN)",
       "Архітектура Кольору (EN)",
@@ -1512,7 +1518,7 @@ Real examples. Real color. Real inspiration.`
     slug: "architecture-of-retouching",
     imageSrc: "/images/architecture-of-retouching/hero.jpg",
     fullWidthImageSrc: "",
-
+     courseLang: "en",
     title: l(
       "Архитектура Ретуши (EN)",
       "Архітектура Ретуші (EN)",
@@ -1898,8 +1904,7 @@ Retouching is a profession that gives you freedom:
         title: l("Basic Module", "Basic Module", "Basic Module"),
         price: "150$",
         include: [1, 2, 3, 4], // cabinet, lifetimeAccess, updates, homework
-        paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8144",
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=8144",
       },
       {
         title: l(
@@ -1909,8 +1914,7 @@ Retouching is a profession that gives you freedom:
         ),
         price: "150$",
         include: [1, 2, 3, 4],
-        paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8163",
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=8163",
       },
       {
         title: l(
@@ -1920,8 +1924,7 @@ Retouching is a profession that gives you freedom:
         ),
         price: "150$",
         include: [1, 2, 3, 4],
-        paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8165 ",
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=8165 ",
       },
       {
         title: l(
@@ -1932,8 +1935,7 @@ Retouching is a profession that gives you freedom:
         oldPrice: "450$",
         price: "350$",
         include: [1, 2, 3, 4],
-        paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8173",
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=8173",
       },
       {
         title: l(
@@ -1943,8 +1945,7 @@ Retouching is a profession that gives you freedom:
         ),
         price: "150$",
         include: [1, 2, 3, 4, 5, 6], // + curatorCheck
-        paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8177",
+        paymentUrl: "https://www.viktorkyslyi.com/checkout/?add-to-cart=8177",
 
         detailsTitle: l(
           "Как работает Mentor Support?",

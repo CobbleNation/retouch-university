@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CoursesPage.module.scss";
 import { LanguageFilter } from "../../components/LanguageFilter/LanguageFilter";
@@ -16,41 +16,49 @@ export const CoursesPage = () => {
     null
   );
 
-  // 🔧 Поки що featured-блок вимкнений (коли захочеш повернути — постав true і розкоментуй JSX нижче)
+  // 🔧 Поки що featured-блок вимкнений
   const SHOW_FEATURED = false;
 
-  // Реальна логіка фільтрації:
-  // all -> всі
-  // slug -> тільки цей курс
-  const filteredCourses = useMemo(() => {
-    if (languageFilter === "all") return courses;
-    return courses.filter((c) => c.slug === languageFilter);
-  }, [languageFilter]);
+  // ✅ 1) Спочатку фільтруємо курси по мові UI:
+  // en -> тільки courseLang === "en"
+  // ru/ua -> тільки courseLang !== "en"
+  const localeCourses = useMemo(() => {
+    if (locale === "en") return courses.filter((c) => c.courseLang === "en");
+    return courses.filter((c) => c.courseLang !== "en");
+  }, [locale]);
 
-  // featured курс (тимчасово не показуємо на сторінці)
+  // ✅ 2) Скидаємо slug-фільтр при зміні мови (щоб не лишався "невидимий" slug)
+  useEffect(() => {
+    setLanguageFilter("all");
+    setSelectedCourseSlug(null);
+  }, [locale]);
+
+  // ✅ 3) Тепер застосовуємо твій існуючий фільтр (all або slug)
+  const filteredCourses = useMemo(() => {
+    if (languageFilter === "all") return localeCourses;
+    return localeCourses.filter((c) => c.slug === languageFilter);
+  }, [languageFilter, localeCourses]);
+
   const featured = filteredCourses[0] ?? null;
 
-  // Курси для гріда (featured виключаємо, якщо він буде повернений)
   const gridCourses = useMemo(() => {
-    // якщо featured не показуємо — просто рендеримо всі курси в сітці
     if (!SHOW_FEATURED) return filteredCourses;
-
-    // якщо featured показуємо — виключаємо його, щоб не дублювався у гріді
     if (!featured) return filteredCourses;
     return filteredCourses.filter((c) => c.slug !== featured.slug);
   }, [filteredCourses, featured, SHOW_FEATURED]);
 
   const selectedCourse = useMemo(() => {
     if (!selectedCourseSlug) return null;
-    return courses.find((c) => c.slug === selectedCourseSlug) ?? null;
-  }, [selectedCourseSlug]);
+    // ✅ шукаємо тільки серед доступних для цієї мови курсів
+    return localeCourses.find((c) => c.slug === selectedCourseSlug) ?? null;
+  }, [selectedCourseSlug, localeCourses]);
 
   const openCourseDetails = (slug: string) => {
     navigate(`/courses/${slug}`);
   };
 
   const handleOpenTariffs = (slug: string) => {
-    const course = courses.find((c) => c.slug === slug);
+    const course = localeCourses.find((c) => c.slug === slug);
     if (!course) return;
 
     if (course.tariffs.length === 1) {
@@ -79,11 +87,11 @@ export const CoursesPage = () => {
               <LanguageSelector />
             </div>
 
-            {/* ✅ Фільтри генеряться автоматично з courses */}
+            {/* ✅ ВАЖЛИВО: передаємо сюди вже відфільтровані курси */}
             <LanguageFilter
               active={languageFilter}
               onChange={setLanguageFilter}
-              courses={courses}
+              courses={localeCourses}
             />
           </aside>
 
@@ -91,21 +99,6 @@ export const CoursesPage = () => {
             <p className={styles.description} id="about">
               {t("coursesPage.description")}
             </p>
-
-            {/* 🔕 Тимчасово вимкнули головний горизонтальний featured-блок */}
-            {/*
-            {SHOW_FEATURED && featured && (
-              <div className={styles.featured}>
-                <CourseCard
-                  title={featured.title[locale]}
-                  imageSrc={featured.imageSrc}
-                  mode="large"
-                  onOpenDetails={() => openCourseDetails(featured.slug)}
-                  onOpenTariffs={() => handleOpenTariffs(featured.slug)}
-                />
-              </div>
-            )}
-            */}
 
             {/* Сітка курсів */}
             <div className={styles.grid}>
