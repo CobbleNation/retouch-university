@@ -1899,7 +1899,7 @@ Retouching is a profession that gives you freedom:
         price: "150$",
         include: [1, 2, 3, 4], // cabinet, lifetimeAccess, updates, homework
         paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_BASIC",
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8144",
       },
       {
         title: l(
@@ -1910,7 +1910,7 @@ Retouching is a profession that gives you freedom:
         price: "150$",
         include: [1, 2, 3, 4],
         paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_PRO",
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8163",
       },
       {
         title: l(
@@ -1921,7 +1921,7 @@ Retouching is a profession that gives you freedom:
         price: "150$",
         include: [1, 2, 3, 4],
         paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_GENRE",
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8165 ",
       },
       {
         title: l(
@@ -1933,7 +1933,7 @@ Retouching is a profession that gives you freedom:
         price: "350$",
         include: [1, 2, 3, 4],
         paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_PACKAGE",
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8173",
       },
       {
         title: l(
@@ -1944,7 +1944,7 @@ Retouching is a profession that gives you freedom:
         price: "150$",
         include: [1, 2, 3, 4, 5, 6], // + curatorCheck
         paymentUrl:
-          "https://www.viktorkyslyi.com/checkout/?add-to-cart=REPLACE_MENTOR",
+          "https://www.viktorkyslyi.com/checkout/?add-to-cart=8177",
 
         detailsTitle: l(
           "Как работает Mentor Support?",
