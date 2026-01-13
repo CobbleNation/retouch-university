@@ -31,9 +31,21 @@ const STORAGE_KEY = "retouch-university.locale";
 // Helpers
 // ─────────────────────────────────────────────
 
+function normalizeLocaleFromNavigator(raw: string): Locale {
+  const lang = (raw || "").toLowerCase();
+
+  if (lang.startsWith("uk")) return "ua";
+  if (lang.startsWith("ru")) return "ru";
+  if (lang.startsWith("en")) return "en";
+
+  // ✅ будь-яка інша мова браузера → EN
+  return "en";
+}
+
 function detectBrowserLocale(): Locale {
+  // ✅ SSR: дефолт EN
   if (typeof window === "undefined") {
-    return "ru";
+    return "en";
   }
 
   // 1) якщо вже є збережена мова — повертаємо її
@@ -44,15 +56,9 @@ function detectBrowserLocale(): Locale {
 
   // 2) беремо мову браузера
   const nav = window.navigator;
-  const langRaw = (nav.languages && nav.languages[0]) || nav.language || "ru";
-  const lang = langRaw.toLowerCase();
+  const langRaw = (nav.languages && nav.languages[0]) || nav.language || "en";
 
-  if (lang.startsWith("uk")) return "ua";
-  if (lang.startsWith("ru")) return "ru";
-  if (lang.startsWith("en")) return "en";
-
-  // 3) дефолт — російська (або можеш поміняти на "ua", якщо хочеш)
-  return "ru";
+  return normalizeLocaleFromNavigator(langRaw);
 }
 
 function getInitialLocale(defaultLocale: Locale): Locale {
@@ -78,7 +84,8 @@ type I18nProviderProps = {
 
 export const I18nProvider = ({
   children,
-  defaultLocale = "ru",
+  // ✅ головна мова сайту — EN
+  defaultLocale = "en",
 }: I18nProviderProps) => {
   const [locale, setLocaleState] = useState<Locale>(() =>
     getInitialLocale(defaultLocale)
@@ -94,7 +101,7 @@ export const I18nProvider = ({
       if (current && typeof current === "object" && p in current) {
         current = current[p];
       } else {
-        return path; // fallback: показуємо ключ, якщо переклад не знайдено
+        return path;
       }
     }
 
