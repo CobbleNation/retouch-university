@@ -1,24 +1,17 @@
 /* src/components/Header/Header.module.scss */
 @use "../../styles/variables" as *;
 
-/* ─────────────────────────────────────────────
-   Header
-───────────────────────────────────────────── */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-
   background-color: #ffffff;
   border-bottom: 1px solid $color-border;
   backdrop-filter: saturate(180%) blur(12px);
 }
 
-/* ─────────────────────────────────────────────
-   Layout
-───────────────────────────────────────────── */
 .row {
   display: flex;
   align-items: center;
@@ -36,9 +29,6 @@
   white-space: nowrap;
 }
 
-/* ─────────────────────────────────────────────
-   Desktop navigation
-───────────────────────────────────────────── */
 .navDesktop {
   display: flex;
   gap: 32px;
@@ -71,9 +61,6 @@
   }
 }
 
-/* ─────────────────────────────────────────────
-   Right block
-───────────────────────────────────────────── */
 .right {
   display: flex;
   align-items: center;
@@ -81,16 +68,12 @@
   margin-left: auto;
 }
 
-/* Desktop language selector */
 .langDesktop {
   @media (max-width: 768px) {
     display: none;
   }
 }
 
-/* ─────────────────────────────────────────────
-   Mobile controls (Language + Menu)
-───────────────────────────────────────────── */
 .mobileControls {
   display: none;
 
@@ -101,15 +84,24 @@
   }
 }
 
-/* ─────────────────────────────────────────────
-   Mobile Language button (Flag)
-───────────────────────────────────────────── */
+/* ✅ Label + Language button in one row */
 .mobileLangWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   position: relative;
 }
 
+.mobileLangLabel {
+  font-size: 12px;
+  line-height: 1;
+  color: $color-text;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
 .mobileLangBtn {
-  width: 32px;
+  width: 48px;
   height: 32px;
   border-radius: 999px;
   border: 1px solid $color-border;
@@ -122,12 +114,13 @@
   padding: 0;
 }
 
-.mobileLangFlag {
-  font-size: 18px;
+.mobileLangCode {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   line-height: 1;
 }
 
-/* Language popover */
 .mobileLangPopover {
   position: absolute;
   top: calc(100% + 10px);
@@ -139,11 +132,9 @@
   border-radius: 12px;
   padding: 8px 10px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  min-width: 190px;
 }
 
-/* ─────────────────────────────────────────────
-   Burger (SVG button)
-───────────────────────────────────────────── */
 .burger {
   display: none;
 
@@ -168,9 +159,6 @@
   display: block;
 }
 
-/* ─────────────────────────────────────────────
-   Mobile menu (navigation only)
-───────────────────────────────────────────── */
 .mobileMenu {
   display: none;
 
@@ -216,9 +204,6 @@
   padding: 6px 0;
 }
 
-/* ─────────────────────────────────────────────
-   Overlay
-───────────────────────────────────────────── */
 .mobileOverlay {
   @media (max-width: 768px) {
     position: fixed;

@@ -1,9 +1,13 @@
+// src/i18n/locales/en.ts
 export const en = {
   header: {
     logo: "Retouch University",
     courses: "Courses",
     about: "About",
     contacts: "Contacts",
+
+    // ✅ NEW
+    languageSelectLabel: "Language",
   },
   footer: {
     academia: "UNIVERSITY",
@@ -63,8 +67,7 @@ export const en = {
     notFound: "Course not found.",
     tariffsTitle: "Tariffs and prices",
     faqTitle: "FAQ",
-    tariffHint:
-      "Choose a plan at the bottom of the page.",
+    tariffHint: "Choose a plan at the bottom of the page.",
     from: "from",
     buyButton: "Buy course",
     chooseTariff: "Choose a plan",
@@ -74,7 +77,6 @@ export const en = {
     singlePriceLabel: "Course price",
     howItWorksTitle: "How the course works",
     howItWorksSubtitle: "Quick overview of access, learning flow, and materials.",
-
 
     singleFeatures: {
       lessons: "Lessons",

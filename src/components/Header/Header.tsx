@@ -8,18 +8,15 @@ import styles from "./Header.module.scss";
 export const Header = () => {
   const { t, locale } = useI18n();
 
-  // ✅ меню (навігація)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // ✅ мова (окремо від меню)
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
 
   const langRef = useRef<HTMLDivElement | null>(null);
 
-  const localeFlagMap: Record<string, string> = {
-    en: "🇺🇸",
-    ua: "🇺🇦",
-    ru: "🇷🇺",
+  const localeShortMap: Record<string, string> = {
+    en: "EN",
+    ua: "UA",
+    ru: "RU",
   };
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
@@ -30,16 +27,13 @@ export const Header = () => {
     setIsMobileLangOpen(false);
   };
 
-  // Закриваємо Language popover по кліку поза ним
   useEffect(() => {
     if (!isMobileLangOpen) return;
 
     const onDown = (e: MouseEvent) => {
       if (!langRef.current) return;
       const target = e.target as Node;
-      if (!langRef.current.contains(target)) {
-        setIsMobileLangOpen(false);
-      }
+      if (!langRef.current.contains(target)) setIsMobileLangOpen(false);
     };
 
     document.addEventListener("mousedown", onDown);
@@ -50,12 +44,10 @@ export const Header = () => {
     <header className={styles.header}>
       <div className="container">
         <div className={styles.row}>
-          {/* Логотип */}
           <Link to="/" className={styles.logo} onClick={closeAllMobile}>
             {t("header.logo")}
           </Link>
 
-          {/* Десктоп-навігація */}
           <nav className={styles.navDesktop}>
             <a href="/about" className={styles.navLink}>
               {t("header.about")}
@@ -65,26 +57,28 @@ export const Header = () => {
             </a>
           </nav>
 
-          {/* Правий блок */}
           <div className={styles.right}>
-            {/* Мова в десктоп-хедері */}
             <div className={styles.langDesktop}>
               <LanguageSelector variant="header" />
             </div>
 
-            {/* ✅ Мобільні кнопки: Language + Menu */}
+            {/* Mobile controls */}
             <div className={styles.mobileControls}>
-              {/* Language button (flag) */}
+              {/* ✅ Label + Language button */}
               <div className={styles.mobileLangWrap} ref={langRef}>
+                <span className={styles.mobileLangLabel}>
+                  {t("header.languageSelectLabel")}
+                </span>
+
                 <button
                   type="button"
                   className={styles.mobileLangBtn}
                   onClick={toggleMobileLang}
-                  aria-label="Language"
+                  aria-label={t("header.languageSelectLabel")}
                   aria-expanded={isMobileLangOpen}
                 >
-                  <span className={styles.mobileLangFlag}>
-                    {localeFlagMap[locale] ?? "🇺🇸"}
+                  <span className={styles.mobileLangCode}>
+                    {localeShortMap[locale] ?? "EN"}
                   </span>
                 </button>
 
@@ -114,7 +108,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Мобільне меню (тільки навігація) */}
       <div
         className={`${styles.mobileMenu} ${
           isMobileMenuOpen ? styles.mobileMenuOpen : ""
@@ -140,7 +133,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Затемнення фону під меню */}
       {isMobileMenuOpen && (
         <div className={styles.mobileOverlay} onClick={closeAllMobile} />
       )}

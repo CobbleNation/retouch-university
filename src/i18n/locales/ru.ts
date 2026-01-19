@@ -1,9 +1,13 @@
+// src/i18n/locales/ru.ts
 export const ru = {
   header: {
     logo: "Retouch University",
     courses: "Курсы",
     about: "Про нас",
     contacts: "Контакты",
+
+    // ✅ NEW
+    languageSelectLabel: "Выбор языка",
   },
   footer: {
     academia: "UNIVERSITY",
@@ -62,8 +66,7 @@ export const ru = {
     notFound: "Курс не найден.",
     tariffsTitle: "Тарифы и цены",
     faqTitle: "Вопрос — ответ",
-    tariffHint:
-      "Выберите тариф внизу страницы.",
+    tariffHint: "Выберите тариф внизу страницы.",
     from: "от",
     buyButton: "Купить курс",
     chooseTariff: "Выберите тариф",
@@ -73,7 +76,6 @@ export const ru = {
     singlePriceLabel: "Стоимость курса",
     howItWorksTitle: "Как проходит курс",
     howItWorksSubtitle: "Коротко о доступе, порядке обучения и материалах.",
-
 
     singleFeatures: {
       lessons: "Уроки",

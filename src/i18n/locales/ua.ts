@@ -1,9 +1,13 @@
+// src/i18n/locales/ua.ts
 export const ua = {
   header: {
     logo: "Retouch University",
     courses: "Курси",
     about: "Про нас",
     contacts: "Контакти",
+
+    // ✅ NEW
+    languageSelectLabel: "Вибір мови",
   },
   footer: {
     academia: "UNIVERSITY",
@@ -62,8 +66,7 @@ export const ua = {
     notFound: "Курс не знайдено.",
     tariffsTitle: "Тарифи та ціни",
     faqTitle: "Питання — відповідь",
-    tariffHint:
-      "Оберіть тариф внизу сторінки.",
+    tariffHint: "Оберіть тариф внизу сторінки.",
     from: "від",
     buyButton: "Придбати курс",
     chooseTariff: "Оберіть тариф",
