@@ -25,9 +25,9 @@ export const Footer = () => {
               <a href="/" className={styles.menuLink}>
                 {t("footer.main")}
               </a>
-              <a href="/about" className={styles.menuLink}>
+              {/* <a href="/about" className={styles.menuLink}>
                 {t("footer.about")}
-              </a>
+              </a> */}
               <a href="/contacts" className={styles.menuLink}>
                 {t("footer.contacts")}
               </a>

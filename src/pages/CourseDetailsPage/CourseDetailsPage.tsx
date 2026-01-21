@@ -125,6 +125,16 @@ export const CourseDetailsPage = () => {
     return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ✅ Requirements block
+  const hasRequirements = (course.requirements?.length ?? 0) > 0;
+
+  const requirementsTitle =
+    locale === "en"
+      ? "For taking the course you will need"
+      : locale === "ua"
+        ? "Для проходження курсу вам знадобиться"
+        : "Для прохождения курса вам понадобится";
+
   // ✅ How it works
   const howItWorks = course.howItWorks;
   const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
@@ -198,8 +208,8 @@ export const CourseDetailsPage = () => {
     locale === "en"
       ? "Author photo"
       : locale === "ua"
-      ? "Фото автора"
-      : "Фото автора";
+        ? "Фото автора"
+        : "Фото автора";
 
   return (
     <main className={styles.page}>
@@ -270,6 +280,29 @@ export const CourseDetailsPage = () => {
           </div>
         </section>
 
+        {/* ✅ Requirements (окремий блок) */}
+        {hasRequirements && (
+          <>
+            <hr className={styles.divider} />
+
+            <section className={styles.requirementsSection}>
+              <div className={styles.requirementsLeft}>
+                <h2 className={styles.sectionTitle}>{requirementsTitle}</h2>
+              </div>
+
+              <div className={styles.requirementsRight}>
+                <ul className={styles.requirementsList}>
+                  {course.requirements!.map((req, idx) => (
+                    <li key={idx} className={styles.requirementsItem}>
+                      {req[locale]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </>
+        )}
+
         <hr className={styles.divider} />
 
         {/* ✅ AUTHOR — перед тарифами */}
@@ -279,8 +312,8 @@ export const CourseDetailsPage = () => {
               {locale === "en"
                 ? "About the author"
                 : locale === "ua"
-                ? "Про автора"
-                : "Об авторе"}
+                  ? "Про автора"
+                  : "Об авторе"}
             </h2>
 
             <div className={styles.authorCard}>
@@ -415,8 +448,8 @@ export const CourseDetailsPage = () => {
                     {locale === "en"
                       ? "How does learning work"
                       : locale === "ua"
-                      ? "Як проходить навчання"
-                      : "Как проходит обучение"}
+                        ? "Як проходить навчання"
+                        : "Как проходит обучение"}
                   </h2>
 
                   {/* intro */}
@@ -508,7 +541,9 @@ export const CourseDetailsPage = () => {
                     {program.map((step, idx) => (
                       <li key={idx} className={styles.programLesson}>
                         <span className={styles.lessonNumber}>{idx + 1}</span>
-                        <span className={styles.lessonText}>{step[locale]}</span>
+                        <span className={styles.lessonText}>
+                          {step[locale]}
+                        </span>
                       </li>
                     ))}
                   </ul>

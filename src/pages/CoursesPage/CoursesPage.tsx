@@ -13,7 +13,7 @@ export const CoursesPage = () => {
 
   const [languageFilter, setLanguageFilter] = useState<string>("all");
   const [selectedCourseSlug, setSelectedCourseSlug] = useState<string | null>(
-    null
+    null,
   );
 
   // 🔧 Поки що featured-блок вимкнений
@@ -23,8 +23,12 @@ export const CoursesPage = () => {
   // en -> тільки courseLang === "en"
   // ru/ua -> тільки courseLang !== "en"
   const localeCourses = useMemo(() => {
-    if (locale === "en") return courses.filter((c) => c.courseLang === "en");
-    return courses.filter((c) => c.courseLang !== "en");
+    const list =
+      locale === "en"
+        ? courses.filter((c) => c.courseLang === "en")
+        : courses.filter((c) => c.courseLang !== "en");
+
+    return [...list].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   }, [locale]);
 
   // ✅ 2) Скидаємо slug-фільтр при зміні мови (щоб не лишався "невидимий" slug)
@@ -62,7 +66,11 @@ export const CoursesPage = () => {
     if (!course) return;
 
     if (course.tariffs.length === 1) {
-      window.open(course.tariffs[0].paymentUrl, "_blank", "noopener,noreferrer");
+      window.open(
+        course.tariffs[0].paymentUrl,
+        "_blank",
+        "noopener,noreferrer",
+      );
       return;
     }
 

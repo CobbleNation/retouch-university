@@ -1,11 +1,10 @@
 // src/components/ContactsPage/ContactsPage.tsx
 import { useI18n } from "../../i18n";
 import styles from "./ContactsPage.module.scss";
-import { Footer } from "../Footer/Footer";
 
-const INSTAGRAM_URL = "https://instagram.com/your_username";
-const TELEGRAM_URL = "https://t.me/your_username";
-const WHATSAPP_URL = "https://wa.me/380000000000"; // заміниш на свій
+const INSTAGRAM_URL = "https://www.instagram.com/viktorkyslyi/";
+const TELEGRAM_URL = "https://t.me/retoucharchitecture";
+const WHATSAPP_URL = "https://wa.me/380954419381"; // заміниш на свій
 
 export const ContactsPage = () => {
   const { t } = useI18n();
@@ -81,8 +80,6 @@ export const ContactsPage = () => {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 };

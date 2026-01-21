@@ -31,7 +31,7 @@ export const en = {
     availableCourses: "Available courses",
     chooseLanguage: "Choose language:",
     description:
-      "ViktorKyslyi Academia is an educational platform focused on retouching and photography, providing modern practical knowledge.",
+      "Retouch University is a space for developing visual skills. The platform brings together everything that helps you create a strong visual product",
     all: "All",
     loadMore: "Load more",
     courseTitle: "Shooting architecture. Self-paced learning",
@@ -76,7 +76,8 @@ export const en = {
     programSubtitle: "12 lessons — from installation to the final workflow.",
     singlePriceLabel: "Course price",
     howItWorksTitle: "How the course works",
-    howItWorksSubtitle: "Quick overview of access, learning flow, and materials.",
+    howItWorksSubtitle:
+      "Quick overview of access, learning flow, and materials.",
 
     singleFeatures: {
       lessons: "Lessons",

@@ -49,9 +49,9 @@ export const Header = () => {
           </Link>
 
           <nav className={styles.navDesktop}>
-            <a href="/about" className={styles.navLink}>
+            {/* <a href="/about" className={styles.navLink}>
               {t("header.about")}
-            </a>
+            </a> */}
             <a href="/contacts" className={styles.navLink}>
               {t("header.contacts")}
             </a>

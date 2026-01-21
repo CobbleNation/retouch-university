@@ -41,6 +41,8 @@ export type CourseLang = "en" | "non-en";
 export type Course = {
   slug: string;
 
+  order: number;
+
   // ✅ NEW
   courseLang: CourseLang;
 
@@ -55,6 +57,8 @@ export type Course = {
   faq: CourseFaqItem[];
   imageSrc?: string;
   fullWidthImageSrc?: string;
+
+  requirements?: LocalizedString[];
 
   program?: LocalizedString[];
   programSections?: CourseProgramSection[];
@@ -71,6 +75,8 @@ const l = (ru: string, ua: string, en: string): LocalizedString => ({
 export const courses: Course[] = [
   {
     slug: "retouch-nails",
+    order: 3,
+
     imageSrc: "/images/IMG_9105.jpg",
     courseLang: "non-en",
     fullWidthImageSrc: "/images/IMG_9102.jpg",
@@ -80,7 +86,7 @@ export const courses: Course[] = [
     shortDescription: l(
       "Курс создан исключительно для Nail Stylists: научитесь делать качественные коммерческие фото ногтей, создавать портфолио и регулярно наполнять контент для соцсетей.",
       "Курс створений виключно для Nail Stylists: навчитеся робити якісні комерційні фото нігтів, створювати портфоліо та регулярно наповнювати контент для соцмереж.",
-      "Created exclusively for Nail Stylists: learn to make high-quality commercial nail photos, build a portfolio, and consistently create social media content."
+      "Created exclusively for Nail Stylists: learn to make high-quality commercial nail photos, build a portfolio, and consistently create social media content.",
     ),
 
     heroText: l(
@@ -161,37 +167,63 @@ Goal in 5–10 minutes:
 You will learn to:
 • retouch nails on your own
 • create a selling portfolio
-• make content to grow and promote your income`
+• make content to grow and promote your income`,
     ),
+
+    requirements: [
+      l(
+        "компьютер или ноутбук",
+        "компʼютер або ноутбук",
+        "a computer or laptop",
+      ),
+      l("мышь", "мишка", "a mouse"),
+      l("программа Photoshop", "програма Photoshop", "Adobe Photoshop"),
+      l("блокнот для заметок", "блокнот для нотаток", "a notebook for notes"),
+      l(
+        "доступ к курсу на 6 месяцев",
+        "доступ до курсу на 6 місяців",
+        "6 months course access",
+      ),
+      l(
+        "доступ и просмотр в любое удобное время",
+        "доступ і перегляд у будь-який зручний час",
+        "watch anytime",
+      ),
+      l(
+        "длительность уроков — 15–25 минут",
+        "тривалість уроків — 15–25 хвилин",
+        "lesson duration: 15–25 minutes",
+      ),
+    ],
 
     // ✅ Программа курса (для кожного курсу може бути своя)
     program: [
       l(
         "Вступление и установка программы Photoshop",
         "Вступ та встановлення Photoshop",
-        "Introduction & Photoshop installation"
+        "Introduction & Photoshop installation",
       ),
       l(
         "Открытие и сохранение фотографий",
         "Відкриття та збереження фотографій",
-        "Opening & saving photos"
+        "Opening & saving photos",
       ),
       l(
         "Изучение инструментов для работы",
         "Огляд інструментів для роботи",
-        "Tools overview"
+        "Tools overview",
       ),
       l(
         "Чёткость и резкость фотографий",
         "Чіткість та різкість фотографій",
-        "Sharpness & clarity"
+        "Sharpness & clarity",
       ),
       l("Цвет фотографий", "Колір фотографій", "Color correction"),
       l("Работа с дефектами", "Робота з дефектами", "Fixing imperfections"),
       l(
         "Изменение цвета ногтей",
         "Зміна кольору нігтів",
-        "Changing nail color"
+        "Changing nail color",
       ),
       l("Убирание покраснения", "Прибирання почервоніння", "Removing redness"),
       l("Изменение формы ногтя", "Зміна форми нігтя", "Changing nail shape"),
@@ -199,7 +231,7 @@ You will learn to:
       l(
         "Правильный алгоритм ретуши",
         "Правильний алгоритм ретуші",
-        "Correct retouch workflow"
+        "Correct retouch workflow",
       ),
       l("Финал. Удаление пыли", "Фінал. Видалення пилу", "Final. Dust removal"),
     ],
@@ -208,34 +240,34 @@ You will learn to:
       intro: l(
         "После оплаты на сайте www.viktorkyslyi.com вам сразу открывается доступ к курсу.",
         "Після оплати на сайті www.viktorkyslyi.com вам одразу відкривається доступ до курсу.",
-        "After payment on www.viktorkyslyi.com you get instant access to the course."
+        "After payment on www.viktorkyslyi.com you get instant access to the course.",
       ),
       steps: [
         l(
           "Зайдите в раздел «Курсы»",
           "Зайдіть у розділ «Курси»",
-          "Go to the “Courses” section"
+          "Go to the “Courses” section",
         ),
         l(
           "Выберите курс «Ретушь ногтей»",
           "Оберіть курс «Ретуш нігтів»",
-          "Select the “Nail Retouching” course"
+          "Select the “Nail Retouching” course",
         ),
         l(
           "Приступайте к обучению в удобное для вас время",
           "Починайте навчання у зручний для вас час",
-          "Start learning whenever it’s convenient for you"
+          "Start learning whenever it’s convenient for you",
         ),
       ],
       outro: l(
         "После каждого урока вас ждут домашние задания, которые помогут закрепить материал на практике.",
         "Після кожного уроку на вас чекають домашні завдання, які допоможуть закріпити матеріал на практиці.",
-        "After each lesson you’ll get homework to закрепити the material in practice."
+        "After each lesson you’ll get homework to закрепити the material in practice.",
       ),
       files: l(
         "Все необходимые файлы для работы вы найдёте в разделе «Файлы» — их можно скачать и использовать во время обучения.",
         "Усі необхідні файли для роботи ви знайдете в розділі «Файли» — їх можна завантажити та використовувати під час навчання.",
-        "All files you need are in the “Files” section — download and use them while learning."
+        "All files you need are in the “Files” section — download and use them while learning.",
       ),
     },
 
@@ -251,7 +283,7 @@ You will learn to:
         value: l(
           "Сразу после оплаты",
           "Одразу після оплати",
-          "Immediately after purchase"
+          "Immediately after purchase",
         ),
       },
       {
@@ -268,7 +300,7 @@ You will learn to:
         value: l(
           "Доступ к курсу на 6 месяцев",
           "Доступ до курсу на 6 місяців",
-          "6 months access"
+          "6 months access",
         ),
       },
       {
@@ -276,7 +308,7 @@ You will learn to:
         value: l(
           "Длительность уроков — 15–25 минут",
           "Тривалість уроків — 15–25 хвилин",
-          "Lesson duration: 15–25 minutes"
+          "Lesson duration: 15–25 minutes",
         ),
       },
       {
@@ -288,7 +320,7 @@ You will learn to:
         value: l(
           "Доступ с любого устройства",
           "Доступ з будь-якого пристрою",
-          "Access from any device"
+          "Access from any device",
         ),
       },
       {
@@ -296,7 +328,7 @@ You will learn to:
         value: l(
           "Просмотр в любое удобное время",
           "Перегляд у будь-який зручний час",
-          "Watch anytime"
+          "Watch anytime",
         ),
       },
     ],
@@ -305,7 +337,7 @@ You will learn to:
     tariffsIntro: l(
       "Выберите формат участия: базовый доступ к курсу или обучение с поддержкой куратора.",
       "Оберіть формат участі: базовий доступ до курсу або навчання з підтримкою куратора.",
-      "Choose your format: base course access or learning with curator support."
+      "Choose your format: base course access or learning with curator support.",
     ),
 
     tariffs: [
@@ -320,7 +352,7 @@ You will learn to:
         title: l(
           "Курс + поддержка куратора",
           "Курс + підтримка куратора",
-          "Course + curator support"
+          "Course + curator support",
         ),
         oldPrice: "250$",
         price: "149$",
@@ -331,7 +363,7 @@ You will learn to:
         detailsTitle: l(
           "Как проходит сопровождение куратора?",
           "Як проходить супровід куратора?",
-          "How does curator support work?"
+          "How does curator support work?",
         ),
         details: l(
           `В данном тарифе обучения включена индивидуальная работа с куратором курса.
@@ -383,7 +415,7 @@ After that, your curator will contact you.
 How the learning works:
 • After each lesson you complete homework and submit it for review.
 • You can ask your curator any questions during the learning process.
-• After finishing the lessons, the curator will help you review and refine your own photos.`
+• After finishing the lessons, the curator will help you review and refine your own photos.`,
         ),
       },
     ],
@@ -393,228 +425,228 @@ How the learning works:
         question: l(
           "Я делаю красивый маникюр, но на фото он выглядит хуже, чем в жизни — почему?",
           "Я роблю гарний манікюр, але на фото він виглядає гірше, ніж у житті — чому?",
-          "My manicure looks great in real life, but worse in photos — why?"
+          "My manicure looks great in real life, but worse in photos — why?",
         ),
         answer: l(
           "Камера усиливает покраснения, тени и мелкие дефекты, а также подчёркивает пыль и неровности. На курсе вы научитесь приводить фото к тому виду, как работа выглядит в реальности: чистый цвет, аккуратная кожа, правильная резкость и сохранение качества.",
           "Камера підсилює почервоніння, тіні та дрібні дефекти, а також підкреслює пил і нерівності. На курсі ви навчитеся приводити фото до того вигляду, як робота виглядає в реальності: чистий колір, акуратна шкіра, правильна різкість і збереження якості.",
-          "A camera can amplify redness, shadows, tiny imperfections, and even dust. In the course you’ll learn how to make your photos look like real life: clean color, neat skin, the right sharpness, and high-quality export for social media."
+          "A camera can amplify redness, shadows, tiny imperfections, and even dust. In the course you’ll learn how to make your photos look like real life: clean color, neat skin, the right sharpness, and high-quality export for social media.",
         ),
       },
       {
         question: l(
           "Что вы получите от этого курса?",
           "Що ви отримаєте від цього курсу?",
-          "What will I get from this course?"
+          "What will I get from this course?",
         ),
         answer: l(
           "Фотографии, которые привлекают клиентов и выделяют вас среди конкурентов.\n\nВы научитесь:\n• делать правильный свет и убирать пересвет\n• получать чистый цвет (без жёлтого/синего оттенка)\n• аккуратно убирать дефекты: покраснения, пыль, мелкие несовершенства\n• корректировать форму ногтей, сохраняя натуральность\n• правильно сохранять фото, чтобы не терять качество в соцсетях",
           "Фотографії, які приваблюють клієнтів і виділяють вас серед конкурентів.\n\nВи навчитеся:\n• робити правильне світло та прибирати пересвіт\n• отримувати чистий колір (без жовтого/синього відтінку)\n• акуратно прибирати дефекти: почервоніння, пил, дрібні недоліки\n• коригувати форму нігтів, зберігаючи натуральність\n• правильно зберігати фото, щоб не втрачати якість у соцмережах",
-          "Photos that attract clients and make you stand out.\n\nYou’ll learn to:\n• set the right light and remove overexposure\n• get clean color (no yellow/blue tint)\n• remove imperfections: redness, dust, tiny flaws\n• refine nail shape while keeping it natural\n• export correctly so your photos don’t lose quality on social media"
+          "Photos that attract clients and make you stand out.\n\nYou’ll learn to:\n• set the right light and remove overexposure\n• get clean color (no yellow/blue tint)\n• remove imperfections: redness, dust, tiny flaws\n• refine nail shape while keeping it natural\n• export correctly so your photos don’t lose quality on social media",
         ),
       },
       {
         question: l(
           "Почему клиенты пролистывают мои фото, хотя работы хорошие?",
           "Чому клієнти пролистують мої фото, хоча роботи хороші?",
-          "Why do clients scroll past my photos even if my work is good?"
+          "Why do clients scroll past my photos even if my work is good?",
         ),
         answer: l(
           "Потому что фото выглядят «сырыми»: неровный тон кожи, лишние оттенки, потеря качества. Чистый визуал останавливает взгляд и повышает продажи — зритель всегда смотрит на фото целиком, а не только на ногти.",
           "Тому що фото виглядають «сирими»: нерівний тон шкіри, зайві відтінки, втрата якості. Чистий візуал зупиняє погляд і підвищує продажі — глядач завжди дивиться на фото повністю, а не лише на нігті.",
-          "Because the photo can look ‘raw’: uneven skin tone, unwanted color casts, and quality loss. Clean visuals stop the scroll and sell better — viewers judge the whole image, not just the nails."
+          "Because the photo can look ‘raw’: uneven skin tone, unwanted color casts, and quality loss. Clean visuals stop the scroll and sell better — viewers judge the whole image, not just the nails.",
         ),
       },
       {
         question: l(
           "А если я куплю курс и пойму, что мне это не нужно?",
           "А якщо я куплю курс і зрозумію, що мені це не потрібно?",
-          "What if I buy the course and realize I don’t need it?"
+          "What if I buy the course and realize I don’t need it?",
         ),
         answer: l(
           "Вы сразу работаете со своими фото. Результат появляется на первых уроках — сомнения уходят сами, потому что вы видите улучшение «до/после» уже в процессе.",
           "Ви одразу працюєте зі своїми фото. Результат з’являється на перших уроках — сумніви зникають самі, бо ви бачите покращення «до/після» вже в процесі.",
-          "You start working with your own photos right away. You’ll see results in the first lessons — the before/after makes everything clear."
+          "You start working with your own photos right away. You’ll see results in the first lessons — the before/after makes everything clear.",
         ),
       },
       {
         question: l(
           "Я боюсь потратить деньги впустую",
           "Я боюся витратити гроші даремно",
-          "I’m afraid of wasting money"
+          "I’m afraid of wasting money",
         ),
         answer: l(
           "Курс короткий, прикладной и без лишней теории. Вы платите за конкретный навык, который остаётся с вами надолго и помогает выглядеть дороже в глазах клиентов.",
           "Курс короткий, прикладний і без зайвої теорії. Ви платите за конкретну навичку, яка залишається з вами надовго та допомагає виглядати дорожче в очах клієнтів.",
-          "The course is short, practical, and without unnecessary theory. You pay for a specific skill that stays with you and makes your work look more premium."
+          "The course is short, practical, and without unnecessary theory. You pay for a specific skill that stays with you and makes your work look more premium.",
         ),
       },
       {
         question: l(
           "А если у меня не получится?",
           "А якщо в мене не вийде?",
-          "What if I can’t do it?"
+          "What if I can’t do it?",
         ),
         answer: l(
           "Не получается, когда нет системы. Здесь есть чёткий алгоритм — вы просто повторяете шаги. Также есть возможность проходить курс с индивидуальным куратором.",
           "Не виходить, коли немає системи. Тут є чіткий алгоритм — ви просто повторюєте кроки. Також є можливість проходити курс з індивідуальним куратором.",
-          "It usually doesn’t work when there’s no system. Here you get a clear step-by-step workflow — you just repeat the steps. You can also take the course with personal curator support."
+          "It usually doesn’t work when there’s no system. Here you get a clear step-by-step workflow — you just repeat the steps. You can also take the course with personal curator support.",
         ),
       },
       {
         question: l(
           "Я боюсь, что это сложно и я брошу",
           "Я боюся, що це складно і я кину",
-          "I’m afraid it will be too hard and I’ll quit"
+          "I’m afraid it will be too hard and I’ll quit",
         ),
         answer: l(
           "Поэтому здесь:\n• короткие уроки\n• понятная последовательность\n• минимум инструментов\n\nБез перегруза и без «страшного Photoshop».",
           "Тому тут:\n• короткі уроки\n• зрозуміла послідовність\n• мінімум інструментів\n\nБез перевантаження і без «страшного Photoshop».",
-          "That’s why the course is built as:\n• short lessons\n• clear sequence\n• minimal tools\n\nNo overload and no ‘scary Photoshop’."
+          "That’s why the course is built as:\n• short lessons\n• clear sequence\n• minimal tools\n\nNo overload and no ‘scary Photoshop’.",
         ),
       },
       {
         question: l(
           "Подойдёт ли курс, если я никогда не открывала Photoshop?",
           "Чи підійде курс, якщо я ніколи не відкривала Photoshop?",
-          "Is it suitable if I’ve never used Photoshop before?"
+          "Is it suitable if I’ve never used Photoshop before?",
         ),
         answer: l(
           "Да. Курс создан для новичков. Мы не изучаем Photoshop «в целом», а только те инструменты, которые нужны для ретуши nail-фото.",
           "Так. Курс створений для новачків. Ми не вивчаємо Photoshop «в цілому», а лише ті інструменти, які потрібні для ретуші nail-фото.",
-          "Yes. It’s beginner-friendly. We don’t study Photoshop ‘in general’ — only the tools you need for nail photo retouching."
+          "Yes. It’s beginner-friendly. We don’t study Photoshop ‘in general’ — only the tools you need for nail photo retouching.",
         ),
       },
       {
         question: l(
           "Я снимаю на телефон, а не на камеру — это проблема?",
           "Я знімаю на телефон, а не на камеру — це проблема?",
-          "I shoot on a phone, not a camera — is that a problem?"
+          "I shoot on a phone, not a camera — is that a problem?",
         ),
         answer: l(
           "Нет. В курсе мы работаем с фото, снятыми на телефон. Вам не нужен профессиональный фотоаппарат, чтобы получить аккуратный коммерческий результат.",
           "Ні. У курсі ми працюємо з фото, знятими на телефон. Вам не потрібен професійний фотоапарат, щоб отримати акуратний комерційний результат.",
-          "No. We work with phone photos in the course. You don’t need a professional camera to get a clean commercial look."
+          "No. We work with phone photos in the course. You don’t need a professional camera to get a clean commercial look.",
         ),
       },
       {
         question: l(
           "У меня совсем плохие фото — курс поможет?",
           "У мене зовсім погані фото — курс допоможе?",
-          "My photos are really bad — will it help?"
+          "My photos are really bad — will it help?",
         ),
         answer: l(
           "Да. Курс рассчитан именно на обычные, неидеальные фото. Чем хуже исходник — тем заметнее результат после правильной обработки.",
           "Так. Курс розрахований саме на звичайні, неідеальні фото. Чим гірший вихідник — тим помітніший результат після правильної обробки.",
-          "Yes. The course is designed for normal, imperfect photos. The worse the original, the more noticeable the improvement."
+          "Yes. The course is designed for normal, imperfect photos. The worse the original, the more noticeable the improvement.",
         ),
       },
       {
         question: l(
           "Не будут ли фото выглядеть неестественно, «перефотошоплено»?",
           "Чи не будуть фото виглядати неприродно, «перефотошоплено»?",
-          "Will my photos look unnatural or over-Photoshopped?"
+          "Will my photos look unnatural or over-Photoshopped?",
         ),
         answer: l(
           "Нет. Мы убираем дефекты (пыль, царапинки, покраснения) и делаем фото коммерческим по цвету. Без ошибок, из-за которых фото выглядят ненастоящими.",
           "Ні. Ми прибираємо дефекти (пил, подряпинки, почервоніння) і робимо фото комерційним по кольору. Без помилок, через які фото виглядають «несправжніми».",
-          "No. We remove defects (dust, tiny scratches, redness) and make the color commercial and clean — without the typical mistakes that make photos look fake."
+          "No. We remove defects (dust, tiny scratches, redness) and make the color commercial and clean — without the typical mistakes that make photos look fake.",
         ),
       },
       {
         question: l(
           "Это точно курс для nail-мастеров, а не для ретушёров?",
           "Це точно курс для nail-майстрів, а не для ретушерів?",
-          "Is this really for nail artists, not retouchers?"
+          "Is this really for nail artists, not retouchers?",
         ),
         answer: l(
           "Да. Только ногти, цвет и кожа рук. Без портретов, пейзажей и лишней информации — всё под ваши задачи.",
           "Так. Лише нігті, колір і шкіра рук. Без портретів, пейзажів і зайвої інформації — все під ваші задачі.",
-          "Yes. Only nails, color, and hand skin. No portraits, landscapes, or extra topics — everything is tailored to nail photos."
+          "Yes. Only nails, color, and hand skin. No portraits, landscapes, or extra topics — everything is tailored to nail photos.",
         ),
       },
       {
         question: l(
           "Я уже пробовала фильтры — фото всё равно не выглядят дорого",
           "Я вже пробувала фільтри — фото все одно не виглядають дорого",
-          "I tried filters, but my photos still don’t look premium"
+          "I tried filters, but my photos still don’t look premium",
         ),
         answer: l(
           "Фильтры не работают с деталями: покраснениями, дефектами, пылью, оттенками кожи. На курсе вы понимаете, что и зачем корректируется, а не просто накладываете эффект.",
           "Фільтри не працюють з деталями: почервонінням, дефектами, пилом, відтінками шкіри. На курсі ви розумієте, що і навіщо коригується, а не просто накладаєте ефект.",
-          "Filters don’t fix details: redness, dust, imperfections, skin tone shifts. In the course you learn what to adjust and why — not just apply an effect."
+          "Filters don’t fix details: redness, dust, imperfections, skin tone shifts. In the course you learn what to adjust and why — not just apply an effect.",
         ),
       },
       {
         question: l(
           "Сколько времени занимает обработка одного фото после курса?",
           "Скільки часу займає обробка одного фото після курсу?",
-          "How long does it take to edit one photo after the course?"
+          "How long does it take to edit one photo after the course?",
         ),
         answer: l(
           "5–10 минут, а не часы. Вы работаете быстро и уверенно по понятной схеме.",
           "5–10 хвилин, а не години. Ви працюєте швидко й упевнено за зрозумілою схемою.",
-          "About 5–10 minutes, not hours. You’ll work fast and confidently with a clear workflow."
+          "About 5–10 minutes, not hours. You’ll work fast and confidently with a clear workflow.",
         ),
       },
       {
         question: l(
           "Реально ли ретушь помогает привлекать клиентов?",
           "Чи реально ретуш допомагає залучати клієнтів?",
-          "Does retouching really help attract clients?"
+          "Does retouching really help attract clients?",
         ),
         answer: l(
           "Да. Красивое фото = доверие = записи. Фото начинают продавать без слов — клиенту легче выбрать вас.",
           "Так. Гарне фото = довіра = записи. Фото починають продавати без слів — клієнту легше обрати саме вас.",
-          "Yes. Great photos = trust = bookings. Your photos start selling without words — it becomes easier for clients to choose you."
+          "Yes. Great photos = trust = bookings. Your photos start selling without words — it becomes easier for clients to choose you.",
         ),
       },
       {
         question: l(
           "Подойдёт ли курс, если я только начинаю карьеру?",
           "Чи підійде курс, якщо я тільки починаю кар’єру?",
-          "Is it good if I’m just starting my career?"
+          "Is it good if I’m just starting my career?",
         ),
         answer: l(
           "Да. Это сильный старт: вы сразу выделитесь среди конкурентов и сможете показывать работы на уровне, который вызывает доверие.",
           "Так. Це сильний старт: ви одразу виділитесь серед конкурентів і зможете показувати роботи на рівні, який викликає довіру.",
-          "Yes. It’s a strong start: you’ll stand out right away and present your work in a way that builds trust."
+          "Yes. It’s a strong start: you’ll stand out right away and present your work in a way that builds trust.",
         ),
       },
       {
         question: l(
           "А если я уже опытный мастер?",
           "А якщо я вже досвідчений майстер?",
-          "What if I’m already an experienced nail artist?"
+          "What if I’m already an experienced nail artist?",
         ),
         answer: l(
           "Опыт ≠ сильный визуал. Курс помогает убрать типичные ошибки даже у мастеров с опытом: цвет, кожа, качество, детали.",
           "Досвід ≠ сильний візуал. Курс допомагає прибрати типові помилки навіть у майстрів з досвідом: колір, шкіра, якість, деталі.",
-          "Experience ≠ strong visuals. The course helps remove common mistakes even for experienced artists: color, skin, quality, and details."
+          "Experience ≠ strong visuals. The course helps remove common mistakes even for experienced artists: color, skin, quality, and details.",
         ),
       },
       {
         question: l(
           "Я хочу брать дороже, но боюсь",
           "Я хочу брати дорожче, але боюся",
-          "I want to charge more, but I’m afraid"
+          "I want to charge more, but I’m afraid",
         ),
         answer: l(
           "Клиенты легче принимают цену, когда фото выглядят уверенно и профессионально. Сильный визуал делает вашу работу «дороже» в восприятии.",
           "Клієнти легше приймають ціну, коли фото виглядають впевнено й професійно. Сильний візуал робить вашу роботу «дорожчою» у сприйнятті.",
-          "Clients accept higher prices more easily when your photos look confident and professional. Strong visuals increase perceived value."
+          "Clients accept higher prices more easily when your photos look confident and professional. Strong visuals increase perceived value.",
         ),
       },
       {
         question: l(
           "Что будет, если я ничего не изменю?",
           "Що буде, якщо я нічого не зміню?",
-          "What happens if I don’t change anything?"
+          "What happens if I don’t change anything?",
         ),
         answer: l(
           "Фото останутся слабым звеном, даже если маникюр отличный. Клиенты продолжают выбирать глазами — и вы теряете заявки просто из-за визуала.",
           "Фото залишаться слабкою ланкою, навіть якщо манікюр чудовий. Клієнти продовжують обирати очима — і ви втрачаєте заявки просто через візуал.",
-          "Your photos will remain the weak link even if your manicure is perfect. Clients choose with their eyes — and you may lose bookings just because of the visuals."
+          "Your photos will remain the weak link even if your manicure is perfect. Clients choose with their eyes — and you may lose bookings just because of the visuals.",
         ),
       },
     ],
@@ -622,6 +654,8 @@ How the learning works:
 
   {
     slug: "color-architecture",
+    order: 2,
+
     imageSrc: "/images/color-architecture/arch-color.jpg",
     fullWidthImageSrc: "",
     courseLang: "non-en",
@@ -629,9 +663,9 @@ How the learning works:
     subtitle: l("На русском", "На російській", "On russian"),
 
     shortDescription: l(
-      "Курс про колір: зрозуміти як він працює, освоїти професійні техніки та навчитися робити привабливий, “дорогий” колір на реальних фото студентів.",
+      "Курс про цвет: понять как он работает, освоить профессиональные техники и научиться делать привлекательный, «дорогой» цвет на реальных фотографиях студентов",
       "Курс про колір: зрозуміти як він працює, опанувати професійні техніки та навчитися робити привабливий, “дорогий” колір на реальних фото студентів.",
-      "A color course to understand how color works, master pro techniques, and create attractive, professional color using real student photos."
+      "A color course to understand how color works, master pro techniques, and create attractive, professional color using real student photos.",
     ),
 
     heroText: l(
@@ -694,7 +728,7 @@ Student photo reviews. Color practice using your own images.
 • Module 2 — Pro techniques
 • Module 3 — Practice
 
-Live sessions: color grading your photos.`
+Live sessions: color grading your photos.`,
     ),
 
     // ✅ Программа курса
@@ -703,7 +737,7 @@ Live sessions: color grading your photos.`
         title: l(
           "Модуль 1 — Теория цвета",
           "Модуль 1 — Теорія кольору",
-          "Module 1 — Color theory"
+          "Module 1 — Color theory",
         ),
         lessons: [
           l("Вступление", "Вступ", "Introduction"),
@@ -713,22 +747,22 @@ Live sessions: color grading your photos.`
           l(
             "Правило трёх цветов",
             "Правило трьох кольорів",
-            "The rule of three colors"
+            "The rule of three colors",
           ),
           l(
             "Цвет во время съёмки",
             "Колір під час зйомки",
-            "Color during shooting"
+            "Color during shooting",
           ),
           l(
             "Цвет для мастеров бьюти-индустрии",
             "Колір для б’юті-майстрів",
-            "Color for beauty industry"
+            "Color for beauty industry",
           ),
           l(
             "Тренировка видения цвета",
             "Тренування бачення кольору",
-            "Training your color vision"
+            "Training your color vision",
           ),
           l("Прямой эфир", "Прямий ефір", "Live session"),
         ],
@@ -737,34 +771,34 @@ Live sessions: color grading your photos.`
         title: l(
           "Модуль 2 — Профессиональные техники цвета",
           "Модуль 2 — Професійні техніки",
-          "Module 2 — Pro techniques"
+          "Module 2 — Pro techniques",
         ),
         lessons: [
           l(
             "Профессиональные техники цвета — часть 1",
             "Професійні техніки кольору — частина 1",
-            "Pro color techniques — part 1"
+            "Pro color techniques — part 1",
           ),
           l(
             "Профессиональные техники цвета — часть 2",
             "Професійні техніки кольору — частина 2",
-            "Pro color techniques — part 2"
+            "Pro color techniques — part 2",
           ),
           l(
             "Профессиональные техники цвета — часть 3",
             "Професійні техніки кольору — частина 3",
-            "Pro color techniques — part 3"
+            "Pro color techniques — part 3",
           ),
           l("Практика на фото", "Практика на фото", "Practice on photos"),
           l(
             "Скорость работы с цветом",
             "Швидкість роботи з кольором",
-            "Speed workflow for color"
+            "Speed workflow for color",
           ),
           l(
             "Технические детали цвета",
             "Технічні деталі кольору",
-            "Technical details of color"
+            "Technical details of color",
           ),
           l("Практика на фото", "Практика на фото", "Practice on photos"),
           l("Практика на фото", "Практика на фото", "Practice on photos"),
@@ -775,7 +809,7 @@ Live sessions: color grading your photos.`
         title: l(
           "Модуль 3 — Практика",
           "Модуль 3 — Практика",
-          "Module 3 — Practice"
+          "Module 3 — Practice",
         ),
         lessons: [
           l("Прямой эфир", "Прямий ефір", "Live session"),
@@ -809,7 +843,7 @@ Live sessions: color grading your photos.`
         value: l(
           "Доступ к курсу на 6 месяцев",
           "Доступ до курсу на 6 місяців",
-          "6 months access"
+          "6 months access",
         ),
       },
       {
@@ -817,7 +851,7 @@ Live sessions: color grading your photos.`
         value: l(
           "Длительность курса — 1 месяц. + 3 прямых эфира",
           "Тривалість курсу — 1 місяць. + 3 прямі ефіри",
-          "Course length — 1 month + 3 live sessions"
+          "Course length — 1 month + 3 live sessions",
         ),
       },
       {
@@ -825,7 +859,7 @@ Live sessions: color grading your photos.`
         value: l(
           "Photoshop / Lightroom",
           "Photoshop / Lightroom",
-          "Photoshop / Lightroom"
+          "Photoshop / Lightroom",
         ),
       },
       {
@@ -833,7 +867,7 @@ Live sessions: color grading your photos.`
         value: l(
           "Доступ с любого устройства",
           "Доступ з будь-якого пристрою",
-          "Access from any device"
+          "Access from any device",
         ),
       },
       {
@@ -841,7 +875,7 @@ Live sessions: color grading your photos.`
         value: l(
           "Просмотр в любое удобное время",
           "Перегляд у будь-який зручний час",
-          "Watch anytime"
+          "Watch anytime",
         ),
       },
     ],
@@ -849,7 +883,7 @@ Live sessions: color grading your photos.`
     tariffsIntro: l(
       "Выберите формат участия. Уроки в записи + прямые эфиры с разбором ваших фото. Доступ к материалам — 6 месяцев.",
       "Оберіть формат участі. Уроки в записі + прямі ефіри з розбором ваших фото. Доступ до матеріалів — 6 місяців.",
-      "Choose your format. Recorded lessons + live sessions with feedback on your photos. Access — 6 months."
+      "Choose your format. Recorded lessons + live sessions with feedback on your photos. Access — 6 months.",
     ),
 
     tariffs: [
@@ -872,192 +906,192 @@ Live sessions: color grading your photos.`
         question: l(
           "Зачем мне изучать цвет?",
           "Навіщо мені вивчати колір?",
-          "Why should I study color?"
+          "Why should I study color?",
         ),
         answer: l(
           "Работа с цветом — один из главных навыков не только в ретуши, но и в любом виде искусства.\nЦвет — сложная тема, но именно он делает работу живой, выразительной и профессиональной.\n\nПонимание цвета поможет вывести ваши работы на новый уровень, увеличить узнаваемость (популярность) и влюбить в себя зрителей и клиентов.",
           "Робота з кольором — один із головних навичок не лише в ретуші, а й у будь-якому виді мистецтва.\nКолір — складна тема, але саме він робить роботу живою, виразною та професійною.\n\nРозуміння кольору допоможе вивести ваші роботи на новий рівень, підвищити впізнаваність (популярність) і закохати в себе глядачів та клієнтів.",
-          "Color is one of the key skills not only in retouching but in any kind of art.\nIt can be complex, but it’s exactly what makes work feel alive, expressive, and professional.\n\nUnderstanding color helps you level up your results, increase recognition, and make viewers and clients fall in love with your work."
+          "Color is one of the key skills not only in retouching but in any kind of art.\nIt can be complex, but it’s exactly what makes work feel alive, expressive, and professional.\n\nUnderstanding color helps you level up your results, increase recognition, and make viewers and clients fall in love with your work.",
         ),
       },
       {
         question: l(
           "Если у меня мало времени на обучение?",
           "Якщо в мене мало часу на навчання?",
-          "What if I don’t have much time to study?"
+          "What if I don’t have much time to study?",
         ),
         answer: l(
           "Курс в записи — учиться можно в любое удобное время.\nДоступ к материалам открыт до лета.\n\nПрямые эфиры тоже доступны в записи.\nЕсли вы не сможете присутствовать на эфире, можно заранее отправить мне вопросы и фото для ретуши.",
           "Курс у записі — навчатися можна в будь-який зручний час.\nДоступ до матеріалів відкритий до літа.\n\nПрямі ефіри також доступні у записі.\nЯкщо ви не зможете бути на ефірі, можна заздалегідь надіслати мені запитання та фото для ретуші.",
-          "The course is recorded, so you can learn anytime.\nAccess to materials is available until summer.\n\nLive sessions are also available as recordings.\nIf you can’t attend live, you can send your questions and photos for review in advance."
+          "The course is recorded, so you can learn anytime.\nAccess to materials is available until summer.\n\nLive sessions are also available as recordings.\nIf you can’t attend live, you can send your questions and photos for review in advance.",
         ),
       },
       {
         question: l(
           "Как часто проходит этот курс?",
           "Як часто проходить цей курс?",
-          "How often does this course run?"
+          "How often does this course run?",
         ),
         answer: l(
           "Курс проводится редко — один или два раза в год.\n\nНо чем раньше вы получите эти знания и начнёте практиковаться, тем быстрее сможете достичь результата. Не теряйте своё время.",
           "Курс проводиться рідко — один або два рази на рік.\n\nАле чим раніше ви отримаєте ці знання й почнете практикуватися, тим швидше досягнете результату. Не втрачайте свій час.",
-          "The course runs rarely — once or twice a year.\n\nThe sooner you get these skills and start practicing, the faster you’ll see results. Don’t waste your time."
+          "The course runs rarely — once or twice a year.\n\nThe sooner you get these skills and start practicing, the faster you’ll see results. Don’t waste your time.",
         ),
       },
       {
         question: l(
           "Что за курс по Reels?",
           "Що за курс по Reels?",
-          "What is the Reels course?"
+          "What is the Reels course?",
         ),
         answer: l(
           "В данный момент короткие видео — главный инструмент продвижения и продаж в соцсетях.\n\nКурс по Reels состоит из 8 уроков:\n• как снимать;\n• как монтировать;\n• алгоритмы соцсетей;\n• и многое другое.",
           "Зараз короткі відео — головний інструмент просування та продажів у соцмережах.\n\nКурс по Reels складається з 8 уроків:\n• як знімати;\n• як монтувати;\n• алгоритми соцмереж;\n• та багато іншого.",
-          "Short videos are currently the main tool for promotion and sales on social media.\n\nThe Reels course includes 8 lessons:\n• how to shoot;\n• how to edit;\n• social media algorithms;\n• and much more."
+          "Short videos are currently the main tool for promotion and sales on social media.\n\nThe Reels course includes 8 lessons:\n• how to shoot;\n• how to edit;\n• social media algorithms;\n• and much more.",
         ),
       },
       {
         question: l(
           "Чем этот курс отличается от бесплатных уроков на YouTube?",
           "Чим цей курс відрізняється від безкоштовних уроків на YouTube?",
-          "How is this different from free YouTube tutorials?"
+          "How is this different from free YouTube tutorials?",
         ),
         answer: l(
           "Бесплатные уроки дают случайные советы.\nЭтот курс даёт полную систему — от теории до практики.\n\nВы получите понятные объяснения:\n• как работает восприятие цвета;\n• как применять это в обработке;\n• какие профессиональные техники реально дают результат.",
           "Безкоштовні уроки дають випадкові поради.\nЦей курс дає повну систему — від теорії до практики.\n\nВи отримаєте зрозумілі пояснення:\n• як працює сприйняття кольору;\n• як застосовувати це в обробці;\n• які професійні техніки реально дають результат.",
-          "Free tutorials often give random tips.\nThis course gives you a complete system — from theory to practice.\n\nYou’ll clearly understand:\n• how color perception works;\n• how to apply it in editing;\n• which professional techniques truly deliver results."
+          "Free tutorials often give random tips.\nThis course gives you a complete system — from theory to practice.\n\nYou’ll clearly understand:\n• how color perception works;\n• how to apply it in editing;\n• which professional techniques truly deliver results.",
         ),
       },
       {
         question: l(
           "Я уже работаю с цветом. Смогу ли я узнать что-то новое?",
           "Я вже працюю з кольором. Чи дізнаюся я щось нове?",
-          "I already work with color. Will I learn something new?"
+          "I already work with color. Will I learn something new?",
         ),
         answer: l(
           "Да.\nЯ изучаю цвет на практике уже более 16 лет.\n\nКурс — это не только техники, но и понимание и видение цвета:\nкак он устроен, как работает и как принимать правильные решения быстрее.",
           "Так.\nЯ вивчаю колір на практиці вже понад 16 років.\n\nКурс — це не лише техніки, а й розуміння та бачення кольору:\nяк він влаштований, як працює і як швидше приймати правильні рішення.",
-          "Yes.\nI’ve been studying and practicing color for over 16 years.\n\nThis course is not only about techniques — it’s about understanding and seeing color:\nhow it works and how to make better decisions faster."
+          "Yes.\nI’ve been studying and practicing color for over 16 years.\n\nThis course is not only about techniques — it’s about understanding and seeing color:\nhow it works and how to make better decisions faster.",
         ),
       },
       {
         question: l(
           "Как долго у меня будет доступ к курсу?",
           "Як довго в мене буде доступ до курсу?",
-          "How long will I have access?"
+          "How long will I have access?",
         ),
         answer: l(
           "Полный доступ к материалам курса сохраняется в течение 6 месяцев.",
           "Повний доступ до матеріалів курсу зберігається протягом 6 місяців.",
-          "Full access to the course materials is available for 6 months."
+          "Full access to the course materials is available for 6 months.",
         ),
       },
       {
         question: l(
           "Курс только по теории или есть практика?",
           "Курс лише по теорії чи є практика?",
-          "Is it theory only or do we practice?"
+          "Is it theory only or do we practice?",
         ),
         answer: l(
           "Курс включает и теорию, и практические уроки.\nЯ показываю, как работаю с цветом на реальных примерах.\n\nВы сможете скачать эти же фотографии, чтобы практиковаться самостоятельно.",
           "Курс включає і теорію, і практичні уроки.\nЯ показую, як працюю з кольором на реальних прикладах.\n\nВи зможете скачати ці ж фотографії, щоб практикуватися самостійно.",
-          "The course includes both theory and practice.\nI show my workflow on real examples.\n\nYou can download the same photos to practice on your own."
+          "The course includes both theory and practice.\nI show my workflow on real examples.\n\nYou can download the same photos to practice on your own.",
         ),
       },
       {
         question: l(
           "Будет ли обратная связь во время курса?",
           "Чи буде зворотний зв’язок під час курсу?",
-          "Will there be feedback during the course?"
+          "Will there be feedback during the course?",
         ),
         answer: l(
           "Да.\nПрямые эфиры — один из способов задавать вопросы и общаться.\n\nТакже при необходимости можно купить поддержку куратора — она включает индивидуальную обратную связь.",
           "Так.\nПрямі ефіри — один із способів ставити запитання та спілкуватися.\n\nТакож за потреби можна купити підтримку куратора — вона включає індивідуальний фідбек.",
-          "Yes.\nLive sessions are a way to ask questions and communicate.\n\nIf needed, you can also purchase curator support with individual feedback."
+          "Yes.\nLive sessions are a way to ask questions and communicate.\n\nIf needed, you can also purchase curator support with individual feedback.",
         ),
       },
       {
         question: l(
           "Можно ли проходить курс на телефоне или планшете?",
           "Чи можна проходити курс на телефоні або планшеті?",
-          "Can I take the course on a phone or tablet?"
+          "Can I take the course on a phone or tablet?",
         ),
         answer: l(
           "Да, все уроки доступны на любом устройстве с подключением к интернету.",
           "Так, усі уроки доступні на будь-якому пристрої з підключенням до інтернету.",
-          "Yes, all lessons are available on any device with internet access."
+          "Yes, all lessons are available on any device with internet access.",
         ),
       },
       {
         question: l(
           "Сколько времени занимает прохождение курса?",
           "Скільки часу займає проходження курсу?",
-          "How long does it take to complete the course?"
+          "How long does it take to complete the course?",
         ),
         answer: l(
           "Уроки короткие — примерно 10–30 минут каждый.\nВы можете учиться в своём темпе.\n\nДлительность курса — 1 месяц.\nОбщее время всех уроков — примерно 400 минут.\nТакже включены домашние задания.",
           "Уроки короткі — приблизно 10–30 хвилин кожен.\nВи можете навчатися у своєму темпі.\n\nТривалість курсу — 1 місяць.\nЗагальний час усіх уроків — приблизно 400 хвилин.\nТакож є домашні завдання.",
-          "Lessons are short — around 10–30 minutes each.\nYou can learn at your own pace.\n\nCourse duration is 1 month.\nTotal lesson time is about 400 minutes.\nHomework assignments are included."
+          "Lessons are short — around 10–30 minutes each.\nYou can learn at your own pace.\n\nCourse duration is 1 month.\nTotal lesson time is about 400 minutes.\nHomework assignments are included.",
         ),
       },
       {
         question: l(
           "Если я куплю курс сейчас, когда он начнётся?",
           "Якщо я куплю курс зараз, коли він почнеться?",
-          "If I buy now, when does it start?"
+          "If I buy now, when does it start?",
         ),
         answer: l(
           "Старт курса — 1 декабря.",
           "Старт курсу — 1 грудня.",
-          "The course starts on December 1."
+          "The course starts on December 1.",
         ),
       },
       {
         question: l(
           "Какое программное обеспечение мне понадобится?",
           "Яке програмне забезпечення мені знадобиться?",
-          "What software do I need?"
+          "What software do I need?",
         ),
         answer: l(
           "Вы можете проходить курс с телефона — теория охватывает общие знания о цвете.\n\nВо втором модуле начинаются профессиональные техники ретуши — для них потребуется любая версия Photoshop на компьютере.",
           "Ви можете проходити курс з телефона — теорія охоплює загальні знання про колір.\n\nУ другому модулі починаються професійні техніки ретуші — для них потрібна будь-яка версія Photoshop на комп’ютері.",
-          "You can take the course on your phone — the theory covers general color knowledge.\n\nIn module two you’ll use professional retouching techniques, which require any version of Photoshop on a computer."
+          "You can take the course on your phone — the theory covers general color knowledge.\n\nIn module two you’ll use professional retouching techniques, which require any version of Photoshop on a computer.",
         ),
       },
       {
         question: l(
           "Я фотограф и не всегда занимаюсь ретушью сам. Есть ли смысл проходить курс?",
           "Я фотограф і не завжди роблю ретуш сам. Чи є сенс проходити курс?",
-          "I’m a photographer and don’t always retouch myself. Is this course still useful?"
+          "I’m a photographer and don’t always retouch myself. Is this course still useful?",
         ),
         answer: l(
           "Конечно.\nКурс посвящён цвету в фотографии.\n\nЕсть отдельные уроки о работе с цветом на съёмочной площадке:\n• как настраивать фотоаппарат;\n• как работать с цветом и светом.\n\nТакже вы сможете чётко объяснять свои пожелания ретушёрам.",
           "Звісно.\nКурс присвячений кольору у фотографії.\n\nЄ окремі уроки про колір на знімальному майданчику:\n• як налаштовувати фотоапарат;\n• як працювати з кольором і світлом.\n\nТакож ви зможете чітко пояснювати свої побажання ретушерам.",
-          "Absolutely.\nThe course focuses on color in photography.\n\nThere are lessons about working with color on set:\n• camera settings;\n• how to handle color and light.\n\nYou’ll also be able to communicate your color goals clearly to retouchers."
+          "Absolutely.\nThe course focuses on color in photography.\n\nThere are lessons about working with color on set:\n• camera settings;\n• how to handle color and light.\n\nYou’ll also be able to communicate your color goals clearly to retouchers.",
         ),
       },
       {
         question: l(
           "Я визажист/стилист. Зачем мне этот курс?",
           "Я візажист/стиліст. Навіщо мені цей курс?",
-          "I’m a makeup artist/stylist. Why do I need this?"
+          "I’m a makeup artist/stylist. Why do I need this?",
         ),
         answer: l(
           "Есть отдельный урок по цвету для мастеров Beauty индустрии (визажистов, стилистов и др.).\nНемного поговорим про фотографию на телефон.\n\nКогда вы понимаете, как цвет работает в постобработке, вы можете принимать более точные решения на съёмочной площадке.\nЭто экономит время всей команды и улучшает конечный результат.\n\nМы также рассматриваем восприятие цвета в целом — как цвет работает, как его видят люди и как использовать эти знания в творческом процессе.",
           "Є окремий урок про колір для майстрів beauty-індустрії (візажистів, стилістів тощо).\nТрохи поговоримо про фото на телефон.\n\nКоли ви розумієте, як колір працює в постобробці, ви можете приймати точніші рішення на знімальному майданчику.\nЦе економить час команди та покращує фінальний результат.\n\nТакож ми розглядаємо сприйняття кольору загалом — як колір працює, як його бачать люди і як використовувати ці знання у творчому процесі.",
-          "There’s a dedicated lesson about color for beauty industry professionals (makeup artists, stylists, etc.). We’ll also touch on phone photography.\n\nWhen you understand how color works in post-production, you make better decisions on set, save the team’s time, and improve the final result.\n\nWe also cover color perception — how people see color and how to use this knowledge creatively."
+          "There’s a dedicated lesson about color for beauty industry professionals (makeup artists, stylists, etc.). We’ll also touch on phone photography.\n\nWhen you understand how color works in post-production, you make better decisions on set, save the team’s time, and improve the final result.\n\nWe also cover color perception — how people see color and how to use this knowledge creatively.",
         ),
       },
       {
         question: l(
           "Курс только для ретушёров beauty?",
           "Курс лише для beauty-ретушерів?",
-          "Is the course only for beauty retouchers?"
+          "Is the course only for beauty retouchers?",
         ),
         answer: l(
           "Нет.\nТеория цвета применима ко всему.\n\nBeauty-фотографии — главные примеры, но все техники работают в любых жанрах:\n• портрет;\n• fashion;\n• свадьбы;\n• лайфстайл;\n• предметная съёмка и др.\n\nМы даже разбираем примеры пейзажной фотографии.",
           "Ні.\nТеорія кольору застосовується всюди.\n\nBeauty-фото — основні приклади, але техніки працюють у будь-яких жанрах:\n• портрет;\n• fashion;\n• весілля;\n• лайфстайл;\n• предметна зйомка тощо.\n\nМи навіть розбираємо приклади пейзажної фотографії.",
-          "No.\nColor theory applies to everything.\n\nBeauty photography is the main example, but the techniques work in any genre:\n• portrait;\n• fashion;\n• weddings;\n• lifestyle;\n• product photography, etc.\n\nWe even analyze landscape photo examples."
+          "No.\nColor theory applies to everything.\n\nBeauty photography is the main example, but the techniques work in any genre:\n• portrait;\n• fashion;\n• weddings;\n• lifestyle;\n• product photography, etc.\n\nWe even analyze landscape photo examples.",
         ),
       },
     ],
@@ -1065,24 +1099,25 @@ Live sessions: color grading your photos.`
 
   {
     slug: "color-architecture-en",
-    imageSrc: "/images/color-architecture/arch-color.jpg",
+    order: 2,
+    imageSrc: "/images/color-architecture/color-architecture-eng.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",
     title: l(
       "Архитектура Цвета (EN)",
       "Архітектура Кольору (EN)",
-      "Color Architecture (EN)"
+      "Color Architecture (EN)",
     ),
     subtitle: l(
       "Курс на английском",
       "Курс англійською",
-      "The course is in ENGLISH"
+      "The course is in ENGLISH",
     ),
 
     shortDescription: l(
       "Курс про цвет: научитесь видеть, понимать и контролировать цвет, добиваться чистых skin tones и делать идеальный цвет за 2–5 минут.",
       "Курс про колір: навчишся бачити, розуміти та контролювати колір, робити чисті відтінки шкіри й отримувати ідеальний колір за 2–5 хвилин.",
-      "Learn to see, understand, and control color. Fix skin tones, stop guessing, and create perfect color in 2–5 minutes."
+      "Learn to see, understand, and control color. Fix skin tones, stop guessing, and create perfect color in 2–5 minutes.",
     ),
 
     heroText: l(
@@ -1167,7 +1202,7 @@ After the course you’ll:
 • Understand how your clients actually see the color in your work
 
 Additional block — 5 practical lessons.
-Real examples. Real color. Real inspiration.`
+Real examples. Real color. Real inspiration.`,
     ),
 
     // ✅ 14 lessons across 2 modules
@@ -1176,29 +1211,29 @@ Real examples. Real color. Real inspiration.`
         title: l(
           "Модуль 1 — Теория цвета",
           "Модуль 1 — Теорія кольору",
-          "Module 1 — Color Theory"
+          "Module 1 — Color Theory",
         ),
         lessons: [
           l("Введение", "Вступ", "Introduction (Course goals and objectives)"),
           l(
             "Урок 1 — Основы цвета",
             "Урок 1 — Основи кольору",
-            "Lesson 1 — Color Basics"
+            "Lesson 1 — Color Basics",
           ),
           l(
             "Урок 2 — Цвет в фотографии",
             "Урок 2 — Колір у фотографії",
-            "Lesson 2 — Color in Photography"
+            "Lesson 2 — Color in Photography",
           ),
           l(
             "Урок 3 — Восприятие цвета",
             "Урок 3 — Сприйняття кольору",
-            "Lesson 3 — Color Perception"
+            "Lesson 3 — Color Perception",
           ),
           l(
             "Урок 4 — Правило чистого цвета (Three-Color Rule)",
             "Урок 4 — Правило чистого кольору (Three-Color Rule)",
-            "Lesson 4 — The Rule of Pure Color (Three-Color Rule)"
+            "Lesson 4 — The Rule of Pure Color (Three-Color Rule)",
           ),
         ],
       },
@@ -1206,41 +1241,41 @@ Real examples. Real color. Real inspiration.`
         title: l(
           "Модуль 2 — Профессиональные техники и практика",
           "Модуль 2 — Професійні техніки та практика",
-          "Module 2 — Professional Techniques & Practice"
+          "Module 2 — Professional Techniques & Practice",
         ),
         lessons: [
           l(
             "Урок 5 — Профессиональные техники (часть 1)",
             "Урок 5 — Професійні техніки (частина 1)",
-            "Lesson 5 — Professional Techniques (Part 1)"
+            "Lesson 5 — Professional Techniques (Part 1)",
           ),
           l(
             "Урок 6 — Профессиональные техники (часть 2)",
             "Урок 6 — Професійні техніки (частина 2)",
-            "Lesson 6 — Professional Techniques (Part 2)"
+            "Lesson 6 — Professional Techniques (Part 2)",
           ),
           l(
             "Урок 7 — Профессиональные техники (часть 3)",
             "Урок 7 — Професійні техніки (частина 3)",
-            "Lesson 7 — Professional Techniques (Part 3)"
+            "Lesson 7 — Professional Techniques (Part 3)",
           ),
           l("Урок 8 — Практика", "Урок 8 — Практика", "Lesson 8 — Practice"),
           l(
             "Урок 9 — Цвет и текстура кожи",
             "Урок 9 — Колір і текстура шкіри",
-            "Lesson 9 — Working with Skin Color and Texture"
+            "Lesson 9 — Working with Skin Color and Texture",
           ),
           l(
             "Урок 10 — Ускоряем работу с цветом",
             "Урок 10 — Прискорюємо роботу з кольором",
-            "Lesson 10 — Speeding Up Color Work"
+            "Lesson 10 — Speeding Up Color Work",
           ),
           l("Урок 11 — Практика", "Урок 11 — Практика", "Lesson 11 — Practice"),
           l("Урок 12 — Практика", "Урок 12 — Практика", "Lesson 12 — Practice"),
           l(
             "Урок 13 — Технические детали и финал",
             "Урок 13 — Технічні деталі та фінал",
-            "Lesson 13 — Technical Details & Final"
+            "Lesson 13 — Technical Details & Final",
           ),
         ],
       },
@@ -1258,7 +1293,7 @@ Real examples. Real color. Real inspiration.`
         value: l(
           "Сразу после оплаты",
           "Одразу після оплати",
-          "Immediately after purchase"
+          "Immediately after purchase",
         ),
       },
       {
@@ -1274,7 +1309,7 @@ Real examples. Real color. Real inspiration.`
         value: l(
           "Доступ к курсу на 6 месяцев",
           "Доступ до курсу на 6 місяців",
-          "6 months access"
+          "6 months access",
         ),
       },
       {
@@ -1286,7 +1321,7 @@ Real examples. Real color. Real inspiration.`
         value: l(
           "Доступ с любого устройства",
           "Доступ з будь-якого пристрою",
-          "Access from any device"
+          "Access from any device",
         ),
       },
       {
@@ -1294,7 +1329,7 @@ Real examples. Real color. Real inspiration.`
         value: l(
           "Просмотр в любое удобное время",
           "Перегляд у будь-який зручний час",
-          "Watch anytime"
+          "Watch anytime",
         ),
       },
     ],
@@ -1302,7 +1337,7 @@ Real examples. Real color. Real inspiration.`
     tariffsIntro: l(
       "Специальная цена запуска. Курс на английском + озвучка на нескольких языках.",
       "Спеціальна ціна запуску. Курс англійською + озвучка кількома мовами.",
-      "Special launch price. English course + voice-over in multiple languages."
+      "Special launch price. English course + voice-over in multiple languages.",
     ),
 
     tariffs: [
@@ -1321,12 +1356,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Почему курс стоит так дёшево?",
           "Чому курс коштує так дешево?",
-          "Why is it so cheap?"
+          "Why is it so cheap?",
         ),
         answer: l(
           "Цена символическая.\n\nНаша цель — сделать эти знания доступными как можно большему количеству людей. Ценность информации в этом курсе во много раз превышает его стоимость.\n\nЭтот курс также является частью большой обучающей системы — полноценной программы по ретуши. Мы хотим, чтобы больше людей познакомились с нашим подходом и качеством, а если вам понравится — вы сможете продолжить обучение в полной программе.",
           "Ціна символічна.\n\nНаша мета — зробити ці знання доступними для якомога більшої кількості людей. Цінність інформації в цьому курсі в багато разів перевищує його вартість.\n\nЦей курс також є частиною великої навчальної системи — повноцінної програми з ретуші. Ми хочемо, щоб більше людей познайомилися з нашим підходом і якістю, а якщо вам сподобається — ви зможете продовжити навчання в повній програмі.",
-          "The price is symbolic.\n\nOur goal is to make this knowledge accessible to as many people as possible. The value of the information in this course is many times higher than its price.\n\nThis course is also part of a larger learning system — a full retouching program. We want more people to experience our approach and quality, and if you like it, you can continue with the full program."
+          "The price is symbolic.\n\nOur goal is to make this knowledge accessible to as many people as possible. The value of the information in this course is many times higher than its price.\n\nThis course is also part of a larger learning system — a full retouching program. We want more people to experience our approach and quality, and if you like it, you can continue with the full program.",
         ),
       },
 
@@ -1334,12 +1369,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Можно ли вернуть деньги за курс?",
           "Чи можна повернути гроші за курс?",
-          "Can I get a refund for the course?"
+          "Can I get a refund for the course?",
         ),
         answer: l(
           "Да, конечно.\n\nЕсли вы купили курс и поняли, что он вам не подходит, вы можете запросить возврат средств в течение 7 дней с момента покупки.\n\nГлавное условие — вы не должны полностью использовать большую часть уроков. Если значительная часть курса уже просмотрена или большинство материалов скачано, возврат невозможен.\n\nЧтобы оформить возврат, просто напишите мне в Instagram Direct @viktorkyslyi — мы решим всё быстро и без лишних вопросов.",
           "Так, звісно.\n\nЯкщо ви придбали курс і зрозуміли, що він вам не підходить, ви можете запросити повернення коштів протягом 7 днів з моменту покупки.\n\nГоловна умова — більша частина уроків не повинна бути повністю використана. Якщо значну частину курсу вже переглянуто або більшість матеріалів завантажено, повернення неможливе.\n\nЩоб оформити повернення, просто напишіть мені в Instagram Direct @viktorkyslyi — ми вирішимо все швидко та без зайвих питань.",
-          "Yes, of course.\n\nIf you purchased the course and realized it’s not the right fit for you, you can request a refund within 7 days of purchase.\n\nThe main condition is that most of the lessons must not be fully used. If a significant portion of the course has already been watched or most materials downloaded, a refund isn’t possible.\n\nTo request a refund, just send me a message on Instagram Direct @viktorkyslyi — we’ll handle everything quickly and without any hassle."
+          "Yes, of course.\n\nIf you purchased the course and realized it’s not the right fit for you, you can request a refund within 7 days of purchase.\n\nThe main condition is that most of the lessons must not be fully used. If a significant portion of the course has already been watched or most materials downloaded, a refund isn’t possible.\n\nTo request a refund, just send me a message on Instagram Direct @viktorkyslyi — we’ll handle everything quickly and without any hassle.",
         ),
       },
 
@@ -1347,12 +1382,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Чем этот курс отличается от бесплатных уроков на YouTube?",
           "Чим цей курс відрізняється від безкоштовних уроків на YouTube?",
-          "How is this course different from free YouTube tutorials?"
+          "How is this course different from free YouTube tutorials?",
         ),
         answer: l(
           "Бесплатные уроки дают случайные советы без системы.\n\nЭтот курс даёт целостную структуру — от теории до практики, с чётким пониманием того, как работает восприятие цвета и как применять профессиональные техники на практике.",
           "Безкоштовні уроки дають випадкові поради без системи.\n\nЦей курс дає цілісну структуру — від теорії до практики, з чітким розумінням того, як працює сприйняття кольору і як застосовувати професійні техніки.",
-          "Free tutorials usually give random tips.\n\nThis course gives you a complete system — from theory to practice — with clear explanations of how color perception works and how to apply professional techniques."
+          "Free tutorials usually give random tips.\n\nThis course gives you a complete system — from theory to practice — with clear explanations of how color perception works and how to apply professional techniques.",
         ),
       },
 
@@ -1360,12 +1395,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Я уже работаю с цветом. Узнаю ли я что-то новое?",
           "Я вже працюю з кольором. Чи дізнаюся я щось нове?",
-          "I’ve been working with color for a while. Will I learn something new?"
+          "I’ve been working with color for a while. Will I learn something new?",
         ),
         answer: l(
           "Да.\n\nЯ изучаю цвет на практике более 15 лет.\n\nКурс — это не только техники, но и понимание и видение цвета: как он устроен, как работает и как быстрее принимать правильные решения.\n\nЕсли вы не узнаете ничего нового — я верну вам деньги.",
           "Так.\n\nЯ вивчаю колір на практиці понад 15 років.\n\nКурс — це не лише техніки, а й розуміння та бачення кольору: як він влаштований, як працює і як швидше приймати правильні рішення.\n\nЯкщо ви не дізнаєтеся нічого нового — я поверну вам гроші.",
-          "Yes.\n\nI’ve been studying color in practice for over 15 years.\n\nThe course is not only about techniques — it’s about understanding and seeing color, how it’s built, how it works, and how to make better decisions faster.\n\nIf you don’t learn anything new from this course, I’ll give you a full refund."
+          "Yes.\n\nI’ve been studying color in practice for over 15 years.\n\nThe course is not only about techniques — it’s about understanding and seeing color, how it’s built, how it works, and how to make better decisions faster.\n\nIf you don’t learn anything new from this course, I’ll give you a full refund.",
         ),
       },
 
@@ -1373,12 +1408,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Сколько времени у меня будет доступ к курсу?",
           "Скільки часу в мене буде доступ до курсу?",
-          "How long do I have access to the course?"
+          "How long do I have access to the course?",
         ),
         answer: l(
           "Полный доступ ко всем материалам курса предоставляется на 6 месяцев.",
           "Повний доступ до всіх матеріалів курсу надається на 6 місяців.",
-          "You’ll have full access to all course materials for 6 months."
+          "You’ll have full access to all course materials for 6 months.",
         ),
       },
 
@@ -1386,12 +1421,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "В курсе только теория или есть практика?",
           "У курсі лише теорія чи є практика?",
-          "Is the course only theory, or is there practice too?"
+          "Is the course only theory, or is there practice too?",
         ),
         answer: l(
           "В курсе есть и теория, и практика.\n\nЯ показываю, как работаю с цветом на реальных примерах, а вы сможете скачать те же фотографии и практиковаться самостоятельно.",
           "У курсі є і теорія, і практика.\n\nЯ показую, як працюю з кольором на реальних прикладах, а ви зможете завантажити ті ж фотографії та практикуватися самостійно.",
-          "The course includes both theory and practice.\n\nI show how I work with color using real examples, and you can download the same photos to practice on your own."
+          "The course includes both theory and practice.\n\nI show how I work with color using real examples, and you can download the same photos to practice on your own.",
         ),
       },
 
@@ -1399,12 +1434,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Будет ли обратная связь во время курса?",
           "Чи буде зворотний зв’язок під час курсу?",
-          "Will I get feedback during the course?"
+          "Will I get feedback during the course?",
         ),
         answer: l(
           "Да.\n\nУ вас будет доступ к общему WhatsApp-чату, где можно задавать вопросы, общаться со мной, менторами и другими студентами.\n\nТакже доступна персональная поддержка в формате Mentor Plan с индивидуальной обратной связью от куратора.",
           "Так.\n\nУ вас буде доступ до спільного WhatsApp-чату, де можна ставити запитання, спілкуватися зі мною, менторами та іншими студентами.\n\nТакож доступна персональна підтримка у форматі Mentor Plan з індивідуальним фідбеком від куратора.",
-          "Yes.\n\nYou’ll have access to a shared WhatsApp group where you can ask questions and communicate with me, mentors, and other students.\n\nYou can also get personal support by purchasing the Mentor Plan, which includes one-on-one feedback from a curator."
+          "Yes.\n\nYou’ll have access to a shared WhatsApp group where you can ask questions and communicate with me, mentors, and other students.\n\nYou can also get personal support by purchasing the Mentor Plan, which includes one-on-one feedback from a curator.",
         ),
       },
 
@@ -1412,12 +1447,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Можно ли проходить курс с телефона или планшета?",
           "Чи можна проходити курс з телефона або планшета?",
-          "Can I take the course on my phone or tablet?"
+          "Can I take the course on my phone or tablet?",
         ),
         answer: l(
           "Да, все уроки доступны на любом устройстве с подключением к интернету.",
           "Так, усі уроки доступні на будь-якому пристрої з підключенням до інтернету.",
-          "Yes, all lessons are available on any device with an internet connection."
+          "Yes, all lessons are available on any device with an internet connection.",
         ),
       },
 
@@ -1425,12 +1460,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Сколько времени занимает прохождение курса?",
           "Скільки часу займає проходження курсу?",
-          "How much time does it take to complete the course?"
+          "How much time does it take to complete the course?",
         ),
         answer: l(
           "Уроки короткие — примерно 10–30 минут.\n\nВы можете учиться в своём темпе.\n\nВ среднем прохождение курса занимает 2–3 недели.\n\nОбщая длительность видео — около 280 минут. Также есть домашние задания.",
           "Уроки короткі — приблизно 10–30 хвилин.\n\nВи можете навчатися у своєму темпі.\n\nУ середньому проходження курсу займає 2–3 тижні.\n\nЗагальна тривалість відео — близько 280 хвилин. Також є домашні завдання.",
-          "Lessons are short — around 10–30 minutes each.\n\nYou can learn at your own pace.\n\nOn average, completing the course takes about 2–3 weeks.\n\nTotal content length is approximately 280 minutes. Homework assignments are included."
+          "Lessons are short — around 10–30 minutes each.\n\nYou can learn at your own pace.\n\nOn average, completing the course takes about 2–3 weeks.\n\nTotal content length is approximately 280 minutes. Homework assignments are included.",
         ),
       },
 
@@ -1438,12 +1473,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Если я куплю курс сейчас, когда он начнётся?",
           "Якщо я куплю курс зараз, коли він почнеться?",
-          "If I buy now, when does the course start?"
+          "If I buy now, when does the course start?",
         ),
         answer: l(
           "Сразу после оплаты — вы получите мгновенный доступ ко всем урокам.",
           "Одразу після оплати — ви отримаєте миттєвий доступ до всіх уроків.",
-          "Right after payment — you’ll get instant access to all lessons."
+          "Right after payment — you’ll get instant access to all lessons.",
         ),
       },
 
@@ -1451,12 +1486,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Какое программное обеспечение мне понадобится?",
           "Яке програмне забезпечення мені знадобиться?",
-          "What software do I need?"
+          "What software do I need?",
         ),
         answer: l(
           "Вы можете проходить курс с телефона — теоретическая часть охватывает общие знания о цвете.\n\nВо втором модуле начинаются профессиональные техники ретуши — для них понадобится любая версия Photoshop на компьютере.",
           "Ви можете проходити курс з телефона — теоретична частина охоплює загальні знання про колір.\n\nУ другому модулі починаються професійні техніки ретуші — для них знадобиться будь-яка версія Photoshop на комп’ютері.",
-          "You can take the course from your phone — the theory covers general color knowledge.\n\nThe second module focuses on professional retouching techniques, which require any version of Photoshop on a computer."
+          "You can take the course from your phone — the theory covers general color knowledge.\n\nThe second module focuses on professional retouching techniques, which require any version of Photoshop on a computer.",
         ),
       },
 
@@ -1464,12 +1499,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Курс только на английском языке?",
           "Курс лише англійською мовою?",
-          "Is the course only in English?"
+          "Is the course only in English?",
         ),
         answer: l(
           "Основная озвучка — на английском.\n\nТакже добавлены аудиодорожки на других языках: 🇪🇸 🇮🇹 🇫🇷 🇩🇪 🇵🇹 🇵🇱 🇮🇳 🇯🇵 🇺🇦",
           "Основна озвучка — англійською.\n\nТакож додані аудіодоріжки іншими мовами: 🇪🇸 🇮🇹 🇫🇷 🇩🇪 🇵🇹 🇵🇱 🇮🇳 🇯🇵 🇺🇦",
-          "The main voice-over is in English.\n\nWe’ve added additional audio tracks in other languages: 🇪🇸 🇮🇹 🇫🇷 🇩🇪 🇵🇹 🇵🇱 🇮🇳 🇯🇵 🇺🇦"
+          "The main voice-over is in English.\n\nWe’ve added additional audio tracks in other languages: 🇪🇸 🇮🇹 🇫🇷 🇩🇪 🇵🇹 🇵🇱 🇮🇳 🇯🇵 🇺🇦",
         ),
       },
 
@@ -1477,12 +1512,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Я фотограф и не всегда делаю ретушь сам. Есть ли смысл проходить курс?",
           "Я фотограф і не завжди роблю ретуш сам. Чи є сенс проходити курс?",
-          "I’m a photographer and don’t always retouch myself. Does it make sense?"
+          "I’m a photographer and don’t always retouch myself. Does it make sense?",
         ),
         answer: l(
           "Да.\n\nИменно вы создаёте изображение, и финальный результат зависит от вас.\n\nВы научитесь понимать цвет, работать с ним на съёмке, правильно настраивать камеру и объяснять своё видение ретушёру.",
           "Так.\n\nСаме ви створюєте зображення, і фінальний результат залежить від вас.\n\nВи навчитеся розуміти колір, працювати з ним на зйомці, правильно налаштовувати камеру та пояснювати своє бачення ретушеру.",
-          "Absolutely.\n\nYou create the images, and the final result depends on you.\n\nYou’ll learn how to work with color on set, set up your camera correctly, and clearly communicate your vision to a retoucher."
+          "Absolutely.\n\nYou create the images, and the final result depends on you.\n\nYou’ll learn how to work with color on set, set up your camera correctly, and clearly communicate your vision to a retoucher.",
         ),
       },
 
@@ -1490,12 +1525,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Я визажист / стилист. Зачем мне этот курс?",
           "Я візажист / стиліст. Навіщо мені цей курс?",
-          "I’m a makeup artist or stylist. Why would I need this course?"
+          "I’m a makeup artist or stylist. Why would I need this course?",
         ),
         answer: l(
           "Когда вы понимаете, как цвет работает в постобработке, вы принимаете более точные решения на съёмке.\n\nЭто экономит время всей команды и улучшает финальный результат.\n\nМы также изучаем восприятие цвета — как люди его видят и как использовать это знание в творчестве.",
           "Коли ви розумієте, як колір працює в постобробці, ви приймаєте точніші рішення на зйомці.\n\nЦе економить час усієї команди та покращує фінальний результат.\n\nМи також вивчаємо сприйняття кольору — як люди його бачать і як використовувати ці знання у творчості.",
-          "When you understand how color works in post-production, you make smarter decisions on set.\n\nThis saves time for the whole team and improves the final result.\n\nWe also explore color perception and how to use it creatively."
+          "When you understand how color works in post-production, you make smarter decisions on set.\n\nThis saves time for the whole team and improves the final result.\n\nWe also explore color perception and how to use it creatively.",
         ),
       },
 
@@ -1503,12 +1538,12 @@ Real examples. Real color. Real inspiration.`
         question: l(
           "Курс только для beauty-ретушёров?",
           "Курс лише для beauty-ретушерів?",
-          "Is the course only for beauty retouchers?"
+          "Is the course only for beauty retouchers?",
         ),
         answer: l(
           "Нет.\n\nТеория цвета универсальна.\n\nBeauty-фотографии — основные примеры, но все техники работают в любых жанрах: портрет, fashion, свадьбы, lifestyle, предметная съёмка и другие.\n\nТакже есть примеры съёмок на улице.",
           "Ні.\n\nТеорія кольору універсальна.\n\nBeauty-фото — основні приклади, але техніки працюють у будь-яких жанрах: портрет, fashion, весілля, lifestyle, предметна зйомка та інші.\n\nТакож є приклади зйомок на вулиці.",
-          "No.\n\nColor theory applies to everything.\n\nBeauty photography is the main example, but all techniques work for any genre: portrait, fashion, wedding, lifestyle, product photography, and more.\n\nWe even include outdoor photo examples."
+          "No.\n\nColor theory applies to everything.\n\nBeauty photography is the main example, but all techniques work for any genre: portrait, fashion, wedding, lifestyle, product photography, and more.\n\nWe even include outdoor photo examples.",
         ),
       },
     ],
@@ -1516,24 +1551,25 @@ Real examples. Real color. Real inspiration.`
 
   {
     slug: "architecture-of-retouching",
+    order: 1,
     imageSrc: "/images/architecture-of-retouching/hero.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",
     title: l(
       "Архитектура Ретуши (EN)",
       "Архітектура Ретуші (EN)",
-      "The Architecture of Retouching (EN)"
+      "The Architecture of Retouching (EN)",
     ),
     subtitle: l(
       "Курс на английском",
       "Курс англійською",
-      "The course is in ENGLISH"
+      "The course is in ENGLISH",
     ),
 
     shortDescription: l(
       "Профессиональный курс ретуши в 3 модулях: базовые знания, продвинутые техники и практика на разных жанрах + маркетинг. Доступен с озвучкой на нескольких языках.",
       "Професійний курс ретуші у 3 модулях: базові знання, просунуті техніки та практика в різних жанрах + маркетинг. Доступний з озвучкою кількома мовами.",
-      "A professional retouching course in 3 modules: basics, pro techniques, and multi-genre practice + marketing. Available with voice-over in multiple languages."
+      "A professional retouching course in 3 modules: basics, pro techniques, and multi-genre practice + marketing. Available with voice-over in multiple languages.",
     ),
 
     heroText: l(
@@ -1631,7 +1667,7 @@ Retouching is a profession that gives you freedom:
 🔥 Travel while working
 🔥 Creative & fulfilling profession
 🔥 Clients worldwide
-🔥 Collaborations with brands, celebrities, and influencers`
+🔥 Collaborations with brands, celebrities, and influencers`,
     ),
 
     // ✅ Програма — модулями
@@ -1640,33 +1676,33 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Basic Module (10 lessons)",
           "Basic Module (10 lessons)",
-          "Basic Module (10 lessons)"
+          "Basic Module (10 lessons)",
         ),
         lessons: [
           l(
             "Installing Photoshop",
             "Installing Photoshop",
-            "Installing Photoshop"
+            "Installing Photoshop",
           ),
           l(
             "Customizing the program interface",
             "Customizing the program interface",
-            "Customizing the program interface"
+            "Customizing the program interface",
           ),
           l(
             "Tools panel overview",
             "Tools panel overview",
-            "Tools panel overview"
+            "Tools panel overview",
           ),
           l(
             "Layers panel overview",
             "Layers panel overview",
-            "Layers panel overview"
+            "Layers panel overview",
           ),
           l(
             "Filters panel overview",
             "Filters panel overview",
-            "Filters panel overview"
+            "Filters panel overview",
           ),
           l("Adjustment layers", "Adjustment layers", "Adjustment layers"),
           l("Working with masks", "Working with masks", "Working with masks"),
@@ -1679,55 +1715,55 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Professional Techniques Module (11 lessons)",
           "Professional Techniques Module (11 lessons)",
-          "Professional Techniques Module (11 lessons)"
+          "Professional Techniques Module (11 lessons)",
         ),
         lessons: [
           l("Healing Brush tool", "Healing Brush tool", "Healing Brush tool"),
           l(
             "Dodge and Burn technique",
             "Dodge and Burn technique",
-            "Dodge and Burn technique"
+            "Dodge and Burn technique",
           ),
           l(
             "Key nuances of professional retouching",
             "Key nuances of professional retouching",
-            "Key nuances of professional retouching"
+            "Key nuances of professional retouching",
           ),
           l(
             "Frequency Separation — “Glossy Finish” technique",
             "Frequency Separation — “Glossy Finish” technique",
-            "Frequency Separation — “Glossy Finish” technique"
+            "Frequency Separation — “Glossy Finish” technique",
           ),
           l(
             "Light & Shadow Structure technique",
             "Light & Shadow Structure technique",
-            "Light & Shadow Structure technique"
+            "Light & Shadow Structure technique",
           ),
           l("Color theory", "Color theory", "Color theory"),
           l(
             "Color correction techniques — Part 1",
             "Color correction techniques — Part 1",
-            "Color correction techniques — Part 1"
+            "Color correction techniques — Part 1",
           ),
           l(
             "Color correction techniques — Part 2",
             "Color correction techniques — Part 2",
-            "Color correction techniques — Part 2"
+            "Color correction techniques — Part 2",
           ),
           l(
             "Frequency Separation — “Challenging Areas” technique",
             "Frequency Separation — “Challenging Areas” technique",
-            "Frequency Separation — “Challenging Areas” technique"
+            "Frequency Separation — “Challenging Areas” technique",
           ),
           l(
             "Clothing retouching",
             "Clothing retouching",
-            "Clothing retouching"
+            "Clothing retouching",
           ),
           l(
             "Complete retouching workflow",
             "Complete retouching workflow",
-            "Complete retouching workflow"
+            "Complete retouching workflow",
           ),
         ],
       },
@@ -1736,65 +1772,65 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Marketing & Multi-Genre Retouching Module (13 lessons)",
           "Marketing & Multi-Genre Retouching Module (13 lessons)",
-          "Marketing & Multi-Genre Retouching Module (13 lessons)"
+          "Marketing & Multi-Genre Retouching Module (13 lessons)",
         ),
         lessons: [
           l("Retouching makeup", "Retouching makeup", "Retouching makeup"),
           l(
             "Working with low-quality photos",
             "Working with low-quality photos",
-            "Working with low-quality photos"
+            "Working with low-quality photos",
           ),
           l(
             "Full-body retouching / background work",
             "Full-body retouching / background work",
-            "Full-body retouching / background work"
+            "Full-body retouching / background work",
           ),
           l(
             "Marketing fundamentals",
             "Marketing fundamentals",
-            "Marketing fundamentals"
+            "Marketing fundamentals",
           ),
           l(
             "Social media & personal brand promotion",
             "Social media & personal brand promotion",
-            "Social media & personal brand promotion"
+            "Social media & personal brand promotion",
           ),
           l(
             "Pricing & working with clients",
             "Pricing & working with clients",
-            "Pricing & working with clients"
+            "Pricing & working with clients",
           ),
           l("Product retouching", "Product retouching", "Product retouching"),
           l(
             "Creating actions & presets",
             "Creating actions & presets",
-            "Creating actions & presets"
+            "Creating actions & presets",
           ),
           l(
             "AI-assisted retouching",
             "AI-assisted retouching",
-            "AI-assisted retouching"
+            "AI-assisted retouching",
           ),
           l(
             "Mature skin retouching",
             "Mature skin retouching",
-            "Mature skin retouching"
+            "Mature skin retouching",
           ),
           l(
             "Male portrait retouching",
             "Male portrait retouching",
-            "Male portrait retouching"
+            "Male portrait retouching",
           ),
           l(
             "Wedding photography",
             "Wedding photography",
-            "Wedding photography"
+            "Wedding photography",
           ),
           l(
             "Final project & graduation work",
             "Final project & graduation work",
-            "Final project & graduation work"
+            "Final project & graduation work",
           ),
         ],
       },
@@ -1804,53 +1840,53 @@ Retouching is a profession that gives you freedom:
       intro: l(
         "Курс включает 34 видео-урока, практические материалы и задания для портфолио. Уроки в записи — учитесь в своём темпе.",
         "Курс включає 34 відео-уроки, практичні матеріали та завдання для портфоліо. Уроки у записі — навчайся у своєму темпі.",
-        "The course includes 34 video lessons, practice materials, and portfolio-building tasks. All lessons are pre-recorded — learn at your own pace."
+        "The course includes 34 video lessons, practice materials, and portfolio-building tasks. All lessons are pre-recorded — learn at your own pace.",
       ),
       steps: [
         l(
           "Курс разделён на 3 модуля: Basic / Pro Techniques / Multi-Genre + Marketing",
           "Курс поділено на 3 модулі: Basic / Pro Techniques / Multi-Genre + Marketing",
-          "The course is divided into 3 modules: Basic / Pro Techniques / Multi-Genre + Marketing"
+          "The course is divided into 3 modules: Basic / Pro Techniques / Multi-Genre + Marketing",
         ),
         l(
           "Можно купить каждый модуль отдельно или взять полный пакет со скидкой",
           "Можна купити кожен модуль окремо або взяти повний пакет зі знижкою",
-          "You can purchase modules separately or get the discounted full package"
+          "You can purchase modules separately or get the discounted full package",
         ),
         l(
           "Все уроки доступны в записи — график свободный",
           "Усі уроки доступні у записі — вільний графік",
-          "All lessons are pre-recorded — flexible schedule"
+          "All lessons are pre-recorded — flexible schedule",
         ),
         l(
           "Для обучения нужен компьютер/ноутбук с Adobe Photoshop + мышь или графический планшет",
           "Для навчання потрібен комп’ютер/ноутбук з Adobe Photoshop + миша або графічний планшет",
-          "You need a computer/laptop with Adobe Photoshop + a mouse or a graphic tablet"
+          "You need a computer/laptop with Adobe Photoshop + a mouse or a graphic tablet",
         ),
         l(
           "После покупки зайдите в раздел “Courses” на сайте и откройте выбранный план",
           "Після покупки зайдіть у розділ “Courses” на сайті та відкрийте обраний план",
-          "After purchase, go to the “Courses” section and open your plan"
+          "After purchase, go to the “Courses” section and open your plan",
         ),
         l(
           "У каждого урока есть домашнее задание для закрепления",
           "У кожного уроку є домашнє завдання для закріплення",
-          "Each lesson includes homework to reinforce skills"
+          "Each lesson includes homework to reinforce skills",
         ),
         l(
           "По вопросам можно обратиться в Care Team внизу сайта",
           "З питаннями можна звернутися до Care Team внизу сайту",
-          "If you have questions, contact the Care Team at the bottom of the website"
+          "If you have questions, contact the Care Team at the bottom of the website",
         ),
         l(
           "Сертификат доступен только в планах с Mentor Support",
           "Сертифікат доступний лише в планах з Mentor Support",
-          "A Certificate of Completion is available only for plans that include Mentor Support"
+          "A Certificate of Completion is available only for plans that include Mentor Support",
         ),
         l(
           "Доступ к материалам — бессрочный (lifetime)",
           "Доступ до матеріалів — безстроковий (lifetime)",
-          "Lifetime access to all course materials"
+          "Lifetime access to all course materials",
         ),
       ],
     },
@@ -1867,7 +1903,7 @@ Retouching is a profession that gives you freedom:
         value: l(
           "Сразу после оплаты",
           "Одразу після оплати",
-          "Immediately after purchase"
+          "Immediately after purchase",
         ),
       },
       { labelKey: "course.info.recorded", value: l("Да", "Так", "Yes") },
@@ -1896,7 +1932,7 @@ Retouching is a profession that gives you freedom:
     tariffsIntro: l(
       "Выберите модуль или возьмите полный пакет со скидкой. Mentor Support — отдельный тариф (1 месяц поддержки на модуль).",
       "Оберіть модуль або візьміть повний пакет зі знижкою. Mentor Support — окремий тариф (1 місяць підтримки на модуль).",
-      "Choose a module or get the discounted full package. Mentor Support is a separate plan (1 month of support per module)."
+      "Choose a module or get the discounted full package. Mentor Support is a separate plan (1 month of support per module).",
     ),
 
     tariffs: [
@@ -1910,7 +1946,7 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Professional Techniques",
           "Professional Techniques",
-          "Professional Techniques"
+          "Professional Techniques",
         ),
         price: "150$",
         include: [1, 2, 3, 4],
@@ -1920,7 +1956,7 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Genre-Based Practice",
           "Genre-Based Practice",
-          "Genre-Based Practice"
+          "Genre-Based Practice",
         ),
         price: "150$",
         include: [1, 2, 3, 4],
@@ -1930,7 +1966,7 @@ Retouching is a profession that gives you freedom:
         title: l(
           'The Architecture of Retouching "Package"',
           'The Architecture of Retouching "Package"',
-          'The Architecture of Retouching "Package"'
+          'The Architecture of Retouching "Package"',
         ),
         oldPrice: "450$",
         price: "350$",
@@ -1941,7 +1977,7 @@ Retouching is a profession that gives you freedom:
         title: l(
           "Mentor support / 1 month",
           "Mentor support / 1 month",
-          "Mentor support / 1 month"
+          "Mentor support / 1 month",
         ),
         price: "150$",
         include: [1, 2, 3, 4, 5, 6], // + curatorCheck
@@ -1950,7 +1986,7 @@ Retouching is a profession that gives you freedom:
         detailsTitle: l(
           "Как работает Mentor Support?",
           "Як працює Mentor Support?",
-          "How does Mentor Support work?"
+          "How does Mentor Support work?",
         ),
         details: l(
           `Если вы выбираете план с Mentor Support:
@@ -1985,7 +2021,7 @@ Retouching is a profession that gives you freedom:
 • сертифікат доступний лише з Mentor Support`,
           `With Mentor Support you get:
 • 1 month of support per module
-• one-on-one communication with your mentor (WhatsApp or Telegram)
+• one-on-one communication with your mentor (WhatsApp)
 • homework review + Q&A
 
 After purchase, contact your mentor and provide:
@@ -1997,7 +2033,7 @@ After purchase, contact your mentor and provide:
 Notes:
 • You may message anytime — replies aren’t instant but will come as soon as possible
 • Submit only course homework/photos for review to stay on track
-• Certificate is available only with Mentor Support`
+• Certificate is available only with Mentor Support`,
         ),
       },
     ],
@@ -2007,120 +2043,120 @@ Notes:
         question: l(
           "Что нужно, чтобы пройти этот курс?",
           "Що мені потрібно, щоб пройти цей курс?",
-          "What do I need to take this course?"
+          "What do I need to take this course?",
         ),
         answer: l(
           "Компьютер или ноутбук. Подойдёт любое устройство, которое стабильно работает в обычных задачах.\nЧем больше экран — тем комфортнее процесс. Чем мощнее компьютер — тем плавнее работа.\n\nИдеальный вариант: MacBook Pro 16”, 16 GB RAM.\nНо это не обязательное требование.\n\nВидеокарта не влияет на работу Photoshop.\n\nТакже понадобится мышка или графический планшет — выбирай то, что удобнее именно тебе.",
           "Комп’ютер або ноутбук. Підійде будь-який пристрій, який працює стабільно у повсякденному використанні.\nЧим більший екран — тим комфортніше працювати. Чим потужніший комп’ютер — тим плавніший процес.\n\nІдеальний варіант: MacBook Pro 16”, 16 GB RAM.\nАле це не обов’язкова вимога.\n\nВідеокарта не впливає на роботу Photoshop.\n\nТакож знадобиться мишка або графічний планшет — обирай, що зручніше саме тобі.",
-          "A computer or laptop. Any device that runs smoothly during regular use will be suitable for learning.\nThe larger the screen — the more comfortable your workflow. The more powerful the computer — the smoother your experience.\n\nIdeal setup: MacBook Pro 16”, 16 GB RAM.\nBut this is not a requirement.\n\nA graphics card does not affect how Photoshop runs.\n\nYou’ll also need a mouse or a graphic tablet — whichever you prefer."
+          "A computer or laptop. Any device that runs smoothly during regular use will be suitable for learning.\nThe larger the screen — the more comfortable your workflow. The more powerful the computer — the smoother your experience.\n\nIdeal setup: MacBook Pro 16”, 16 GB RAM.\nBut this is not a requirement.\n\nA graphics card does not affect how Photoshop runs.\n\nYou’ll also need a mouse or a graphic tablet — whichever you prefer.",
         ),
       },
       {
         question: l(
           "Я никогда не работал в Photoshop. Мне подойдёт этот курс?",
           "Я ніколи не користувався Photoshop. Цей курс мені підійде?",
-          "I’ve never used Photoshop before. Is this course right for me?"
+          "I’ve never used Photoshop before. Is this course right for me?",
         ),
         answer: l(
           "Да, конечно!\nМодуль 1 начинается с самого нуля — включая установку Photoshop и объяснение, что это за программа.\nИдеально для тех, кто никогда не работал в Photoshop.",
           "Так, однозначно!\nМодуль 1 починається з самого нуля — включно з тим, як встановити Photoshop і що це за програма.\nЦе ідеально для тих, хто взагалі ніколи не працював у Photoshop.",
-          "Absolutely!\nModule 1 starts from the very beginning — including how to install Photoshop and what it is.\nIt’s perfect for those who have never worked with the program before."
+          "Absolutely!\nModule 1 starts from the very beginning — including how to install Photoshop and what it is.\nIt’s perfect for those who have never worked with the program before.",
         ),
       },
       {
         question: l(
           "Я уже знаю базу. С какого модуля мне начать?",
           "Я вже знаю базу. З якого модуля мені почати?",
-          "I already know the basics. Where should I start?"
+          "I already know the basics. Where should I start?",
         ),
         answer: l(
           "Модули 2 и 3 — именно то, что нужно.\nТехники Виктора выходят далеко за рамки типичного “patch и dodge & burn” — он также показывает, как значительно ускорить ретушь.\n\nПри этом Модуль 1 тоже очень рекомендуется.\nОн помогает закрыть пробелы в базе.\nЕсли ты пользуешься Photoshop, но не уверенно — старт с Модуля 1 реально укрепит фундамент.",
           "Модулі 2 і 3 — саме те, що потрібно.\nТехніки Віктора виходять далеко за межі типового “patch та dodge & burn” — він також показує, як суттєво прискорити ретуш.\n\nАле Модуль 1 теж дуже рекомендується.\nВін допомагає закрити прогалини в базі.\nЯкщо ти користуєшся Photoshop, але не відчуваєш впевненості — старт із Модуля 1 реально підсилить основу.",
-          "Modules 2 and 3 are exactly what you need.\nViktor’s techniques go far beyond the typical “patch and dodge & burn” approach — he also teaches how to significantly speed up your retouching process.\n\nThat said, Module 1 is also highly recommended.\nIt helps fill in the gaps in your foundational knowledge.\nIf you use Photoshop but not confidently, starting with Module 1 can really strengthen your base."
+          "Modules 2 and 3 are exactly what you need.\nViktor’s techniques go far beyond the typical “patch and dodge & burn” approach — he also teaches how to significantly speed up your retouching process.\n\nThat said, Module 1 is also highly recommended.\nIt helps fill in the gaps in your foundational knowledge.\nIf you use Photoshop but not confidently, starting with Module 1 can really strengthen your base.",
         ),
       },
       {
         question: l(
           "Я работаю в бьюти-сфере и хочу ретушировать свои работы. Это будет полезно?",
           "Я працюю у б’юті-сфері й хочу ретушувати свої роботи. Це буде корисно?",
-          "I work in the beauty industry and want to learn how to retouch my own work. Will this course be useful for me?"
+          "I work in the beauty industry and want to learn how to retouch my own work. Will this course be useful for me?",
         ),
         answer: l(
           "Да!\nКурс охватывает всё, что нужно для работы с макияжем, деталями волос, ногтями и другим.\nТы научишься улучшать свои работы — от мягкого выравнивания и коррекции цвета губ до работы с тонами и даже аккуратного “переформирования” элементов, когда это нужно.",
           "Так!\nКурс покриває все, що потрібно для роботи з макіяжем, деталями волосся, нігтями та іншим.\nТи навчишся вдосконалювати свої фото — від м’якого вирівнювання та корекції кольору губ до роботи з тонами і навіть акуратного “переформування” елементів, коли це потрібно.",
-          "Absolutely!\nThe course covers everything you need to know to work with makeup, hair details, nails, and more.\nYou’ll learn how to refine your own work — from adjusting blending and lip color to working with color tones and even reshaping elements when needed."
+          "Absolutely!\nThe course covers everything you need to know to work with makeup, hair details, nails, and more.\nYou’ll learn how to refine your own work — from adjusting blending and lip color to working with color tones and even reshaping elements when needed.",
         ),
       },
       {
         question: l(
           "Можно ли пересматривать уроки?",
           "Чи можна передивлятися уроки?",
-          "Can I rewatch the lessons?"
+          "Can I rewatch the lessons?",
         ),
         answer: l(
           "Да!\nПосле покупки ты получаешь пожизненный доступ — можно пересматривать уроки когда угодно и сколько угодно раз.",
           "Так!\nПісля покупки ти отримуєш довічний доступ — можеш переглядати уроки будь-коли й необмежену кількість разів.",
-          "Absolutely!\nOnce you purchase the course, you get lifetime access — you can rewatch the lessons anytime, as many times as you like."
+          "Absolutely!\nOnce you purchase the course, you get lifetime access — you can rewatch the lessons anytime, as many times as you like.",
         ),
       },
       {
         question: l(
           "Можно ли ретушировать фото, снятые на iPhone Pro Max?",
           "Чи можна ретушувати фото, зняті на iPhone Pro Max?",
-          "Can I retouch photos taken with an iPhone Pro Max?"
+          "Can I retouch photos taken with an iPhone Pro Max?",
         ),
         answer: l(
           "Да.\nНо учти: мобильные фото намного меньше по разрешению, поэтому возможностей ретуши меньше, чем у кадров с камеры в высоком качестве.",
           "Так.\nАле май на увазі: мобільні фото мають значно меншу роздільну здатність, тому можливостей ретуші буде менше, ніж у знімків з камери у високій якості.",
-          "Absolutely.\nJust keep in mind that mobile photos are much smaller in resolution, which means there are fewer retouching possibilities compared to high-resolution camera images."
+          "Absolutely.\nJust keep in mind that mobile photos are much smaller in resolution, which means there are fewer retouching possibilities compared to high-resolution camera images.",
         ),
       },
       {
         question: l(
           "Сколько времени нужно, чтобы начать зарабатывать на ретуши?",
           "Скільки часу потрібно, щоб почати заробляти на ретуші?",
-          "How long will it take to start earning money from retouching?"
+          "How long will it take to start earning money from retouching?",
         ),
         answer: l(
           "Это индивидуально.\nНо уже к середине Модуля 3 у тебя будет достаточно знаний, чтобы начать работать с клиентами — даже до полного завершения курса.\nДальше всё зависит от мотивации и того, насколько активно ты применяешь знания на практике.",
           "Усе індивідуально.\nАле вже до середини Модуля 3 у тебе буде достатньо знань, щоб починати брати клієнтів — навіть не завершивши курс повністю.\nДалі все залежить від твоєї мотивації та того, як активно ти застосовуєш знання на практиці.",
-          "That depends on the individual, of course.\nBut you’ll already have enough knowledge to start working with clients by the middle of Module 3 — even before completing the full course.\nFrom there, it all depends on your motivation and how actively you apply what you’ve learned."
+          "That depends on the individual, of course.\nBut you’ll already have enough knowledge to start working with clients by the middle of Module 3 — even before completing the full course.\nFrom there, it all depends on your motivation and how actively you apply what you’ve learned.",
         ),
       },
       {
         question: l(
           "Есть ли в курсе маркетинг, цены и поиск клиентов?",
           "Чи є в курсі маркетинг, ціни та пошук клієнтів?",
-          "Does the course include marketing, pricing, and finding clients?"
+          "Does the course include marketing, pricing, and finding clients?",
         ),
         answer: l(
           "Да.\nВ Модуле 3 есть отдельные уроки про маркетинг, ценообразование и продвижение в соцсетях, чтобы привлекать клиентов.",
           "Так.\nУ Модулі 3 є окремі уроки про маркетинг, формування ціни та просування в соцмережах, щоб залучати клієнтів.",
-          "Yes, absolutely.\nModule 3 includes dedicated lessons on marketing, pricing strategies, and how to promote yourself on social media to attract clients."
+          "Yes, absolutely.\nModule 3 includes dedicated lessons on marketing, pricing strategies, and how to promote yourself on social media to attract clients.",
         ),
       },
       {
         question: l(
           "Можно ли делать ретушь на телефоне или планшете?",
           "Чи можна робити ретуш на телефоні або планшеті?",
-          "Can I do the retouching on a phone or tablet?"
+          "Can I do the retouching on a phone or tablet?",
         ),
         answer: l(
           "Нет, профессиональная ретушь возможна только на компьютере.\nНа телефонах и планшетах есть похожие приложения, но это упрощённые версии.\nМожно поменять цвета или сделать базовые правки, но для высокого уровня ретуши нужен полный функционал Photoshop.",
           "Ні, професійну ретуш можна робити лише на комп’ютері.\nНа телефонах і планшетах є схожі застосунки, але це спрощені версії.\nМожна змінити кольори або зробити базові правки, але для якісної ретуші потрібен повний функціонал Photoshop.",
-          "No, professional retouching can only be done on a computer.\nWhile there are similar apps available for phones and tablets, they are simplified versions.\nYou can change colors or apply basic edits, but they don’t offer the full functionality needed for high-end retouching."
+          "No, professional retouching can only be done on a computer.\nWhile there are similar apps available for phones and tablets, they are simplified versions.\nYou can change colors or apply basic edits, but they don’t offer the full functionality needed for high-end retouching.",
         ),
       },
       {
         question: l(
           "Что лучше для ретуши — мышка или графический планшет?",
           "Що краще для ретуші — мишка чи графічний планшет?",
-          "What’s better for retouching — a mouse or a graphic tablet?"
+          "What’s better for retouching — a mouse or a graphic tablet?",
         ),
         answer: l(
           "Большинство профессиональных ретушёров предпочитают графический планшет,\nно Виктор лично работает исключительно мышкой — и так делают многие.\n\nВ итоге всё зависит от комфорта и личных предпочтений.\nРекомендуем попробовать оба варианта и выбрать то, что удобнее именно тебе.",
           "Більшість професійних ретушерів віддають перевагу графічному планшету,\nале Віктор особисто працює тільки мишкою — і так роблять багато хто.\n\nУ підсумку головне — твій комфорт.\nРекомендуємо спробувати обидва варіанти й обрати той, який відчувається найзручнішим.",
-          "Most professional retouchers prefer working with a graphic tablet,\nbut Viktor personally works exclusively with a mouse, and many others do too.\n\nIn the end, it’s all about your comfort and personal preference.\nWe recommend trying both and choosing what feels best for you."
+          "Most professional retouchers prefer working with a graphic tablet,\nbut Viktor personally works exclusively with a mouse, and many others do too.\n\nIn the end, it’s all about your comfort and personal preference.\nWe recommend trying both and choosing what feels best for you.",
         ),
       },
     ],
@@ -2128,6 +2164,7 @@ Notes:
 
   {
     slug: "architecture-of-retouching-ru",
+    order: 1,
     imageSrc: "/images/architecture-of-retouching/hero-ru.jpg",
     fullWidthImageSrc: "",
     courseLang: "non-en",
@@ -2135,7 +2172,7 @@ Notes:
     title: l(
       "Архитектура ретуши",
       "Архітектура ретуші",
-      "The Architecture of Retouching"
+      "The Architecture of Retouching",
     ),
 
     subtitle: l("", "", ""),
@@ -2143,7 +2180,7 @@ Notes:
     shortDescription: l(
       "Профессиональный курс ретуши с 0: удалённая профессия, свобода, работа на зарубежном рынке. 3 модуля + практика, портфолио, маркетинг. Старт — 10 января.",
       "Професійний курс ретуші з 0: віддалена професія, свобода, робота на закордонному ринку. 3 модулі + практика, портфоліо, маркетинг. Старт — 10 січня.",
-      "A professional retouching course from zero. 3 modules + practice, portfolio & marketing. Start — January 10."
+      "A professional retouching course from zero. 3 modules + practice, portfolio & marketing. Start — January 10.",
     ),
 
     heroText: l(
@@ -2213,7 +2250,7 @@ Start — January 10
 A professional retouching course from zero:
 • remote work and freedom
 • international market
-• 3 modules: basics, pro techniques, practice + portfolio + marketing`
+• 3 modules: basics, pro techniques, practice + portfolio + marketing`,
     ),
 
     // ✅ Програма — 3 модулі (як у твоєму описі)
@@ -2222,13 +2259,13 @@ A professional retouching course from zero:
         title: l(
           "Базовый модуль (8 уроков)",
           "Базовий модуль (8 уроків)",
-          "Basic Module (8 lessons)"
+          "Basic Module (8 lessons)",
         ),
         lessons: [
           l(
             "Философия профессии",
             "Філософія професії",
-            "Profession philosophy"
+            "Profession philosophy",
           ),
           l("Панель «Инструменты»", "Панель «Інструменти»", "Tools panel"),
           l("Панель управления «Слои»", "Панель «Шари»", "Layers panel"),
@@ -2239,7 +2276,7 @@ A professional retouching course from zero:
           l(
             "Итоги первого модуля",
             "Підсумки першого модуля",
-            "Module 1 summary"
+            "Module 1 summary",
           ),
         ],
       },
@@ -2247,29 +2284,29 @@ A professional retouching course from zero:
         title: l(
           "Модуль «Профессиональные техники» (9 уроков)",
           "Модуль «Професійні техніки» (9 уроків)",
-          "Professional Techniques Module (9 lessons)"
+          "Professional Techniques Module (9 lessons)",
         ),
         lessons: [
           l(
             "Инструмент «Восстанавливающая кисть»",
             "Інструмент «Відновлювальна кисть»",
-            "Healing Brush tool"
+            "Healing Brush tool",
           ),
           l(
             "Техника «Dodge and Burn»",
             "Техніка «Dodge and Burn»",
-            "Dodge and Burn"
+            "Dodge and Burn",
           ),
           l("Прямой эфир — Нюансы", "Прямий ефір — Нюанси", "Live — nuances"),
           l(
             "Техника «Частотное разложение»",
             "Техніка «Частотне розкладання»",
-            "Frequency Separation"
+            "Frequency Separation",
           ),
           l(
             "Техника «Свето-теневой рисунок»",
             "Техніка «Світло-тіньовий рисунок»",
-            "Light & shadow structure"
+            "Light & shadow structure",
           ),
           l("Прямой эфир — Нюансы", "Прямий ефір — Нюанси", "Live — nuances"),
           l("Цвет", "Колір", "Color"),
@@ -2277,7 +2314,7 @@ A professional retouching course from zero:
           l(
             "Итоги второго модуля",
             "Підсумки другого модуля",
-            "Module 2 summary"
+            "Module 2 summary",
           ),
         ],
       },
@@ -2285,40 +2322,40 @@ A professional retouching course from zero:
         title: l(
           "Модуль «Маркетинг и работа в разных жанрах» (9 уроков)",
           "Модуль «Маркетинг і робота в різних жанрах» (9 уроків)",
-          "Marketing & Multi-Genre Module (9 lessons)"
+          "Marketing & Multi-Genre Module (9 lessons)",
         ),
         lessons: [
           l(
             "Частотное разложение (тяжелые участки)",
             "Частотне розкладання (складні ділянки)",
-            "Frequency Separation (hard areas)"
+            "Frequency Separation (hard areas)",
           ),
           l("Работа с макияжем", "Робота з макіяжем", "Makeup retouching"),
           l(
             "Процесс ретуши от А до Я",
             "Процес ретуші від А до Я",
-            "Workflow A to Z"
+            "Workflow A to Z",
           ),
           l("Маркетинг", "Маркетинг", "Marketing"),
           l(
             "Работа с некачественной фотографией",
             "Робота з неякісним фото",
-            "Low-quality photos"
+            "Low-quality photos",
           ),
           l(
             "Работа с фотографией в полный рост",
             "Робота з фото в повний зріст",
-            "Full-body retouching"
+            "Full-body retouching",
           ),
           l(
             "Работа с клиентами и ценообразование",
             "Робота з клієнтами та ціноутворення",
-            "Clients & pricing"
+            "Clients & pricing",
           ),
           l(
             "Ретушь в разных жанрах фотографии",
             "Ретуш у різних жанрах",
-            "Retouching in different genres"
+            "Retouching in different genres",
           ),
           l("Финал", "Фінал", "Final"),
         ],
@@ -2329,69 +2366,69 @@ A professional retouching course from zero:
       intro: l(
         "Длительность курса — 2 месяца. Включает уроки + закрытые прямые эфиры. Все уроки в записи — учитесь в удобное время.",
         "Тривалість курсу — 2 місяці. Включає уроки + закриті прямі ефіри. Усі уроки в записі — навчаєтесь у зручний час.",
-        "Course length — 2 months. Recorded lessons + closed live sessions."
+        "Course length — 2 months. Recorded lessons + closed live sessions.",
       ),
       steps: [
         l(
           "Длительность курса — 2 месяца. 22 урока + 4 закрытых прямых эфира",
           "Тривалість курсу — 2 місяці. 22 уроки + 4 закриті прямі ефіри",
-          "2 months. 22 lessons + 4 live sessions"
+          "2 months. 22 lessons + 4 live sessions",
         ),
         l(
           "Курс состоит из 3 модулей: Базовый / Профессиональные техники / Практика + Портфолио + Маркетинг",
           "Курс складається з 3 модулів: Базовий / Професійні техніки / Практика + Портфоліо + Маркетинг",
-          "3 modules: Basic / Pro techniques / Practice + Portfolio + Marketing"
+          "3 modules: Basic / Pro techniques / Practice + Portfolio + Marketing",
         ),
         l(
           "Добавление в закрытый Telegram-чат с уроками, домашними заданиями и советами",
           "Додавання в закритий Telegram-чат з уроками, домашніми завданнями та порадами",
-          "Closed Telegram chat with lessons & tasks"
+          "Closed Telegram chat with lessons & tasks",
         ),
         l(
           "Все уроки в записи — можно смотреть в любое удобное время",
           "Усі уроки в записі — можна дивитися у будь-який зручний час",
-          "All lessons are recorded — self-paced"
+          "All lessons are recorded — self-paced",
         ),
         l(
           "Новые уроки открываются через день",
           "Нові уроки відкриваються через день",
-          "New lessons open every other day"
+          "New lessons open every other day",
         ),
         l(
           "Перед стартом установите Adobe Photoshop — в чате будут советы по установке",
           "Перед стартом встановіть Adobe Photoshop — у чаті будуть поради по встановленню",
-          "Install Adobe Photoshop before старт — tips in chat"
+          "Install Adobe Photoshop before старт — tips in chat",
         ),
         l(
           "Прямые эфиры проходят через Zoom",
           "Прямі ефіри проходять через Zoom",
-          "Live sessions are hosted on Zoom"
+          "Live sessions are hosted on Zoom",
         ),
         l(
           "Домашние задания с обратной связью — только в тарифах 2 и 3 (и выше)",
           "Домашні завдання зі зворотним зв’язком — лише в тарифах 2 і 3 (і вище)",
-          "Homework feedback is included in plans 2+"
+          "Homework feedback is included in plans 2+",
         ),
         l(
           "Личный куратор — только в тарифах 2 и 3 (и выше)",
           "Особистий куратор — лише в тарифах 2 і 3 (і вище)",
-          "Personal curator is included in plans 2+"
+          "Personal curator is included in plans 2+",
         ),
         l(
           "Дипломная работа + чат выпускников для общения и обмена опытом",
           "Дипломна робота + чат випускників для спілкування та обміну досвідом",
-          "Final project + graduates chat"
+          "Final project + graduates chat",
         ),
         l(
           "Доступ к урокам сохраняется 6 месяцев после окончания курса",
           "Доступ до уроків зберігається 6 місяців після завершення курсу",
-          "Access remains for 6 months after course end"
+          "Access remains for 6 months after course end",
         ),
       ],
       outro: l(
         "Цель курса — дать систему, практику и результат: уверенная ретушь + первые работы в портфолио + понимание маркетинга.",
         "Мета курсу — дати систему, практику та результат: впевнена ретуш + перші роботи в портфоліо + розуміння маркетингу.",
-        "The goal is a clear system + practice + portfolio results + marketing basics."
+        "The goal is a clear system + practice + portfolio results + marketing basics.",
       ),
     },
 
@@ -2412,7 +2449,7 @@ A professional retouching course from zero:
         value: l(
           "22 урока + 4 эфира",
           "22 уроки + 4 ефіри",
-          "22 lessons + 4 lives"
+          "22 lessons + 4 lives",
         ),
       },
       {
@@ -2436,7 +2473,7 @@ A professional retouching course from zero:
     tariffsIntro: l(
       "Выберите тариф: самостоятельное обучение или обучение с поддержкой кураторов. Доступные способы оплаты: оплата сразу / рассрочка / предоплата.",
       "Оберіть тариф: самостійне навчання або навчання з підтримкою кураторів. Доступні способи оплати: одразу / розстрочка / передоплата.",
-      "Choose a plan: self-study or curator support. Payment options: full / installments / prepayment."
+      "Choose a plan: self-study or curator support. Payment options: full / installments / prepayment.",
     ),
 
     tariffs: [
@@ -2444,7 +2481,7 @@ A professional retouching course from zero:
         title: l(
           "Самостоятельное обучение",
           "Самостійне навчання",
-          "Self-study"
+          "Self-study",
         ),
         price: "300$",
         include: [1, 2, 3, 4],
@@ -2468,14 +2505,14 @@ A professional retouching course from zero:
 • 10 portfolio photos
 • diploma
 • RAW certificate worth $100
-• support chat for 2 months after course`
+• support chat for 2 months after course`,
         ),
       },
       {
         title: l(
           "Поддержка кураторов",
           "Підтримка кураторів",
-          "Curator Support"
+          "Curator Support",
         ),
         price: "500$",
         include: [1, 2, 3, 4, 5, 6],
@@ -2483,7 +2520,7 @@ A professional retouching course from zero:
         detailsTitle: l(
           "Как работает поддержка?",
           "Як працює підтримка?",
-          "How does support work?"
+          "How does support work?",
         ),
         details: l(
           `• домашние задания с проверкой и обратной связью
@@ -2497,14 +2534,14 @@ A professional retouching course from zero:
           `• homework review & feedback
 • Q&A during learning
 • personal curator
-• final project support`
+• final project support`,
         ),
       },
       {
         title: l(
           "Поддержка кураторов после курса",
           "Підтримка кураторів після курсу",
-          "Support after the course"
+          "Support after the course",
         ),
         price: "600$",
         include: [1, 2, 3, 4, 5, 6],
@@ -2513,14 +2550,14 @@ A professional retouching course from zero:
         details: l(
           `Всё из тарифа с поддержкой + продолжение поддержки после завершения курса (в рамках условий программы).`,
           `Усе з тарифу з підтримкою + продовження підтримки після завершення курсу (в межах умов програми).`,
-          `Everything from Curator Support + extended support after the course (per program terms).`
+          `Everything from Curator Support + extended support after the course (per program terms).`,
         ),
       },
       {
         title: l(
           "Персональное наставничество",
           "Персональне наставництво",
-          "Personal Mentorship"
+          "Personal Mentorship",
         ),
         price: "1000$",
         include: [1, 2, 3, 4, 5, 6],
@@ -2528,7 +2565,7 @@ A professional retouching course from zero:
         detailsTitle: l(
           "Что входит в наставничество?",
           "Що входить у наставництво?",
-          "What’s included?"
+          "What’s included?",
         ),
         details: l(
           `• всё из тарифов с поддержкой
@@ -2542,7 +2579,7 @@ A professional retouching course from zero:
           `• everything from support plans
 • Viktor’s personal mentorship for 12 months after the course
 • 1-on-1 sessions with a promotion strategy
-• 25% discount on Viktor’s products (1 year)`
+• 25% discount on Viktor’s products (1 year)`,
         ),
       },
     ],
@@ -2552,12 +2589,12 @@ A professional retouching course from zero:
         question: l(
           "Что необходимо для прохождения курса?",
           "Що необхідно для проходження курсу?",
-          "What do I need to take this course?"
+          "What do I need to take this course?",
         ),
         answer: l(
           "Компьютер или ноутбук.\n\nДля обучения подходит абсолютно любой компьютер, который стабильно работает в повседневном использовании без зависаний.\n\nЧем больше экран — тем удобнее работать. Чем мощнее компьютер — тем комфортнее процесс.\n\nПрофессиональные ретушеры часто предпочитают технику Apple. Желательно:\n• экран 16 дюймов\n• оперативная память от 16 GB\n\nВидеокарта на работу Photoshop не влияет.",
           "Комп’ютер або ноутбук.\n\nДля навчання підійде будь-який комп’ютер, який стабільно працює у звичайному використанні без зависань.\n\nЧим більший екран — тим зручніше працювати. Чим потужніший комп’ютер — тим комфортніший процес.\n\nПрофесійні ретушери часто надають перевагу техніці Apple. Бажано:\n• екран 16 дюймів\n• оперативна пам’ять від 16 GB\n\nВідеокарта не впливає на роботу Photoshop.",
-          "A computer or laptop.\n\nAny computer that works smoothly in everyday use without freezing is suitable.\n\nThe larger the screen — the more comfortable the workflow. The more powerful the computer — the smoother the experience.\n\nProfessional retouchers often prefer Apple devices. Recommended:\n• 16-inch display\n• at least 16 GB RAM\n\nThe graphics card does not affect Photoshop performance."
+          "A computer or laptop.\n\nAny computer that works smoothly in everyday use without freezing is suitable.\n\nThe larger the screen — the more comfortable the workflow. The more powerful the computer — the smoother the experience.\n\nProfessional retouchers often prefer Apple devices. Recommended:\n• 16-inch display\n• at least 16 GB RAM\n\nThe graphics card does not affect Photoshop performance.",
         ),
       },
 
@@ -2565,12 +2602,12 @@ A professional retouching course from zero:
         question: l(
           "Если я вообще не умею пользоваться Photoshop, курс подойдёт?",
           "Якщо я взагалі не вмію користуватися Photoshop, курс підійде?",
-          "If I’ve never used Photoshop before, is this course suitable?"
+          "If I’ve never used Photoshop before, is this course suitable?",
         ),
         answer: l(
           "Да, конечно.\n\nКурс начинается с самого нуля и подходит для тех, кто никогда не работал в Photoshop.\nВсе инструменты и этапы объясняются пошагово и максимально понятно.",
           "Так, звісно.\n\nКурс починається з самого нуля і підходить для тих, хто ніколи не працював у Photoshop.\nУсі інструменти та етапи пояснюються покроково і максимально зрозуміло.",
-          "Yes, absolutely.\n\nThe course starts from zero and is designed for people who have never worked in Photoshop.\nAll tools and steps are explained clearly and step by step."
+          "Yes, absolutely.\n\nThe course starts from zero and is designed for people who have never worked in Photoshop.\nAll tools and steps are explained clearly and step by step.",
         ),
       },
 
@@ -2578,12 +2615,12 @@ A professional retouching course from zero:
         question: l(
           "Что такое сертификат RAW?",
           "Що таке сертифікат RAW?",
-          "What is a RAW certificate?"
+          "What is a RAW certificate?",
         ),
         answer: l(
           "RAW — это необработанная фотография.\n\nРетушерам нужны такие файлы для практики и пополнения портфолио.\n\nПосле окончания обучения вы получите бесплатный промокод на сумму 100$ для получения RAW-файлов на специальном сайте.",
           "RAW — це необроблена фотографія.\n\nРетушерам потрібні такі файли для практики та наповнення портфоліо.\n\nПісля завершення навчання ви отримаєте безкоштовний промокод на суму 100$ для отримання RAW-файлів на спеціальному сайті.",
-          "RAW is an unprocessed photo file.\n\nRetouchers need RAW files for practice and portfolio building.\n\nAfter completing the course, you’ll receive a free $100 promo code to download RAW files from a dedicated platform."
+          "RAW is an unprocessed photo file.\n\nRetouchers need RAW files for practice and portfolio building.\n\nAfter completing the course, you’ll receive a free $100 promo code to download RAW files from a dedicated platform.",
         ),
       },
 
@@ -2591,12 +2628,12 @@ A professional retouching course from zero:
         question: l(
           "Я визажист и хочу обрабатывать свои работы. Курс будет полезен?",
           "Я візажист і хочу обробляти свої роботи. Курс буде корисним?",
-          "I’m a makeup artist and want to retouch my own work. Is this course useful?"
+          "I’m a makeup artist and want to retouch my own work. Is this course useful?",
         ),
         answer: l(
           "Да.\n\nВ курсе мы разбираем всё, что нужно для работы с макияжем:\n• корректировка тушёвок\n• работа с губами\n• стрелки\n• выравнивание тона\n\nВы научитесь аккуратно улучшать свои работы, сохраняя естественный вид.",
           "Так.\n\nУ курсі ми розбираємо все, що потрібно для роботи з макіяжем:\n• корекція тушування\n• робота з губами\n• стрілки\n• вирівнювання тону\n\nВи навчитеся акуратно покращувати свої роботи, зберігаючи природний вигляд.",
-          "Yes.\n\nThe course covers everything needed to work with makeup:\n• blending corrections\n• lips\n• eyeliner\n• skin tone balancing\n\nYou’ll learn how to enhance your work while keeping it natural."
+          "Yes.\n\nThe course covers everything needed to work with makeup:\n• blending corrections\n• lips\n• eyeliner\n• skin tone balancing\n\nYou’ll learn how to enhance your work while keeping it natural.",
         ),
       },
 
@@ -2604,12 +2641,12 @@ A professional retouching course from zero:
         question: l(
           "Можно ли обрабатывать фотографии на телефоне или планшете?",
           "Чи можна обробляти фотографії на телефоні або планшеті?",
-          "Can I retouch photos on a phone or tablet?"
+          "Can I retouch photos on a phone or tablet?",
         ),
         answer: l(
           "Нет.\n\nПрофессиональная ретушь возможна только на компьютере.\n\nНа телефонах и планшетах есть похожие приложения, но они сильно упрощены.\nТам можно изменить цвет или сделать базовые правки, но профессиональную ретушь выполнить невозможно.",
           "Ні.\n\nПрофесійну ретуш можна виконувати лише на комп’ютері.\n\nНа телефонах і планшетах є схожі програми, але вони значно спрощені.\nТам можна змінити колір або зробити базові правки, але професійну ретуш — ні.",
-          "No.\n\nProfessional retouching is only possible on a computer.\n\nMobile and tablet apps are simplified versions — good for basic edits, but not for professional retouching."
+          "No.\n\nProfessional retouching is only possible on a computer.\n\nMobile and tablet apps are simplified versions — good for basic edits, but not for professional retouching.",
         ),
       },
 
@@ -2617,12 +2654,12 @@ A professional retouching course from zero:
         question: l(
           "Что лучше выбрать — мышку или графический планшет?",
           "Що краще обрати — мишку чи графічний планшет?",
-          "What’s better — a mouse or a graphic tablet?"
+          "What’s better — a mouse or a graphic tablet?",
         ),
         answer: l(
           "Большинство профессиональных ретушеров предпочитают графический планшет.\n\nЯ лично работаю только мышкой и знаю много известных ретушеров, которые тоже работают мышкой.\n\nВсё зависит от привычки и личного комфорта.\nРекомендую попробовать оба варианта и выбрать тот, который подходит именно вам.",
           "Більшість професійних ретушерів віддають перевагу графічному планшету.\n\nЯ особисто працюю лише мишкою і знаю багатьох відомих ретушерів, які також працюють мишкою.\n\nУсе залежить від звички та особистого комфорту.\nРекомендую спробувати обидва варіанти та обрати той, який підходить саме вам.",
-          "Most professional retouchers prefer a graphic tablet.\n\nI personally work only with a mouse, and many well-known retouchers do the same.\n\nIt all comes down to comfort and personal preference.\nI recommend trying both and choosing what suits you best."
+          "Most professional retouchers prefer a graphic tablet.\n\nI personally work only with a mouse, and many well-known retouchers do the same.\n\nIt all comes down to comfort and personal preference.\nI recommend trying both and choosing what suits you best.",
         ),
       },
 
@@ -2630,12 +2667,12 @@ A professional retouching course from zero:
         question: l(
           "Смогу ли я пересматривать уроки?",
           "Чи зможу я передивлятися уроки?",
-          "Will I be able to rewatch the lessons?"
+          "Will I be able to rewatch the lessons?",
         ),
         answer: l(
           "Да.\n\nПосле открытия уроков по расписанию у вас будет доступ к просмотру в течение 18 месяцев после окончания курса.",
           "Так.\n\nПісля відкриття уроків за розкладом ви матимете доступ до перегляду протягом 18 місяців після завершення курсу.",
-          "Yes.\n\nOnce lessons are unlocked according to the schedule, you’ll have access for 18 months after the course ends."
+          "Yes.\n\nOnce lessons are unlocked according to the schedule, you’ll have access for 18 months after the course ends.",
         ),
       },
 
@@ -2643,12 +2680,12 @@ A professional retouching course from zero:
         question: l(
           "Можно ли использовать эту технику для фото с iPhone Pro Max?",
           "Чи можна використовувати ці техніки для фото з iPhone Pro Max?",
-          "Can I use these techniques on photos taken with an iPhone Pro Max?"
+          "Can I use these techniques on photos taken with an iPhone Pro Max?",
         ),
         answer: l(
           "Да, и такие запросы действительно бывают.\n\nВажно понимать, что фотографии с телефона значительно уступают по качеству профессиональным фото.\nИз-за этого возможности ретуши ограничены, но базовые и аккуратные улучшения возможны.",
           "Так, і такі запити дійсно трапляються.\n\nВарто розуміти, що фото з телефона значно поступаються за якістю професійним знімкам.\nЧерез це можливості ретуші обмежені, але базові акуратні покращення можливі.",
-          "Yes, and such requests do happen.\n\nHowever, phone photos are much lower in quality than professional camera images.\nThis limits retouching possibilities, but clean and basic improvements are still possible."
+          "Yes, and such requests do happen.\n\nHowever, phone photos are much lower in quality than professional camera images.\nThis limits retouching possibilities, but clean and basic improvements are still possible.",
         ),
       },
 
@@ -2656,12 +2693,12 @@ A professional retouching course from zero:
         question: l(
           "Сколько времени нужно, чтобы начать зарабатывать на ретуши?",
           "Скільки часу потрібно, щоб почати заробляти на ретуші?",
-          "How long does it take to start earning money from retouching?"
+          "How long does it take to start earning money from retouching?",
         ),
         answer: l(
           "Всё индивидуально.\n\nНо уже к середине третьего модуля у вас будет достаточно знаний, чтобы начинать работать с клиентами — даже до полного окончания курса.\nДальше всё зависит от вашей активности и практики.",
           "Усе індивідуально.\n\nАле вже до середини третього модуля у вас буде достатньо знань, щоб почати працювати з клієнтами — навіть до повного завершення курсу.\nДалі все залежить від вашої активності та практики.",
-          "It’s individual.\n\nHowever, by the middle of the third module you’ll already have enough skills to start working with clients — even before finishing the course.\nAfter that, it depends on your activity and practice."
+          "It’s individual.\n\nHowever, by the middle of the third module you’ll already have enough skills to start working with clients — even before finishing the course.\nAfter that, it depends on your activity and practice.",
         ),
       },
 
@@ -2669,18 +2706,19 @@ A professional retouching course from zero:
         question: l(
           "Будет ли в курсе ценообразование и поиск клиентов?",
           "Чи буде в курсі ціноутворення та пошук клієнтів?",
-          "Does the course include pricing and finding clients?"
+          "Does the course include pricing and finding clients?",
         ),
         answer: l(
           "Да.\n\nВ третьем модуле есть отдельный урок по продвижению и ценообразованию.\n\nТакже проводятся прямые эфиры, где вы сможете задать любые вопросы по работе с клиентами.",
           "Так.\n\nУ третьому модулі є окремий урок з просування та ціноутворення.\n\nТакож проводяться прямі ефіри, де ви зможете поставити будь-які запитання щодо роботи з клієнтами.",
-          "Yes.\n\nThe third module includes a dedicated lesson on marketing and pricing.\n\nThere are also live sessions where you can ask any questions about working with clients."
+          "Yes.\n\nThe third module includes a dedicated lesson on marketing and pricing.\n\nThere are also live sessions where you can ask any questions about working with clients.",
         ),
       },
     ],
   },
   {
     slug: "retouch-nails-en",
+    order: 3,
     imageSrc: "/images/nails-retouching/IMG_9105 3.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",
@@ -2690,13 +2728,13 @@ A professional retouching course from zero:
     subtitle: l(
       "Курс на английском языке",
       "Курс англійською мовою",
-      "The course is in English"
+      "The course is in English",
     ),
 
     shortDescription: l(
       "Курс для nail-мастеров: коммерческая ретушь ногтей, портфолио и контент для соцсетей.",
       "Курс для nail-майстрів: комерційна ретуш нігтів, портфоліо та контент для соцмереж.",
-      "A course for nail stylists: commercial nail retouching, portfolio building, and social media content."
+      "A course for nail stylists: commercial nail retouching, portfolio building, and social media content.",
     ),
 
     heroText: l(
@@ -2774,8 +2812,34 @@ The course is developed with top nail artists:
 You will learn how to:
 • retouch nails on your own
 • create a portfolio that sells
-• make content for promotion and income growth`
+• make content for promotion and income growth`,
     ),
+
+    requirements: [
+      l(
+        "компьютер или ноутбук",
+        "компʼютер або ноутбук",
+        "a computer or laptop",
+      ),
+      l("мышь", "мишка", "a mouse"),
+      l("программа Photoshop", "програма Photoshop", "Adobe Photoshop"),
+      l("блокнот для заметок", "блокнот для нотаток", "a notebook for notes"),
+      l(
+        "доступ к курсу на 6 месяцев",
+        "доступ до курсу на 6 місяців",
+        "6 months course access",
+      ),
+      l(
+        "доступ и просмотр в любое удобное время",
+        "доступ і перегляд у будь-який зручний час",
+        "watch anytime",
+      ),
+      l(
+        "длительность уроков — 15–25 минут",
+        "тривалість уроків — 15–25 хвилин",
+        "lesson duration: 15–25 minutes",
+      ),
+    ],
 
     galleryImagesCount: 6,
 
@@ -2789,7 +2853,7 @@ You will learn how to:
         value: l(
           "Сразу после оплаты",
           "Одразу після оплати",
-          "Immediately after purchase"
+          "Immediately after purchase",
         ),
       },
       {
@@ -2826,37 +2890,37 @@ You will learn how to:
       l(
         "Введение и установка Photoshop",
         "Вступ та встановлення Photoshop",
-        "Introduction and Photoshop installation"
+        "Introduction and Photoshop installation",
       ),
       l(
         "Открытие и сохранение фотографий",
         "Відкриття та збереження фото",
-        "Opening and saving photos"
+        "Opening and saving photos",
       ),
       l("Основные инструменты", "Основні інструменти", "Essential tools"),
       l(
         "Чёткость и резкость",
         "Чіткість та різкість",
-        "Photo clarity and sharpness"
+        "Photo clarity and sharpness",
       ),
       l("Цветокоррекция", "Кольорокорекція", "Color correction"),
       l(
         "Работа с дефектами",
         "Робота з дефектами",
-        "Working with imperfections"
+        "Working with imperfections",
       ),
       l("Смена цвета ногтей", "Зміна кольору нігтів", "Changing nail color"),
       l("Удаление покраснений", "Прибирання почервонінь", "Removing redness"),
       l(
         "Коррекция формы ногтей",
         "Корекція форми нігтів",
-        "Adjusting nail shape"
+        "Adjusting nail shape",
       ),
       l("Ретушь кожи рук", "Ретуш шкіри рук", "Editing hand skin"),
       l(
         "Правильный алгоритм ретуши",
         "Правильний алгоритм ретуші",
-        "Correct retouching workflow"
+        "Correct retouching workflow",
       ),
       l("Финал. Удаление пыли", "Фінал. Видалення пилу", "Final. Dust removal"),
     ],
@@ -2865,41 +2929,41 @@ You will learn how to:
       intro: l(
         "После оплаты вы сразу получаете доступ к курсу на сайте viktorkyslyi.com.",
         "Після оплати ви одразу отримуєте доступ до курсу на сайті viktorkyslyi.com.",
-        "After payment, you get instant access to the course on viktorkyslyi.com."
+        "After payment, you get instant access to the course on viktorkyslyi.com.",
       ),
       steps: [
         l(
           "Перейдите в раздел «Курсы»",
           "Перейдіть у розділ «Курси»",
-          "Go to the “Courses” section"
+          "Go to the “Courses” section",
         ),
         l(
           "Выберите курс Nail Retouching",
           "Оберіть курс Nail Retouching",
-          "Select the Nail Retouching course"
+          "Select the Nail Retouching course",
         ),
         l(
           "Начните обучение в любое удобное время",
           "Навчайтесь у зручний для вас час",
-          "Start learning anytime"
+          "Start learning anytime",
         ),
       ],
       outro: l(
         "После каждого урока вы выполняете практическое задание.",
         "Після кожного уроку ви виконуєте практичне завдання.",
-        "After each lesson, you complete a practical assignment."
+        "After each lesson, you complete a practical assignment.",
       ),
       files: l(
         "Все файлы для практики доступны внутри курса.",
         "Усі файли для практики доступні всередині курсу.",
-        "All practice files are available inside the course."
+        "All practice files are available inside the course.",
       ),
     },
 
     tariffsIntro: l(
       "Выберите подходящий формат обучения.",
       "Оберіть відповідний формат навчання.",
-      "Choose the learning format that suits you."
+      "Choose the learning format that suits you.",
     ),
 
     tariffs: [
@@ -2913,7 +2977,7 @@ You will learn how to:
         title: l(
           "Курс + поддержка куратора",
           "Курс + підтримка куратора",
-          "Course + Curator Support"
+          "Course + Curator Support",
         ),
         price: "149$",
         include: [1, 2, 3, 4, 5],
@@ -2921,7 +2985,7 @@ You will learn how to:
         detailsTitle: l(
           "Как работает поддержка?",
           "Як працює підтримка?",
-          "How does curator support work?"
+          "How does curator support work?",
         ),
         details: l(
           `Если вы выбираете план с Mentor Support:
@@ -2956,7 +3020,7 @@ You will learn how to:
 • сертифікат доступний лише з Mentor Support`,
           `With Mentor Support you get:
 • 1 month of support per module
-• one-on-one communication with your mentor (WhatsApp or Telegram)
+• one-on-one communication with your mentor (WhatsApp)
 • homework review + Q&A
 
 After purchase, contact your mentor and provide:
@@ -2968,7 +3032,7 @@ After purchase, contact your mentor and provide:
 Notes:
 • You may message anytime — replies aren’t instant but will come as soon as possible
 • Submit only course homework/photos for review to stay on track
-• Certificate is available only with Mentor Support`
+• Certificate is available only with Mentor Support`,
         ),
       },
     ],
@@ -2978,228 +3042,228 @@ Notes:
         question: l(
           "Я делаю красивые маникюры, но на фото они выглядят хуже, чем в жизни. Почему?",
           "Я роблю гарні манікюри, але на фото вони виглядають гірше, ніж у житті. Чому?",
-          "I do beautiful manicures, but they look worse in photos than in real life. Why?"
+          "I do beautiful manicures, but they look worse in photos than in real life. Why?",
         ),
         answer: l(
           "Камера усиливает покраснения, тени, дефекты и пыль. В курсе вы научитесь возвращать фото к тому виду, как работа выглядит в реальности.",
           "Камера підсилює почервоніння, тіні, дефекти та пил. У курсі ви навчитеся повертати фото до того вигляду, як робота виглядає в реальності.",
-          "The camera exaggerates redness, shadows, imperfections, and dust. In this course, you’ll learn how to bring your photos back to how your work actually looks in real life."
+          "The camera exaggerates redness, shadows, imperfections, and dust. In this course, you’ll learn how to bring your photos back to how your work actually looks in real life.",
         ),
       },
       {
         question: l(
           "Что я получу от этого курса?",
           "Що я отримаю з цього курсу?",
-          "What will I get from this course?"
+          "What will I get from this course?",
         ),
         answer: l(
           "Фото, которые привлекают клиентов и выделяют вас среди конкурентов. Вы научитесь создавать правильный свет, чистый цвет, аккуратно убирать дефекты, корректировать форму ногтей и сохранять фото без потери качества.",
           "Фото, які приваблюють клієнтів і виділяють вас серед конкурентів. Ви навчитеся створювати правильне світло, чистий колір, акуратно прибирати дефекти, коригувати форму нігтів і зберігати фото без втрати якості.",
-          "Photos that attract clients and help you stand out from competitors. You’ll learn lighting, clean color, gentle retouching, natural nail shape correction, and proper export for social media."
+          "Photos that attract clients and help you stand out from competitors. You’ll learn lighting, clean color, gentle retouching, natural nail shape correction, and proper export for social media.",
         ),
       },
       {
         question: l(
           "Почему клиенты пролистывают мои фото, хотя работы хорошие?",
           "Чому клієнти пролистують мої фото, хоча роботи хороші?",
-          "Why do clients scroll past my photos even though my work is good?"
+          "Why do clients scroll past my photos even though my work is good?",
         ),
         answer: l(
           "Фото выглядят «сырыми»: неровный тон кожи, цветовые искажения, потеря качества. Чистая картинка останавливает взгляд и увеличивает продажи.",
           "Фото виглядають «сирими»: нерівний тон шкіри, небажані відтінки, втрата якості. Чиста картинка зупиняє погляд і збільшує продажі.",
-          "Because photos look raw: uneven skin tone, unwanted color casts, and loss of quality. Clean visuals stop the eye and increase sales."
+          "Because photos look raw: uneven skin tone, unwanted color casts, and loss of quality. Clean visuals stop the eye and increase sales.",
         ),
       },
       {
         question: l(
           "Что если я куплю курс и пойму, что он мне не нужен?",
           "А якщо я куплю курс і зрозумію, що він мені не потрібен?",
-          "What if I buy the course and realize I don’t need it?"
+          "What if I buy the course and realize I don’t need it?",
         ),
         answer: l(
           "Вы сразу начинаете работать со своими фото. Результаты появляются уже на первых уроках — сомнения исчезают сами.",
           "Ви одразу починаєте працювати зі своїми фото. Результати зʼявляються вже на перших уроках — сумніви зникають самі.",
-          "You start working with your own photos right away. Results appear in the first lessons — doubts usually disappear on their own."
+          "You start working with your own photos right away. Results appear in the first lessons — doubts usually disappear on their own.",
         ),
       },
       {
         question: l(
           "Я боюсь потратить деньги впустую.",
           "Я боюся витратити гроші даремно.",
-          "I’m afraid of wasting money."
+          "I’m afraid of wasting money.",
         ),
         answer: l(
           "Курс короткий, практичный и без лишней теории. Вы платите за конкретный навык, который остаётся с вами навсегда.",
           "Курс короткий, практичний і без зайвої теорії. Ви платите за конкретну навичку, яка залишається з вами назавжди.",
-          "The course is short, practical, and without unnecessary theory. You pay for a specific skill that stays with you forever."
+          "The course is short, practical, and without unnecessary theory. You pay for a specific skill that stays with you forever.",
         ),
       },
       {
         question: l(
           "А если у меня не получится?",
           "А якщо в мене не вийде?",
-          "What if I can’t do it?"
+          "What if I can’t do it?",
         ),
         answer: l(
           "Не получается, когда нет системы. Здесь есть чёткий пошаговый алгоритм — вы просто повторяете шаги. Также есть вариант обучения с личным наставником.",
           "Не виходить, коли немає системи. Тут є чіткий покроковий алгоритм — ви просто повторюєте кроки. Також є варіант навчання з наставником.",
-          "It doesn’t work when there’s no system. Here you get a clear step-by-step algorithm — you simply repeat the steps. There’s also an option with an individual mentor."
+          "It doesn’t work when there’s no system. Here you get a clear step-by-step algorithm — you simply repeat the steps. There’s also an option with an individual mentor.",
         ),
       },
       {
         question: l(
           "Я боюсь, что будет слишком сложно и я брошу.",
           "Я боюся, що буде занадто складно і я кину.",
-          "I’m afraid it’s too complicated and I’ll quit."
+          "I’m afraid it’s too complicated and I’ll quit.",
         ),
         answer: l(
           "Именно поэтому уроки короткие, последовательность понятная и используется минимум инструментов. Никакой перегрузки и «страшного Photoshop».",
           "Саме тому уроки короткі, послідовність зрозуміла і використовується мінімум інструментів. Жодного перевантаження та «страшного Photoshop».",
-          "That’s why lessons are short, the sequence is clear, and only a minimum of tools is used. No overload and no “scary Photoshop.”"
+          "That’s why lessons are short, the sequence is clear, and only a minimum of tools is used. No overload and no “scary Photoshop.”",
         ),
       },
       {
         question: l(
           "Подойдёт ли курс, если я никогда не открывала Photoshop?",
           "Чи підійде курс, якщо я ніколи не відкривала Photoshop?",
-          "Is this course suitable if I’ve never opened Photoshop before?"
+          "Is this course suitable if I’ve never opened Photoshop before?",
         ),
         answer: l(
           "Да. Курс сделан для новичков. Мы изучаем только инструменты, нужные для ретуши фото ногтей.",
           "Так. Курс створений для новачків. Ми вивчаємо лише інструменти, потрібні для ретуші нігтів.",
-          "Yes. The course is made for beginners. We only use the tools needed for nail photo retouching."
+          "Yes. The course is made for beginners. We only use the tools needed for nail photo retouching.",
         ),
       },
       {
         question: l(
           "Я снимаю на телефон, а не на камеру. Это проблема?",
           "Я знімаю на телефон, а не на камеру. Це проблема?",
-          "I shoot on a phone, not a camera. Is that a problem?"
+          "I shoot on a phone, not a camera. Is that a problem?",
         ),
         answer: l(
           "Нет. В курсе мы работаем именно с фото, снятыми на телефон.",
           "Ні. У курсі ми працюємо саме з фото, зробленими на телефон.",
-          "No. In the course, we work with photos taken on a phone."
+          "No. In the course, we work with photos taken on a phone.",
         ),
       },
       {
         question: l(
           "Мои фото очень плохие. Курс поможет?",
           "Мої фото дуже погані. Курс допоможе?",
-          "My photos are really bad. Will the course help?"
+          "My photos are really bad. Will the course help?",
         ),
         answer: l(
           "Да. Курс создан именно для обычных, неидеальных фото. Чем хуже исходник — тем заметнее результат.",
           "Так. Курс створений саме для звичайних, неідеальних фото. Чим гірший вихідник — тим помітніший результат.",
-          "Yes. The course is designed specifically for normal, imperfect photos. The worse the original image, the more noticeable the result."
+          "Yes. The course is designed specifically for normal, imperfect photos. The worse the original image, the more noticeable the result.",
         ),
       },
       {
         question: l(
           "Фото не будут выглядеть неестественно или «перефотошоплено»?",
           "Фото не виглядатимуть неприродно або «перефотошоплено»?",
-          "Won’t my photos look unnatural or over-photoshopped?"
+          "Won’t my photos look unnatural or over-photoshopped?",
         ),
         answer: l(
           "Нет. Мы убираем дефекты и делаем цвет чистым и коммерческим. Фото остаются естественными.",
           "Ні. Ми прибираємо дефекти та робимо колір чистим і комерційним. Фото залишаються природними.",
-          "No. We simply remove defects and make the color clean and commercial. Photos remain natural."
+          "No. We simply remove defects and make the color clean and commercial. Photos remain natural.",
         ),
       },
       {
         question: l(
           "Это точно курс для nail-мастеров, а не ретушеров?",
           "Це точно курс для nail-майстрів, а не ретушерів?",
-          "Is this really a course for nail artists, not retouchers?"
+          "Is this really a course for nail artists, not retouchers?",
         ),
         answer: l(
           "Да. Только ногти, цвет и кожа рук. Никаких портретов и лишней информации.",
           "Так. Лише нігті, колір і шкіра рук. Жодних портретів і зайвої інформації.",
-          "Yes. Only nails, color, and hand skin. No portraits or unnecessary topics."
+          "Yes. Only nails, color, and hand skin. No portraits or unnecessary topics.",
         ),
       },
       {
         question: l(
           "Я пробовала фильтры, но фото всё равно не выглядят премиально.",
           "Я пробувала фільтри, але фото все одно не виглядають преміально.",
-          "I’ve tried filters, but my photos still don’t look premium."
+          "I’ve tried filters, but my photos still don’t look premium.",
         ),
         answer: l(
           "Фильтры не работают с деталями и дефектами. В курсе вы понимаете, что и зачем корректируете.",
           "Фільтри не працюють з деталями та дефектами. У курсі ви розумієте, що і навіщо коригуєте.",
-          "Filters don’t work with details and imperfections. In the course, you understand what you correct and why."
+          "Filters don’t work with details and imperfections. In the course, you understand what you correct and why.",
         ),
       },
       {
         question: l(
           "Сколько времени занимает ретушь одного фото после курса?",
           "Скільки часу займає ретуш одного фото після курсу?",
-          "How long does it take to edit one photo after the course?"
+          "How long does it take to edit one photo after the course?",
         ),
         answer: l(
           "5–10 минут, а не часы. Вы работаете быстро и уверенно.",
           "5–10 хвилин, а не години. Ви працюєте швидко та впевнено.",
-          "5–10 minutes, not hours. You work quickly and confidently."
+          "5–10 minutes, not hours. You work quickly and confidently.",
         ),
       },
       {
         question: l(
           "Ретушь действительно помогает привлекать клиентов?",
           "Ретуш справді допомагає залучати клієнтів?",
-          "Does retouching really help attract clients?"
+          "Does retouching really help attract clients?",
         ),
         answer: l(
           "Да. Красивые фото = доверие = записи. Фото продают без слов.",
           "Так. Гарні фото = довіра = записи. Фото продають без слів.",
-          "Yes. Beautiful photos equal trust and bookings. Photos sell without words."
+          "Yes. Beautiful photos equal trust and bookings. Photos sell without words.",
         ),
       },
       {
         question: l(
           "Подойдёт ли курс, если я только начинаю карьеру?",
           "Чи підійде курс, якщо я тільки починаю карʼєру?",
-          "Is the course suitable if I’m just starting my career?"
+          "Is the course suitable if I’m just starting my career?",
         ),
         answer: l(
           "Да. Это сильный старт и быстрый отрыв от конкурентов.",
           "Так. Це сильний старт і швидке виділення серед конкурентів.",
-          "Yes. It’s a strong start that helps you stand out immediately."
+          "Yes. It’s a strong start that helps you stand out immediately.",
         ),
       },
       {
         question: l(
           "Я уже опытный мастер. Есть ли смысл?",
           "Я вже досвідчений майстер. Чи є сенс?",
-          "What if I’m already an experienced nail artist?"
+          "What if I’m already an experienced nail artist?",
         ),
         answer: l(
           "Опыт ≠ сильные визуалы. Курс убирает типичные ошибки даже у опытных мастеров.",
           "Досвід ≠ сильні візуали. Курс прибирає типові помилки навіть у досвідчених майстрів.",
-          "Experience doesn’t always mean strong visuals. The course removes common mistakes."
+          "Experience doesn’t always mean strong visuals. The course removes common mistakes.",
         ),
       },
       {
         question: l(
           "Я хочу поднять цены, но боюсь.",
           "Я хочу підняти ціни, але боюся.",
-          "I want to charge more, but I’m afraid."
+          "I want to charge more, but I’m afraid.",
         ),
         answer: l(
           "Клиенты легче принимают высокую цену, когда фото выглядят уверенно и профессионально.",
           "Клієнти легше приймають вищу ціну, коли фото виглядають впевнено та професійно.",
-          "Clients accept higher prices more easily when photos look confident and professional."
+          "Clients accept higher prices more easily when photos look confident and professional.",
         ),
       },
       {
         question: l(
           "Что будет, если ничего не менять?",
           "Що буде, якщо нічого не змінювати?",
-          "What happens if I change nothing?"
+          "What happens if I change nothing?",
         ),
         answer: l(
           "Фото останутся слабым местом, даже при идеальном маникюре. Клиенты продолжат выбирать глазами — и не выбирать вас.",
           "Фото залишаться слабким місцем, навіть за ідеального манікюру. Клієнти й далі обиратимуть очима — і не вас.",
-          "Photos will remain the weak link, even if your manicure is perfect. Clients will keep choosing with their eyes — and not choosing you."
+          "Photos will remain the weak link, even if your manicure is perfect. Clients will keep choosing with their eyes — and not choosing you.",
         ),
       },
     ],
@@ -3207,5 +3271,5 @@ Notes:
 ];
 
 export const coursesMap: Record<string, Course> = Object.fromEntries(
-  courses.map((c) => [c.slug, c])
+  courses.map((c) => [c.slug, c]),
 );
