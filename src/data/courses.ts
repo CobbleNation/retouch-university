@@ -38,11 +38,30 @@ export type CourseHowItWorks = {
 // ✅ NEW: мова самого курсу (не UI)
 export type CourseLang = "en" | "non-en";
 
+export type CourseCategory =
+  | "retouch"
+  | "photo"
+  | "ai"
+  | "video"
+  | "marketing"
+  | "other";
+
+export const COURSE_CATEGORIES: Array<{ id: "all" | CourseCategory }> = [
+  { id: "all" },
+  { id: "retouch" },
+  { id: "photo" },
+  { id: "ai" },
+  { id: "video" },
+  { id: "marketing" },
+  { id: "other" },
+];
+
+
 export type Course = {
   slug: string;
 
   order: number;
-
+  category: CourseCategory;
   // ✅ NEW
   courseLang: CourseLang;
 
@@ -76,7 +95,7 @@ export const courses: Course[] = [
   {
     slug: "retouch-nails",
     order: 3,
-
+    category: "retouch",
     imageSrc: "/images/IMG_9105.jpg",
     courseLang: "non-en",
     fullWidthImageSrc: "/images/IMG_9102.jpg",
@@ -655,7 +674,7 @@ How the learning works:
   {
     slug: "color-architecture",
     order: 2,
-
+    category: "retouch",
     imageSrc: "/images/color-architecture/arch-color.jpg",
     fullWidthImageSrc: "",
     courseLang: "non-en",
@@ -1100,6 +1119,7 @@ Live sessions: color grading your photos.`,
   {
     slug: "color-architecture-en",
     order: 2,
+    category: "retouch",
     imageSrc: "/images/color-architecture/color-architecture-eng.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",
@@ -1552,6 +1572,7 @@ Real examples. Real color. Real inspiration.`,
   {
     slug: "architecture-of-retouching",
     order: 1,
+    category: "retouch",
     imageSrc: "/images/architecture-of-retouching/hero.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",
@@ -2165,6 +2186,7 @@ Notes:
   {
     slug: "architecture-of-retouching-ru",
     order: 1,
+    category: "retouch",
     imageSrc: "/images/architecture-of-retouching/hero-ru.jpg",
     fullWidthImageSrc: "",
     courseLang: "non-en",
@@ -2719,6 +2741,7 @@ A professional retouching course from zero:
   {
     slug: "retouch-nails-en",
     order: 3,
+    category: "retouch",
     imageSrc: "/images/nails-retouching/IMG_9105 3.jpg",
     fullWidthImageSrc: "",
     courseLang: "en",

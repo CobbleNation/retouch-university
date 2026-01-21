@@ -28,7 +28,7 @@ export const ru = {
   },
 
   coursesPage: {
-    availableCourses: "Доступные курсы",
+    categoriesTitle: "Категории",
     chooseLanguage: "Выбрать язык:",
     description:
       "Retouch University — пространство для развития визуальных навыков. Платформа объединяет все, что помогает создавать сильный визуальный продукт.",
@@ -37,12 +37,14 @@ export const ru = {
     courseTitle: "Архитектура съемки. Самостоятельное обучение",
     learnMore: "Узнать больше",
     goToCourse: "Купить курс",
-
-    filters: {
+    categories: {
       all: "Все",
-      retouchArchitecture: "Архитектура ретуши",
-      shootArchitecture: "Архитектура съёмки",
-      colorArchitecture: "Архитектура цвета",
+      retouch: "Ретушь",
+      photo: "Фотография",
+      ai: "AI",
+      video: "Видео",
+      marketing: "Маркетинг",
+      other: "Прочее",
     },
   },
 

@@ -28,7 +28,7 @@ export const ua = {
   },
 
   coursesPage: {
-    availableCourses: "Доступні курси",
+    categoriesTitle: "Категорії",
     chooseLanguage: "Обрати мову:",
     description:
       "Retouch University — простір для розвитку візуальних навичок. Платформа об’єднує все, що допомагає створювати сильний візуальний продукт",
@@ -38,11 +38,14 @@ export const ua = {
     learnMore: "Дізнатись більше",
     goToCourse: "Купити курс",
 
-    filters: {
+    categories: {
       all: "Всі",
-      retouchArchitecture: "Архітектура ретуші",
-      shootArchitecture: "Архітектура зйомки",
-      colorArchitecture: "Архітектура кольору",
+      retouch: "Ретуш",
+      photo: "Фотографія",
+      ai: "AI",
+      video: "Відео",
+      marketing: "Маркетинг",
+      other: "Інше",
     },
   },
 

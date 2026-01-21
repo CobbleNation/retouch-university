@@ -1,20 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./CoursesPage.module.scss";
-import { LanguageFilter } from "../../components/LanguageFilter/LanguageFilter";
 import { LanguageSelector } from "../../components/LanguageSelector/LanguageSelector";
 import { CourseCard } from "../../components/CourseCard/CourseCard";
 import { useI18n } from "../../i18n";
-import { courses } from "../../data/courses";
+import { courses, COURSE_CATEGORIES, type CourseCategory } from "../../data/courses";
+
+type CategoryId = "all" | CourseCategory;
 
 export const CoursesPage = () => {
   const { t, locale } = useI18n();
   const navigate = useNavigate();
 
-  const [languageFilter, setLanguageFilter] = useState<string>("all");
-  const [selectedCourseSlug, setSelectedCourseSlug] = useState<string | null>(
-    null,
-  );
+  // ✅ NEW: категорія
+  const [category, setCategory] = useState<CategoryId>("all");
+
+  const [selectedCourseSlug, setSelectedCourseSlug] = useState<string | null>(null);
 
   // 🔧 Поки що featured-блок вимкнений
   const SHOW_FEATURED = false;
@@ -31,17 +32,17 @@ export const CoursesPage = () => {
     return [...list].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
   }, [locale]);
 
-  // ✅ 2) Скидаємо slug-фільтр при зміні мови (щоб не лишався "невидимий" slug)
+  // ✅ 2) Скидаємо фільтри при зміні мови
   useEffect(() => {
-    setLanguageFilter("all");
+    setCategory("all");
     setSelectedCourseSlug(null);
   }, [locale]);
 
-  // ✅ 3) Тепер застосовуємо твій існуючий фільтр (all або slug)
+  // ✅ 3) Фільтр по категорії (all -> всі)
   const filteredCourses = useMemo(() => {
-    if (languageFilter === "all") return localeCourses;
-    return localeCourses.filter((c) => c.slug === languageFilter);
-  }, [languageFilter, localeCourses]);
+    if (category === "all") return localeCourses;
+    return localeCourses.filter((c) => c.category === category);
+  }, [category, localeCourses]);
 
   const featured = filteredCourses[0] ?? null;
 
@@ -53,7 +54,6 @@ export const CoursesPage = () => {
 
   const selectedCourse = useMemo(() => {
     if (!selectedCourseSlug) return null;
-    // ✅ шукаємо тільки серед доступних для цієї мови курсів
     return localeCourses.find((c) => c.slug === selectedCourseSlug) ?? null;
   }, [selectedCourseSlug, localeCourses]);
 
@@ -66,11 +66,7 @@ export const CoursesPage = () => {
     if (!course) return;
 
     if (course.tariffs.length === 1) {
-      window.open(
-        course.tariffs[0].paymentUrl,
-        "_blank",
-        "noopener,noreferrer",
-      );
+      window.open(course.tariffs[0].paymentUrl, "_blank", "noopener,noreferrer");
       return;
     }
 
@@ -95,12 +91,27 @@ export const CoursesPage = () => {
               <LanguageSelector />
             </div>
 
-            {/* ✅ ВАЖЛИВО: передаємо сюди вже відфільтровані курси */}
-            <LanguageFilter
-              active={languageFilter}
-              onChange={setLanguageFilter}
-              courses={localeCourses}
-            />
+            {/* ✅ NEW: Категорії */}
+            <div className={styles.categories}>
+              <div className={styles.categoriesTitle}>
+                {t("coursesPage.categoriesTitle")}
+              </div>
+
+              <div className={styles.categoriesList}>
+                {COURSE_CATEGORIES.map((c) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    className={`${styles.categoryBtn} ${
+                      category === c.id ? styles.categoryBtnActive : ""
+                    }`}
+                    onClick={() => setCategory(c.id as CategoryId)}
+                  >
+                    {t(`coursesPage.categories.${c.id}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
           </aside>
 
           <section className={styles.content}>
@@ -108,7 +119,6 @@ export const CoursesPage = () => {
               {t("coursesPage.description")}
             </p>
 
-            {/* Сітка курсів */}
             <div className={styles.grid}>
               {gridCourses.map((course) => (
                 <CourseCard

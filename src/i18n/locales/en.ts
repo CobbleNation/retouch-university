@@ -28,7 +28,7 @@ export const en = {
   },
 
   coursesPage: {
-    availableCourses: "Available courses",
+    categoriesTitle: "Categories",
     chooseLanguage: "Choose language:",
     description:
       "Retouch University is a space for developing visual skills. The platform brings together everything that helps you create a strong visual product",
@@ -39,11 +39,14 @@ export const en = {
     goToCourse: "Buy course",
 
     // фільтри по курсам
-    filters: {
+    categories: {
       all: "All",
-      retouchArchitecture: "Retouch architecture",
-      shootArchitecture: "Shooting architecture",
-      colorArchitecture: "Color architecture",
+      retouch: "Retouch",
+      photo: "Photography",
+      ai: "AI",
+      video: "Video",
+      marketing: "Marketing",
+      other: "Other",
     },
   },
 

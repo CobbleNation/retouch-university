@@ -186,3 +186,56 @@
   font-size: 12px;
   color: $color-muted;
 }
+
+/* ────────── CATEGORIES (як LanguageFilter sidebar) ────────── */
+
+.categories {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.categoriesTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.categoriesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryItem {
+  margin: 0;
+}
+
+.categoryBtn {
+  width: 100%;
+  text-align: left;
+  padding: 8px 14px;
+
+  border-radius: $radius-pill;
+  border: 1px solid $color-border;
+  background-color: #ffffff;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    border-color: $color-accent;
+  }
+}
+
+.categoryBtnActive {
+  border-color: $color-accent;
+  background-color: rgba(108, 92, 231, 0.08);
+  color: $color-accent;
+}
