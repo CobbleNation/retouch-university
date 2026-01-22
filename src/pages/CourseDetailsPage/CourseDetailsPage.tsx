@@ -68,7 +68,6 @@ export const CourseDetailsPage = () => {
     t("courseDetails.features.homework"),
     t("courseDetails.features.curatorCheck"),
     t("courseDetails.features.calls"),
-    // t("courseDetails.features.postSupport"),
   ];
 
   // ✅ мінімальний тариф по АКТУАЛЬНІЙ ціні
@@ -107,7 +106,7 @@ export const CourseDetailsPage = () => {
   // ✅ фото для full-width секції
   const fullWidthImageSrc = course.fullWidthImageSrc || "";
 
-  // helpers: підтягуємо значення з infoRows, щоб "актуалізувати інформацію"
+  // helpers: підтягуємо значення з infoRows
   const getInfoValue = (labelKey: string) =>
     course.infoRows.find((r) => r.labelKey === labelKey)?.value?.[locale] ?? "";
 
@@ -125,21 +124,7 @@ export const CourseDetailsPage = () => {
     return items;
   }, [course, locale]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ✅ Requirements block
-  const hasRequirements = (course.requirements?.length ?? 0) > 0;
-
-  const requirementsTitle =
-    locale === "en"
-      ? "For taking the course you will need"
-      : locale === "ua"
-        ? "Для проходження курсу вам знадобиться"
-        : "Для прохождения курса вам понадобится";
-
-  // ✅ How it works
-  const howItWorks = course.howItWorks;
-  const hasHowItWorks = !!howItWorks && (howItWorks.steps?.length ?? 0) > 0;
-
-  // ✅ Program: підтримка двох форматів
+  // ✅ Program
   const program = course.program ?? [];
   const programSections = course.programSections ?? [];
   const hasProgram = programSections.length > 0 || program.length > 0;
@@ -154,6 +139,12 @@ export const CourseDetailsPage = () => {
     }
     return starts;
   }, [programSections]);
+
+  // ✅ Landing blocks (NEW, optional)
+  const landing = course.landing;
+  const hasLandingHero = !!landing?.hero;
+  const hasForWho = (landing?.forWho?.bullets?.length ?? 0) > 0;
+  const hasLearningProcess = (landing?.learningProcess?.steps?.length ?? 0) > 0;
 
   // ✅ Author block (localized lightweight, без правок локал-файлів)
   const author = useMemo(() => {
@@ -219,21 +210,10 @@ export const CourseDetailsPage = () => {
           {t("courseDetails.back")}
         </button>
 
+        {/* ✅ HERO: фото + збоку текст (як на старому лендингу) */}
         <section className={styles.hero}>
+          {/* LEFT: IMAGE */}
           <div className={styles.heroLeft}>
-            <h1 className={styles.heroTitle}>
-              {course.title[locale]}
-              {course.subtitle && (
-                <>
-                  <br />
-                  {course.subtitle[locale]}
-                </>
-              )}
-            </h1>
-          </div>
-
-          <div className={styles.heroRight}>
-            {/* Замість heroText — фото курсу */}
             {course.imageSrc ? (
               <img
                 src={course.imageSrc}
@@ -243,6 +223,103 @@ export const CourseDetailsPage = () => {
               />
             ) : (
               <div className={styles.heroImagePlaceholder} />
+            )}
+          </div>
+
+          {/* RIGHT: TEXT */}
+          <div className={styles.heroRight}>
+            <h1 className={styles.heroTitle}>
+              {course.title[locale]}
+              {course.subtitle && (
+                <>
+                  <br />
+                  {course.subtitle[locale]}
+                </>
+              )}
+            </h1>
+
+            {/* Якщо є structured landing hero — рендеримо блоками.
+               Інакше — fallback на course.heroText (як було раніше). */}
+            {hasLandingHero ? (
+              <div className={styles.heroText}>
+                {!!landing?.hero?.startLine?.[locale] && (
+                  <div style={{ marginBottom: 10 }}>
+                    {landing.hero.startLine[locale]}
+                  </div>
+                )}
+
+                {!!landing?.hero?.problemsTitle?.[locale] && (
+                  <div style={{ marginTop: 10, fontWeight: 600 }}>
+                    {landing.hero.problemsTitle[locale]}
+                  </div>
+                )}
+
+                {(landing?.hero?.problems ?? []).length > 0 && (
+                  <ol style={{ margin: "8px 0 0 18px" }}>
+                    {(landing?.hero?.problems ?? []).map((p, i) => (
+                      <li key={i} style={{ margin: "6px 0" }}>
+                        {p?.[locale]}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+
+                {!!landing?.hero?.goalTitle?.[locale] && (
+                  <div style={{ marginTop: 14, fontWeight: 600 }}>
+                    {landing.hero.goalTitle[locale]}
+                  </div>
+                )}
+
+                {(landing?.hero?.goals ?? []).length > 0 && (
+                  <ul style={{ margin: "8px 0 0 18px" }}>
+                    {(landing?.hero?.goals ?? []).map((g, i) => (
+                      <li key={i} style={{ margin: "6px 0" }}>
+                        {g?.[locale]}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {(landing?.hero?.notes ?? []).length > 0 && (
+                  <div style={{ marginTop: 14 }}>
+                    {(landing?.hero?.notes ?? []).map((n, i) => (
+                      <p key={i} style={{ margin: "8px 0" }}>
+                        {n?.[locale]}
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {(landing?.hero?.modules ?? []).length > 0 && (
+                  <div style={{ marginTop: 10 }}>
+                    <div style={{ fontWeight: 600, marginBottom: 6 }}>
+                      {locale === "en"
+                        ? "Program includes"
+                        : locale === "ua"
+                          ? "Програма включає"
+                          : "Программа включает"}
+                    </div>
+
+                    <ul style={{ margin: "0 0 0 18px" }}>
+                      {(landing?.hero?.modules ?? []).map((m, i) => (
+                        <li key={i} style={{ margin: "6px 0" }}>
+                          {m?.[locale]}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {!!landing?.hero?.liveLine?.[locale] && (
+                  <p style={{ marginTop: 12 }}>
+                    {landing.hero.liveLine[locale]}
+                  </p>
+                )}
+              </div>
+            ) : (
+              course.heroText && (
+                <p className={styles.heroText}>{course.heroText[locale]}</p>
+              )
             )}
           </div>
         </section>
@@ -262,41 +339,89 @@ export const CourseDetailsPage = () => {
 
       {/* Основний контент */}
       <div className="container">
-        {/* Info */}
-        <section className={styles.infoSection}>
-          <div className={styles.infoLeft}>
-            <dl className={styles.infoList}>
-              {course.infoRows.map((row) => (
-                <div key={row.labelKey} className={styles.infoRow}>
-                  <dt>{t(row.labelKey)}</dt>
-                  <dd>{row.value[locale]}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className={styles.infoRight}>
-            <p>{course.shortDescription[locale]}</p>
-          </div>
-        </section>
-
-        {/* ✅ Requirements (окремий блок) */}
-        {hasRequirements && (
+        {/* ✅ 2) Для кого этот курс */}
+        {hasForWho && (
           <>
             <hr className={styles.divider} />
 
-            <section className={styles.requirementsSection}>
-              <div className={styles.requirementsLeft}>
-                <h2 className={styles.sectionTitle}>{requirementsTitle}</h2>
+            <section className={styles.infoSection}>
+              <div className={styles.infoLeft}>
+                <h2 className={styles.sectionTitle}>
+                  {landing?.forWho?.title?.[locale] ??
+                    (locale === "en"
+                      ? "Who is this course for"
+                      : locale === "ua"
+                        ? "Для кого цей курс"
+                        : "Для кого этот курс")}
+                </h2>
               </div>
 
-              <div className={styles.requirementsRight}>
-                <ul className={styles.requirementsList}>
-                  {course.requirements!.map((req, idx) => (
-                    <li key={idx} className={styles.requirementsItem}>
-                      {req[locale]}
+              <div className={styles.infoRight}>
+                <ul style={{ margin: 0, paddingLeft: 18 }}>
+                  {(landing?.forWho?.bullets ?? []).map((b, i) => (
+                    <li key={i} style={{ margin: "8px 0" }}>
+                      {b?.[locale]}
                     </li>
                   ))}
+                </ul>
+
+                {(landing?.forWho?.thisIsForYouIf ?? []).length > 0 && (
+                  <div style={{ marginTop: 14 }}>
+                    <div style={{ fontWeight: 600, marginBottom: 6 }}>
+                      {landing?.forWho?.thisIsForYouIfTitle?.[locale] ??
+                        (locale === "en"
+                          ? "This course is for you if"
+                          : locale === "ua"
+                            ? "Цей курс для тебе, якщо"
+                            : "Этот курс для тебя, если")}
+                    </div>
+
+                    <ul style={{ margin: 0, paddingLeft: 18 }}>
+                      {(landing?.forWho?.thisIsForYouIf ?? []).map((it, i) => (
+                        <li key={i} style={{ margin: "8px 0" }}>
+                          {it?.[locale]}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ✅ 3) Процесс обучения (01..08) */}
+        {hasLearningProcess && (
+          <>
+            <hr className={styles.divider} />
+
+            <section className={styles.programSection}>
+              <div className={styles.programLeft}>
+                <h2 className={styles.sectionTitle}>
+                  {landing?.learningProcess?.title?.[locale] ??
+                    (locale === "en"
+                      ? "Learning process"
+                      : locale === "ua"
+                        ? "Процес навчання"
+                        : "Процесс обучения")}
+                </h2>
+              </div>
+
+              <div className={styles.programRight}>
+                <ul className={styles.programLessons}>
+                  {(landing?.learningProcess?.steps ?? []).map((s, idx) => {
+                    const n = String(idx + 1).padStart(2, "0");
+                    return (
+                      <li key={idx} className={styles.programLesson}>
+                        <span className={styles.lessonNumber}>{n}</span>
+                        <span className={styles.lessonText}>
+                          <span style={{ display: "block" }}>
+                            {s?.text?.[locale]}
+                          </span>
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </section>
@@ -305,7 +430,7 @@ export const CourseDetailsPage = () => {
 
         <hr className={styles.divider} />
 
-        {/* ✅ AUTHOR — перед тарифами */}
+        {/* ✅ 4) AUTHOR */}
         <section className={styles.authorSection}>
           <div className={styles.authorLeft}>
             <h2 className={styles.sectionTitle}>
@@ -346,7 +471,7 @@ export const CourseDetailsPage = () => {
 
         <hr className={styles.divider} />
 
-        {/* Tariffs */}
+        {/* ✅ 5) Tariffs (залишаємо, бо потрібно купити) */}
         <section className={styles.tariffsSection}>
           <div className={styles.tariffsLeft}>
             <h2 className={styles.sectionTitle}>
@@ -356,7 +481,6 @@ export const CourseDetailsPage = () => {
           </div>
 
           <div className={styles.tariffsRight}>
-            {/* ✅ Якщо тариф один — тільки красива ціна */}
             {isSingleTariff ? (
               <div className={styles.singlePriceCard}>
                 <div className={styles.singlePriceTop}>
@@ -384,7 +508,6 @@ export const CourseDetailsPage = () => {
               </div>
             ) : (
               <>
-                {/* ✅ Якщо тарифів кілька — як було */}
                 {course.tariffs.map((tariff, idx) => (
                   <div key={idx} className={styles.tariffRow}>
                     <div className={styles.tariffInfo}>
@@ -435,63 +558,9 @@ export const CourseDetailsPage = () => {
           </div>
         </section>
 
-        {/* ✅ ПІСЛЯ ТАРИФІВ: справа 2 блоки (куратор) + (how it works) */}
-        {hasHowItWorks && (
-          <>
-            <hr className={styles.divider} />
-
-            <section className={styles.howItWorksSection}>
-              <div className={styles.howItWorksLeft} />
-              <div className={styles.howItWorksRight}>
-                <div className={styles.howItWorksCard}>
-                  <h2 className={styles.sectionTitle}>
-                    {locale === "en"
-                      ? "How does learning work"
-                      : locale === "ua"
-                        ? "Як проходить навчання"
-                        : "Как проходит обучение"}
-                  </h2>
-
-                  {/* intro */}
-                  {!!howItWorks?.intro?.[locale] && (
-                    <p className={styles.howItWorksParagraph}>
-                      {howItWorks.intro[locale]}
-                    </p>
-                  )}
-
-                  {/* steps */}
-                  {(howItWorks?.steps ?? []).length > 0 && (
-                    <ul className={styles.howItWorksBullets}>
-                      {(howItWorks?.steps ?? []).map((s, i) => (
-                        <li key={i} className={styles.howItWorksBulletItem}>
-                          {s?.[locale]}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {/* outro */}
-                  {!!howItWorks?.outro?.[locale] && (
-                    <p className={styles.howItWorksParagraph}>
-                      {howItWorks.outro[locale]}
-                    </p>
-                  )}
-
-                  {/* files */}
-                  {!!howItWorks?.files?.[locale] && (
-                    <p className={styles.howItWorksParagraph}>
-                      {howItWorks.files[locale]}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </section>
-          </>
-        )}
-
         <hr className={styles.divider} />
 
-        {/* ✅ Program */}
+        {/* ✅ 6) Program */}
         {hasProgram && (
           <>
             <section className={styles.programSection}>
@@ -555,7 +624,7 @@ export const CourseDetailsPage = () => {
           </>
         )}
 
-        {/* FAQ */}
+        {/* ✅ 7) FAQ */}
         <section className={styles.faqSection}>
           <h2 className={styles.sectionTitle}>{t("courseDetails.faqTitle")}</h2>
 
